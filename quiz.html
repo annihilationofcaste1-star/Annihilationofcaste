@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caste Meter Quiz — Annihilation of Caste</title>
+<meta name="description" content="A 15-question quiz to examine your own caste conditioning — including the beliefs of people who are certain they aren't casteist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;min-height:100vh}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+  .nav-back{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em}
+  .nav-back:hover{color:var(--ink)}
+
+  .quiz-wrap{max-width:680px;margin:0 auto;padding:100px 24px 80px}
+  .screen{display:none}.screen.active{display:block}
+
+  /* INTRO */
+  .intro-tag{display:inline-block;background:#FCEBEB;color:var(--accent);font-size:11px;font-weight:500;padding:4px 12px;border-radius:2px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px}
+  .intro-title{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,52px);line-height:1.1;margin-bottom:16px}
+  .intro-title em{font-style:italic;color:var(--accent)}
+  .intro-desc{font-size:16px;color:var(--muted);line-height:1.75;max-width:500px;margin-bottom:12px}
+  .axis-pills{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 32px}
+  .pill{font-size:12px;padding:5px 14px;border-radius:2px;font-weight:500;letter-spacing:0.04em}
+
+  /* PROGRESS */
+  .prog-bar{height:3px;background:var(--border);margin-bottom:24px;border-radius:2px}
+  .prog-fill{height:3px;background:var(--ink);border-radius:2px;transition:width 0.4s ease}
+  .q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .q-num{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+  .q-axis{font-size:11px;font-weight:500;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase}
+
+  /* QUESTION */
+  .q-text{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,24px);line-height:1.4;margin-bottom:28px;font-weight:400}
+  .opt-btn{width:100%;text-align:left;padding:14px 18px;margin-bottom:10px;border:1px solid var(--border);border-radius:2px;background:var(--paper);color:var(--ink);font-size:14px;cursor:pointer;line-height:1.6;transition:all 0.15s;font-family:'DM Sans',sans-serif;font-weight:300}
+  .opt-btn:hover{background:#ede8df;border-color:rgba(26,18,9,0.25)}
+  .opt-btn.selected{background:#f0e8e8;border-color:var(--accent);color:#8b1a1a}
+  .opt-btn.best{background:#e8f0e8;border-color:#2d6a2d;color:#1a3d1a}
+
+  .fact-panel{background:var(--ink);color:rgba(245,240,232,0.85);padding:20px 22px;margin-top:16px;border-radius:2px;display:none;font-size:13px;line-height:1.7}
+  .fact-panel.visible{display:block}
+  .fact-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500}
+
+  .next-btn{display:none;margin-top:20px;background:var(--ink);color:var(--paper);border:none;padding:12px 28px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:0.04em;border-radius:2px;transition:background 0.2s}
+  .next-btn:hover{background:var(--accent)}
+  .next-btn.show{display:inline-block}
+
+  /* RESULT */
+  .result-header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:28px}
+  .result-tag{display:inline-block;background:#e8f0e8;color:#1a3d1a;font-size:11px;font-weight:500;padding:4px 12px;border-radius:2px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px}
+  .result-label{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,34px);margin-bottom:10px;line-height:1.2}
+  .result-desc{font-size:15px;color:var(--muted);line-height:1.75;max-width:540px}
+
+  .compass-wrap{background:var(--ink);border-radius:4px;padding:24px;margin:24px 0}
+  .compass-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-bottom:16px}
+  canvas{display:block;width:100%;border-radius:2px}
+
+  .scores-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+  .score-card{background:#ede8df;border-radius:2px;padding:16px;text-align:center}
+  .score-card-label{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:6px}
+  .score-card-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1}
+  .score-card-sub{font-size:11px;color:var(--muted);margin-top:4px}
+
+  .breakdown{background:#ede8df;border-radius:2px;padding:20px;margin:16px 0}
+  .breakdown-title{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px}
+  .b-row{margin-bottom:12px}
+  .b-row-top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+  .b-bar{height:4px;background:rgba(26,18,9,0.1);border-radius:2px}
+  .b-fill{height:4px;border-radius:2px;transition:width 0.6s ease}
+
+  .result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .btn-outline{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:11px 22px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:all 0.2s;text-decoration:none;display:inline-block}
+  .btn-outline:hover{background:var(--ink);color:var(--paper)}
+  .btn-solid{background:var(--ink);color:var(--paper);border:none;padding:11px 22px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:background 0.2s;text-decoration:none;display:inline-block}
+  .btn-solid:hover{background:var(--accent)}
+
+  .ambedkar-quote{border-left:3px solid var(--gold);padding-left:18px;margin:24px 0}
+  .ambedkar-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;line-height:1.6;color:var(--ink);margin-bottom:8px}
+  .ambedkar-quote cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+  @media(max-width:640px){nav{padding:16px 20px}.quiz-wrap{padding:90px 16px 60px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <a class="nav-back" href="index.html">← Back to home</a>
+</nav>
+
+<div class="quiz-wrap">
+
+  <!-- INTRO SCREEN -->
+  <div id="screen-intro" class="screen active">
+    <span class="intro-tag">Self-reflection tool · v2</span>
+    <h1 class="intro-title">Caste <em>Meter</em></h1>
+    <p class="intro-desc">Caste operates in two ways: through open prejudice, and through denial. This quiz covers both — including the beliefs of people who are absolutely certain they aren't casteist.</p>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:6px">15 questions across two dimensions:</p>
+    <div class="axis-pills">
+      <span class="pill" style="background:#E6F1FB;color:#0C447C">Personal bias</span>
+      <span class="pill" style="background:#FCEBEB;color:#A32D2D">Denial & gaslighting</span>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:28px;max-width:420px">Each answer reveals the factual research behind it. Your result plots on a two-axis compass. Honest answers only — this is for your own reflection.</p>
+    <button onclick="startQuiz()" style="background:var(--ink);color:var(--paper);border:none;padding:13px 32px;font-size:15px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;border-radius:2px;transition:background 0.2s" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='var(--ink)'">Begin the quiz</button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz" class="screen">
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="q-meta">
+      <span class="q-num" id="q-counter">Question 1 of 15</span>
+      <span class="q-axis" id="q-axis"></span>
+    </div>
+    <p class="q-text" id="q-text"></p>
+    <div id="q-options"></div>
+    <div class="fact-panel" id="fact-panel">
+      <div class="fact-label">Why this matters</div>
+      <span id="fact-text"></span>
+    </div>
+    <button class="next-btn" id="next-btn" onclick="nextQ()">Next question</button>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="screen-result" class="screen">
+    <div class="result-header">
+      <span class="result-tag">Your result</span>
+      <h2 class="result-label" id="res-label"></h2>
+      <p class="result-desc" id="res-desc"></p>
+    </div>
+
+    <div class="compass-wrap">
+      <div class="compass-title">Two-axis caste consciousness map</div>
+      <canvas id="compass" height="300"></canvas>
+      <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:rgba(245,240,232,0.4)">
+        <span>↑ High denial</span>
+        <span>Low bias ←→ High bias</span>
+        <span>Low denial ↓</span>
+      </div>
+    </div>
+
+    <div class="scores-row">
+      <div class="score-card">
+        <div class="score-card-label">Personal bias</div>
+        <div class="score-card-num" id="score-bias" style="color:var(--accent)"></div>
+        <div class="score-card-sub">out of 30</div>
+      </div>
+      <div class="score-card">
+        <div class="score-card-label">Denial index</div>
+        <div class="score-card-num" id="score-denial" style="color:#0C447C"></div>
+        <div class="score-card-sub">out of 30</div>
+      </div>
+    </div>
+
+    <div class="breakdown">
+      <div class="breakdown-title">Score breakdown</div>
+      <div id="breakdown-content"></div>
+    </div>
+
+    <div class="ambedkar-quote">
+      <p>"Caste is a notion; it is a state of the mind. The destruction of caste does not therefore mean the destruction of a physical barrier. It means a notional change."</p>
+      <cite>— B.R. Ambedkar, Annihilation of Caste</cite>
+    </div>
+
+    <div class="result-actions">
+      <button onclick="resetQuiz()" class="btn-outline">Retake quiz</button>
+      <a href="text.html" class="btn-solid">Read the text →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const Q=[
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"You see litter on the street outside your house. What do you do?",options:[{label:"Pick it up and dispose it properly",score:3},{label:"Feel bothered but assume it's the municipality's job",score:2},{label:"Ignore it — someone will clean it eventually",score:1},{label:"Ask the domestic worker or someone lower-status to handle it",score:0}],fact:"In the varna system, Dalits were assigned sanitation as a hereditary, 'polluting' duty. This created a dominant-caste psychology where cleaning is beneath those of higher birth. India's public hygiene crisis is directly tied to this caste-coded disgust for manual labour — the idea that someone else's hands exist to clean your mess."},
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"Your domestic worker's child wants to sit on your sofa. You feel:",options:[{label:"Completely fine — invite them warmly",score:3},{label:"A slight discomfort I'm not proud of",score:2},{label:"Wouldn't occur to me to allow it — there are norms",score:1},{label:"Inappropriate — they should know their place",score:0}],fact:"Untouchability extended to furniture, utensils, and physical spaces. Dalits were not permitted to sit on chairs in the presence of upper-caste individuals. This 'spatial untouchability' persists today through seating, separate crockery, and where workers are allowed to stand — often without the house owner even consciously noticing."},
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"A person's surname reveals their Dalit caste. Does it affect how you treat them?",options:[{label:"No — I consciously try to disregard it",score:3},{label:"Not consciously, but I may form assumptions",score:2},{label:"Yes — it gives useful social context",score:1},{label:"Yes — it tells me what I need to know about them",score:0}],fact:"Surnames in India are direct caste markers. Studies on hiring discrimination show identical resumes with lower-caste surnames receive significantly fewer callbacks. This is caste-based prejudice operating through the language of 'merit' and 'fit'. Name-based discrimination is documented in housing rental markets too."},
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"On the question of marriage, you believe:",options:[{label:"Love and compatibility matter most — caste is irrelevant",score:3},{label:"Caste is a preference, not a hard requirement",score:2},{label:"Marrying within caste preserves culture and harmony",score:1},{label:"Inter-caste marriage is unacceptable",score:0}],fact:"Endogamy — marrying only within one's caste — is the primary mechanism through which caste reproduces itself across generations. Ambedkar identified it as the cornerstone of the caste system. Over 300 honour killings are reported annually in India, most targeting inter-caste couples. 'Culture preservation' is frequently the justification used."},
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"When a Dalit colleague gets promoted, your first thought is:",options:[{label:"They earned it — full stop",score:3},{label:"I don't know enough to say either way",score:2},{label:"They may have benefited from reservation",score:1},{label:"Reservations give them an unfair advantage",score:0}],fact:"Reservations correct for centuries of exclusion of Dalits from education, property, and public life. Upper-caste resistance frames it as 'merit vs. charity' — ignoring that dominant castes inherited land, English-medium education, and professional networks. Studies show upper-caste applicants are 2–3x more likely to be shortlisted for the same role even with reservations in place."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"I have Dalit friends who come to my home and eat with us, and I go to their home too. So caste discrimination doesn't really exist.\" Do you agree?",options:[{label:"No — individual friendships don't erase structural inequality",score:3},{label:"It's a sign of progress but not proof caste is gone",score:2},{label:"It shows things are getting much better",score:1},{label:"Yes — if we socialise together, caste is no longer a barrier",score:0}],fact:"Individual friendships across caste lines do not dismantle structural caste. Dalits face discrimination in housing (landlords refusing to rent), jobs (name-based filtering), marriage markets, and access to temples and water sources — none of which your dinner table can fix. This is called the 'personal as proof' fallacy: using exceptional social contact to deny systemic reality."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"When presented with data on Dalit rape and sexual assault — that Dalit women are far more likely to be assaulted and cases less likely to be investigated — you respond:",options:[{label:"This is a serious pattern requiring structural accountability",score:3},{label:"Disturbing — though causes may be complex",score:2},{label:"These are individual cases — you can't generalise",score:1},{label:"Media politicises these cases; numbers are exaggerated",score:0}],fact:"NCRB data consistently shows crimes against Dalits — including rape, murder, and assault — are underreported and under-prosecuted. Hathras (2020), Unnao (2019) — each case prompted not just denial but active victim-blaming by police and political representatives from dominant castes. The UN Committee on the Elimination of Racial Discrimination has flagged India specifically for caste-based sexual violence."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"The SC/ST Atrocity Act is widely misused by Dalits to falsely implicate innocent upper-caste people.\" Your reaction:",options:[{label:"This is a documented myth used to weaken Dalit legal protection",score:3},{label:"There may be some misuse but the Act is necessary",score:2},{label:"I've heard this — misuse does seem to be a real problem",score:1},{label:"Yes — it's being weaponised and should be diluted",score:0}],fact:"The 'misuse' narrative around the SC/ST Prevention of Atrocities Act is one of the most effective propaganda tools used to weaken Dalit legal protection. Conviction rates under the Act are among the lowest in India — under 30% — which indicates the Act is under-enforced, not over-used. A 2019 NHRC report found most atrocity cases are dismissed or delayed by police. The 'misuse' claim shifts sympathy to the accused rather than the victim."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"Caste discrimination is a thing of the past — the educated generation today doesn't practice it.\" How do you respond?",options:[{label:"Education doesn't automatically undo caste; data shows discrimination persists",score:3},{label:"There's been improvement but it's far from over",score:2},{label:"In cities and among educated people, it's basically gone",score:1},{label:"Strongly agree — younger generations have moved past it",score:0}],fact:"A 2022 Oxfam India survey found 27% of urban educated Indians admitted to practising untouchability. IIT and IIM campuses have documented cases of Dalit students being excluded from group projects, called by caste slurs, and denied mentorship. The suicide of Rohith Vemula (Hyderabad Central University, 2016) exposed how institutional caste functions in supposedly 'educated' spaces. Education changes vocabulary, not always values."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"Police brutality and custodial deaths of Dalits reflect general law enforcement problems — not caste.\" Do you agree?",options:[{label:"No — caste determines who is most vulnerable to state violence",score:3},{label:"Both caste and systemic policing failures are at play",score:2},{label:"Probably general police brutality — caste may be coincidental",score:1},{label:"Yes — it's not a caste issue, just a policing issue",score:0}],fact:"NCRB data from 2001–2020 shows Dalits and Adivasis make up a disproportionate share of custodial deaths and encounters. Police forces in India are overwhelmingly upper and dominant-caste in officer roles. Dalit FIRs are routinely not registered, complainants coerced to withdraw, and Dalit accused receive harsher treatment. State violence and caste are not parallel problems — caste determines who the state sees as expendable."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"Talking about caste keeps it alive. The real solution is to stop mentioning it.\" Your view:",options:[{label:"Naming caste is necessary to dismantle it — silence protects oppressors",score:3},{label:"We should talk about it but not obsess over it",score:2},{label:"Constant focus on caste creates division",score:1},{label:"Agree — stop talking about caste and it will fade away",score:0}],fact:"'Caste-blindness' is a dominant-caste luxury. Dalits cannot ignore caste because it determines their safety, wages, housing, and dignity every day. The demand to 'stop talking about caste' almost always comes from those who benefit from its invisibility. Ambedkar wrote: 'constitutional morality is not a natural sentiment — it has to be cultivated.' Refusing to name caste ends accountability, not caste."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"Manual scavenging no longer exists — it was abolished by law.\" You respond:",options:[{label:"The law exists but the practice continues — tens of thousands still do it",score:3},{label:"There are probably some residual cases but largely resolved",score:2},{label:"If it's illegal, it must be largely gone",score:1},{label:"Legal abolition means it's been addressed",score:0}],fact:"Manual scavenging was 'abolished' in 1993 and again in 2013. Yet the Safai Karmachari Andolan estimated in 2021 that over 50,000 people — almost entirely Dalits — still clean human waste by hand. Between 2016 and 2022, over 330 sewer-cleaning deaths were officially documented; activists say the real number is far higher. Legal prohibition without enforcement, rehabilitation, or accountability is performative."},
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"A sanitation worker sits next to you on public transport. You:",options:[{label:"Think nothing of it",score:3},{label:"Notice it but stay put",score:2},{label:"Feel discomfort and subtly shift away",score:1},{label:"Move away clearly — a natural reaction",score:0}],fact:"The bodily disgust many dominant-caste people feel near sanitation workers is not about hygiene — it is caste-coded. The same person in office clothes would not provoke the same reaction. Manual scavengers and sewer workers in India are almost entirely Dalit. The disgust is inherited from untouchability's logic of bodily pollution — it is learned, not natural."},
+  {axis:"denial",axisLabel:"Denial & gaslighting",axisStyle:"background:#FCEBEB;color:#A32D2D",text:"\"Reservation benefits are cornered by the 'creamy layer' — well-off Dalit families — and never reach the truly poor. This justifies scrapping reservations.\" Do you agree?",options:[{label:"Creamy layer is a separate policy question — it doesn't justify ending reservations",score:3},{label:"It's a concern but the broader case for reservations remains",score:2},{label:"The system needs major overhaul before it can be justified",score:1},{label:"Yes — reservations are now unjust and should be scrapped",score:0}],fact:"The 'creamy layer' argument is used almost exclusively against Dalit reservations — never to examine upper-caste advantage through land ownership, caste networks, and English education. Even 'well-off' Dalit families face discrimination in housing and hiring. The argument treats elite Dalit exceptions as proof the system is fixed — while upper-caste elites are never asked to justify their inherited networks."},
+  {axis:"bias",axisLabel:"Personal bias",axisStyle:"background:#E6F1FB;color:#0C447C",text:"Ambedkar's mass conversion to Buddhism with 600,000 followers was, in your view:",options:[{label:"A rational, studied rejection of a system that dehumanised his people",score:3},{label:"A powerful political statement, deeply understandable",score:2},{label:"Sad — he abandoned the Hindu fold unnecessarily",score:1},{label:"A betrayal of Indian civilisation",score:0}],fact:"Ambedkar spent 21 years studying world religions before choosing Buddhism for its rejection of birth-based hierarchy and its emphasis on reason and equality. He wrote: 'I was born a Hindu but I will not die a Hindu.' To call this betrayal is to suggest Dalits owe loyalty to a religion that stripped them of dignity for millennia. The question of whether Dalits 'belong' in Hinduism reveals who is assumed to own that tradition."}
+];
+
+const RESULTS=[
+  {biasMin:0,biasMax:10,denialMin:0,denialMax:10,label:"Deeply embedded in caste thinking",desc:"Both personal bias and denial run deep. These attitudes are absorbed over decades from family, media, and community. The important thing is that you're here, taking this quiz. Transformation begins with honest acknowledgment."},
+  {biasMin:0,biasMax:10,denialMin:11,denialMax:30,label:"Personal bias with systemic awareness",desc:"You hold some personal biases but you don't deny caste's structural reality — a meaningful distinction. The next step is examining where personal attitudes still carry caste logic, even unconsciously."},
+  {biasMin:11,biasMax:20,denialMin:0,denialMax:10,label:"Aware but a denier",desc:"You've reduced personal bias but still resist acknowledging systemic caste. This is perhaps the most common profile among urban, educated Indians — personal egalitarianism paired with structural denial. Recognising patterns in data, not just individuals, is the next step."},
+  {biasMin:11,biasMax:20,denialMin:11,denialMax:20,label:"Caste-aware, work in progress",desc:"You're in the middle — aware enough to see some things, still holding onto others. Most people doing honest reflection land here. Keep reading: Suraj Yengde's Caste Matters, Kancha Ilaiah's Why I Am Not a Hindu, and Ambedkar's Annihilation of Caste itself."},
+  {biasMin:21,biasMax:30,denialMin:0,denialMax:10,label:"Low bias, but denies the structure",desc:"Your personal behaviour is relatively egalitarian, but you still resist acknowledging caste as a structural problem. This is the 'I treat everyone equally' liberal who opposes reservations. Individual fairness without structural accountability maintains the status quo."},
+  {biasMin:21,biasMax:30,denialMin:11,denialMax:20,label:"Substantially anti-caste",desc:"You hold meaningfully anti-caste views across most areas. You understand both personal and structural caste. Now: how does this translate into action — in your workplace, neighbourhood, and family conversations?"},
+  {biasMin:21,biasMax:30,denialMin:21,denialMax:30,label:"Actively anti-caste",desc:"Your awareness of caste is deep, structural, and honest. The question is: are those around you having these same conversations? Transformation becomes collective when it moves from individual insight to active solidarity."}
+];
+
+let current=0,biasScore=0,denialScore=0,answered=false;
+
+function startQuiz(){
+  document.getElementById('screen-intro').classList.remove('active');
+  document.getElementById('screen-quiz').classList.add('active');
+  renderQ();
+}
+
+function renderQ(){
+  const q=Q[current];
+  document.getElementById('q-counter').textContent='Question '+(current+1)+' of '+Q.length;
+  document.getElementById('prog-fill').style.width=(current/Q.length*100)+'%';
+  const ax=document.getElementById('q-axis');
+  ax.textContent=q.axisLabel;ax.style.cssText=q.axisStyle+';font-size:11px;font-weight:500;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase';
+  document.getElementById('q-text').textContent=q.text;
+  document.getElementById('fact-panel').classList.remove('visible');
+  const nb=document.getElementById('next-btn');nb.classList.remove('show');
+  answered=false;
+  const c=document.getElementById('q-options');c.innerHTML='';
+  q.options.forEach((opt,i)=>{
+    const btn=document.createElement('button');
+    btn.className='opt-btn';btn.textContent=opt.label;
+    btn.onclick=()=>selectOpt(i,opt.score,q.fact,q.axis);
+    c.appendChild(btn);
+  });
+}
+
+function selectOpt(idx,score,fact,axis){
+  if(answered)return;answered=true;
+  const btns=document.querySelectorAll('.opt-btn');
+  btns.forEach((b,i)=>{
+    if(i===idx)b.classList.add('selected');
+    if(i===0)b.classList.add('best');
+  });
+  if(axis==='bias')biasScore+=score;else denialScore+=score;
+  document.getElementById('fact-text').textContent=fact;
+  document.getElementById('fact-panel').classList.add('visible');
+  const nb=document.getElementById('next-btn');
+  nb.classList.add('show');
+  nb.textContent=current<Q.length-1?'Next question →':'See my result →';
+}
+
+function nextQ(){
+  current++;
+  if(current<Q.length)renderQ();else showResult();
+}
+
+function showResult(){
+  document.getElementById('screen-quiz').classList.remove('active');
+  document.getElementById('screen-result').classList.add('active');
+  const biasQCount=Q.filter(q=>q.axis==='bias').length;
+  const denialQCount=Q.filter(q=>q.axis==='denial').length;
+  const bMax=biasQCount*3,dMax=denialQCount*3;
+
+  const band=RESULTS.find(r=>biasScore>=r.biasMin&&biasScore<=r.biasMax&&denialScore>=r.denialMin&&denialScore<=r.denialMax)||RESULTS[3];
+  document.getElementById('res-label').textContent=band.label;
+  document.getElementById('res-desc').textContent=band.desc;
+  document.getElementById('score-bias').textContent=biasScore;
+  document.getElementById('score-denial').textContent=denialScore;
+
+  const bPct=Math.round(biasScore/bMax*100);
+  const dPct=Math.round(denialScore/dMax*100);
+  document.getElementById('breakdown-content').innerHTML=
+    '<div class="b-row"><div class="b-row-top"><span style="color:var(--muted);font-size:12px">Personal bias ('+biasQCount+' questions)</span><span style="color:var(--accent);font-size:12px;font-weight:500">'+bPct+'% anti-caste</span></div><div class="b-bar"><div class="b-fill" style="width:'+bPct+'%;background:var(--accent)"></div></div></div>'+
+    '<div class="b-row"><div class="b-row-top"><span style="color:var(--muted);font-size:12px">Denial index ('+denialQCount+' questions)</span><span style="color:#0C447C;font-size:12px;font-weight:500">'+dPct+'% anti-denial</span></div><div class="b-bar"><div class="b-fill" style="width:'+dPct+'%;background:#0C447C"></div></div></div>';
+
+  setTimeout(()=>drawCompass(biasScore,denialScore,bMax,dMax),150);
+}
+
+function drawCompass(bs,ds,bMax,dMax){
+  const canvas=document.getElementById('compass');
+  const W=canvas.offsetWidth||520;
+  canvas.width=W*window.devicePixelRatio;canvas.height=300*window.devicePixelRatio;
+  canvas.style.width=W+'px';canvas.style.height='300px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(window.devicePixelRatio,window.devicePixelRatio);
+  const pad=50,iW=W-pad*2,iH=200;
+
+  const quads=[['#3d1a1a','#2a1f0d'],['#1a2d3d','#0d1a2a'],['#1a2d1a','#0d2a0d'],['#2d1a2d','#1a0d2a']];
+  [[0,0],[1,0],[0,1],[1,1]].forEach(([xi,yi],i)=>{
+    ctx.fillStyle=quads[i][0];
+    ctx.fillRect(pad+xi*iW/2,pad+yi*iH/2,iW/2,iH/2);
+  });
+
+  ctx.strokeStyle='rgba(245,240,232,0.08)';ctx.lineWidth=0.5;
+  ctx.strokeRect(pad,pad,iW,iH);
+  ctx.beginPath();ctx.moveTo(pad+iW/2,pad);ctx.lineTo(pad+iW/2,pad+iH);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(pad,pad+iH/2);ctx.lineTo(pad+iW,pad+iH/2);ctx.stroke();
+
+  const lc='rgba(245,240,232,0.3)';ctx.fillStyle=lc;ctx.font='10px DM Sans, sans-serif';ctx.textAlign='center';
+  ctx.fillText('Denier',pad+iW/4,pad+iH-8);ctx.fillText('Honest',pad+iW*3/4,pad+iH-8);
+  ctx.save();
+  ctx.translate(14,pad+iH/4);ctx.rotate(-Math.PI/2);ctx.fillText('High bias',0,0);ctx.restore();
+  ctx.save();
+  ctx.translate(14,pad+iH*3/4);ctx.rotate(-Math.PI/2);ctx.fillText('Low bias',0,0);ctx.restore();
+
+  const labels=[{x:pad+iW/4,y:pad+18,t:'Aware,',t2:'denies system',c:'#e88'},
+                {x:pad+iW*3/4,y:pad+18,t:'Anti-caste',t2:'conscious',c:'#8e8'},
+                {x:pad+iW/4,y:pad+iH/2+18,t:'Open',t2:'casteist',c:'#e55'},
+                {x:pad+iW*3/4,y:pad+iH/2+18,t:'Biased',t2:'+ denies',c:'#ea8'}];
+  labels.forEach(l=>{
+    ctx.fillStyle=l.c;ctx.font='500 11px DM Sans,sans-serif';ctx.textAlign='center';
+    ctx.fillText(l.t,l.x,l.y);ctx.font='10px DM Sans,sans-serif';ctx.fillText(l.t2,l.x,l.y+13);
+  });
+
+  const xP=bs/bMax,yP=1-ds/dMax;
+  const mx=pad+iW*xP,my=pad+iH*yP;
+
+  ctx.strokeStyle='rgba(245,240,232,0.15)';ctx.lineWidth=0.5;ctx.setLineDash([3,3]);
+  ctx.beginPath();ctx.moveTo(mx,pad+iH);ctx.lineTo(mx,my);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(pad,my);ctx.lineTo(mx,my);ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.fillStyle='#f5f0e8';ctx.strokeStyle='rgba(245,240,232,0.3)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(mx,my,10,0,2*Math.PI);ctx.fill();ctx.stroke();
+  ctx.fillStyle='#1a1209';ctx.font='500 9px DM Sans,sans-serif';ctx.textAlign='center';
+  ctx.fillText('you',mx,my+3.5);
+}
+
+function resetQuiz(){
+  current=0;biasScore=0;denialScore=0;answered=false;
+  document.getElementById('screen-result').classList.remove('active');
+  document.getElementById('screen-intro').classList.add('active');
+}
+</script>
+</body>
+</html>

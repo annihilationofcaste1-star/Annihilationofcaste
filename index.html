@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annihilation of Caste — B.R. Ambedkar</title>
+<meta name="description" content="An undelivered speech that changed India. Read Ambedkar's Annihilation of Caste, take the Caste Meter quiz, and engage with the movement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1209;
+    --paper: #f5f0e8;
+    --accent: #c0392b;
+    --gold: #b8860b;
+    --muted: #7a6e5f;
+    --border: rgba(26,18,9,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:15px;letter-spacing:0.02em;color:var(--ink);text-decoration:none}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--ink)}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 39px,var(--border) 39px,var(--border) 40px);opacity:0.4;pointer-events:none}
+  .hero-content{max-width:640px;position:relative;z-index:2}
+  .hero-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .hero-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent)}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,88px);line-height:1.0;font-weight:700;margin-bottom:8px;letter-spacing:-0.02em}
+  h1 em{font-style:italic;color:var(--accent)}
+  .hero-year{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);color:var(--muted);font-weight:400;margin-bottom:28px}
+  .hero-desc{font-size:17px;color:var(--muted);max-width:460px;line-height:1.75;margin-bottom:40px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{background:var(--ink);color:var(--paper);padding:13px 28px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:background 0.2s;font-family:'DM Sans',sans-serif;font-weight:500}
+  .btn-primary:hover{background:var(--accent)}
+  .btn-secondary{border:1px solid var(--ink);color:var(--ink);padding:13px 28px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+  .btn-secondary:hover{background:var(--ink);color:var(--paper)}
+  .hero-aside{position:absolute;right:40px;top:50%;transform:translateY(-50%);max-width:280px;text-align:right;display:none}
+  @media(min-width:900px){.hero-aside{display:block}}
+  .hero-aside blockquote{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;line-height:1.6;color:var(--ink);margin-bottom:12px}
+  .hero-aside cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+  /* MARQUEE */
+  .marquee-wrap{background:var(--ink);color:var(--paper);padding:14px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-flex;animation:marquee 30s linear infinite}
+  .marquee-track span{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:0 40px;opacity:0.7}
+  .marquee-track span.dot{opacity:0.3;padding:0 10px}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  section{padding:80px 40px}
+  .section-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+  h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);line-height:1.2;margin-bottom:16px}
+
+  /* PULL QUOTE */
+  .pullquote-section{background:var(--ink);color:var(--paper);text-align:center}
+  .pullquote-section blockquote{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,32px);font-style:italic;line-height:1.5;max-width:760px;margin:0 auto 20px}
+  .pullquote-section cite{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;opacity:0.5}
+
+  /* CARDS */
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;margin-top:40px}
+  .card{background:var(--paper);border:1px solid var(--border);padding:32px 28px;transition:transform 0.2s,box-shadow 0.2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,18,9,0.1)}
+  .card-num{font-family:'Playfair Display',serif;font-size:48px;color:var(--border);line-height:1;margin-bottom:16px;font-weight:700}
+  .card h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:10px;font-weight:400}
+  .card p{font-size:14px;color:var(--muted);line-height:1.7}
+  .card-link{display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;letter-spacing:0.04em}
+  .card-link:hover{text-decoration:underline}
+
+  /* QUIZ CTA */
+  .quiz-cta{background:linear-gradient(135deg,#2c1810 0%,#1a1209 100%);color:var(--paper);border-radius:4px;padding:60px 48px;display:flex;flex-direction:column;gap:20px;align-items:flex-start;position:relative;overflow:hidden;margin:0 40px 80px}
+  .quiz-cta::before{content:'CASTE METER';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-size:80px;font-family:'Playfair Display',serif;opacity:0.04;white-space:nowrap;pointer-events:none}
+  .quiz-badge{background:var(--accent);color:#fff;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:2px;font-weight:500}
+  .quiz-cta h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);max-width:500px;line-height:1.2;margin-bottom:0}
+  .quiz-cta p{font-size:15px;opacity:0.65;max-width:460px;line-height:1.7}
+  .quiz-cta .btn-primary{background:var(--accent);color:#fff}
+  .quiz-cta .btn-primary:hover{background:#e74c3c}
+
+  /* SPECTRUM PREVIEW */
+  .spectrum-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#c0392b,#e67e22,#f1c40f,#27ae60,#1a5c3a);margin:16px 0 8px;max-width:400px}
+  .spectrum-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);max-width:400px;letter-spacing:0.04em}
+
+  /* NEWSLETTER */
+  .newsletter{border-top:1px solid var(--border);padding-top:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+  .newsletter-form{display:flex;gap:8px}
+  .newsletter-form input{padding:11px 16px;border:1px solid var(--border);background:transparent;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);width:240px;border-radius:2px}
+  .newsletter-form input:focus{outline:none;border-color:var(--ink)}
+  .newsletter-form button{background:var(--ink);color:var(--paper);border:none;padding:11px 20px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:background 0.2s}
+  .newsletter-form button:hover{background:var(--accent)}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(245,240,232,0.5);padding:40px;font-size:13px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer a{color:rgba(245,240,232,0.5);text-decoration:none}
+  footer a:hover{color:var(--paper)}
+
+  /* MOBILE */
+  @media(max-width:640px){
+    nav{padding:16px 20px}
+    .nav-links{display:none}
+    .hero{padding:100px 20px 60px}
+    section{padding:60px 20px}
+    .quiz-cta{margin:0 20px 60px;padding:40px 24px}
+  }
+
+  /* ANIMATIONS */
+  .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+  .fade-up.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html">Caste Meter</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">B.R. Ambedkar · 1936</div>
+    <h1>Annihilation<br>of <em>Caste</em></h1>
+    <div class="hero-year">The undelivered speech.</div>
+    <p class="hero-desc">A text that was never spoken aloud — yet became one of the most radical challenges to social hierarchy in modern history. Read it. Understand it. Act on it.</p>
+    <div class="hero-ctas">
+      <a href="text.html" class="btn-primary">Read the text</a>
+      <a href="quiz.html" class="btn-secondary">Take the Caste Meter quiz →</a>
+    </div>
+  </div>
+  <div class="hero-aside">
+    <blockquote>"Turn in any direction you like, caste is the monster that crosses your path."</blockquote>
+    <cite>— B.R. Ambedkar, 1936</cite>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Annihilation of Caste</span><span class="dot">·</span>
+    <span>B.R. Ambedkar</span><span class="dot">·</span>
+    <span>1936</span><span class="dot">·</span>
+    <span>Dalit Lives Matter</span><span class="dot">·</span>
+    <span>Jai Bhim</span><span class="dot">·</span>
+    <span>Social Justice</span><span class="dot">·</span>
+    <span>Constitutional Morality</span><span class="dot">·</span>
+    <span>Annihilation of Caste</span><span class="dot">·</span>
+    <span>B.R. Ambedkar</span><span class="dot">·</span>
+    <span>1936</span><span class="dot">·</span>
+    <span>Dalit Lives Matter</span><span class="dot">·</span>
+    <span>Jai Bhim</span><span class="dot">·</span>
+    <span>Social Justice</span><span class="dot">·</span>
+    <span>Constitutional Morality</span><span class="dot">·</span>
+  </div>
+</div>
+
+<section id="about" style="max-width:1100px;margin:0 auto">
+  <div class="section-label fade-up">About the text</div>
+  <h2 class="fade-up">A speech that was never delivered — <em style="font-family:'Playfair Display',serif;font-style:italic">and changed everything.</em></h2>
+  <p style="max-width:580px;color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:48px" class="fade-up">In 1936, Ambedkar was invited to address the Jat-Pat-Todak Mandal — a Hindu reformist group in Lahore. When the organizers read his speech in advance, they cancelled the event. Ambedkar published it himself. It became one of the most important political texts of the 20th century.</p>
+
+  <div class="cards-grid">
+    <div class="card fade-up">
+      <div class="card-num">01</div>
+      <h3>The Original Text</h3>
+      <p>Read Ambedkar's complete speech with historical footnotes and context — exactly as he wrote it to be delivered.</p>
+      <a href="text.html" class="card-link">Read now →</a>
+    </div>
+    <div class="card fade-up">
+      <div class="card-num">02</div>
+      <h3>Why It Was Banned</h3>
+      <p>The Jat-Pat-Todak Mandal cancelled the event after reading the draft. The story of that suppression is as important as the text itself.</p>
+      <a href="text.html#context" class="card-link">Read the context →</a>
+    </div>
+    <div class="card fade-up">
+      <div class="card-num">03</div>
+      <h3>Caste Today</h3>
+      <p>Caste didn't end with the Constitution. It operates through marriage, surnames, housing, police, and silence. Documented evidence.</p>
+      <a href="#resources" class="card-link">See the evidence →</a>
+    </div>
+    <div class="card fade-up">
+      <div class="card-num">04</div>
+      <h3>Resources Library</h3>
+      <p>Books, films, podcasts, and essays curated for anyone beginning — or deepening — their understanding of caste.</p>
+      <a href="#resources" class="card-link">Explore →</a>
+    </div>
+  </div>
+</section>
+
+<section class="pullquote-section">
+  <div class="section-label" style="color:rgba(245,240,232,0.4)">Ambedkar, 1936</div>
+  <blockquote>"You cannot build anything on the foundation of caste. You cannot build up a nation, you cannot build up a morality. Anything you will build on the foundation of caste will crack and will never be a whole."</blockquote>
+  <cite>— B.R. Ambedkar, Annihilation of Caste</cite>
+</section>
+
+<div class="quiz-cta fade-up">
+  <span class="quiz-badge">New · Interactive</span>
+  <h2>Are you more casteist than you think?</h2>
+  <p>The Caste Meter is a 15-question quiz across two axes — personal bias and systemic denial. Every answer includes the factual research behind it. Most people are surprised by where they land.</p>
+  <div class="spectrum-bar"></div>
+  <div class="spectrum-labels"><span>Deeply embedded</span><span>Actively anti-caste</span></div>
+  <a href="quiz.html" class="btn-primary" style="margin-top:8px">Take the quiz — it's free</a>
+</div>
+
+<section id="resources" style="max-width:1100px;margin:0 auto">
+  <div class="section-label fade-up">Go deeper</div>
+  <h2 class="fade-up">Essential reading & watching</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:32px">
+    <div class="fade-up">
+      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Books</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Annihilation of Caste</strong> — B.R. Ambedkar</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Caste Matters</strong> — Suraj Yengde</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Why I Am Not a Hindu</strong> — Kancha Ilaiah</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>The Doctor and the Saint</strong> — Arundhati Roy</li>
+        <li style="font-size:14px"><strong>Becoming Babasaheb</strong> — Dhananjay Keer</li>
+      </ul>
+    </div>
+    <div class="fade-up">
+      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Films & Docs</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Jai Bhim</strong> (2021) — Tamil film</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Dr. Babasaheb Ambedkar</strong> (2000)</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>India Untouched</strong> (2007) — Documentary</li>
+        <li style="font-size:14px"><strong>Sairat</strong> (2016) — Marathi film</li>
+      </ul>
+    </div>
+    <div class="fade-up">
+      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Data & Reports</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px">NCRB Crimes Against SC/ST — Annual</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px">Oxfam India Inequality Report 2022</li>
+        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px">NHRC Atrocity Cases Report 2019</li>
+        <li style="font-size:14px">Rohith Vemula Institutional Inquiry</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="newsletter fade-up" style="margin-top:80px">
+    <div>
+      <p style="font-size:16px;font-weight:500;margin-bottom:4px">Stay in the conversation</p>
+      <p style="font-size:13px;color:var(--muted)">New essays, events, and resources — straight to your inbox.</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="your@email.com">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 annihilationofcaste.com — A non-commercial public resource</span>
+  <div style="display:flex;gap:20px">
+    <a href="index.html">Home</a>
+    <a href="text.html">The Text</a>
+    <a href="quiz.html">Caste Meter</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

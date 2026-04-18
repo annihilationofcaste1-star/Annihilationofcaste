@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Text — Annihilation of Caste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+  .nav-back{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em}
+  .nav-back:hover{color:var(--ink)}
+
+  .page-wrap{max-width:720px;margin:0 auto;padding:100px 24px 80px}
+
+  .eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+  .eyebrow::after{content:'';width:40px;height:1px;background:var(--accent)}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,60px);line-height:1.1;margin-bottom:8px}
+  .subtitle{font-family:'Playfair Display',serif;font-size:18px;color:var(--muted);font-style:italic;margin-bottom:40px}
+
+  .context-box{background:var(--ink);color:rgba(245,240,232,0.85);padding:28px 32px;border-radius:2px;margin:40px 0;font-size:14px;line-height:1.75}
+  .context-box h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--paper);margin-bottom:14px;font-weight:400}
+
+  .timeline{margin:40px 0;display:flex;flex-direction:column;gap:0}
+  .t-item{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid var(--border)}
+  .t-year{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);min-width:60px;font-weight:700}
+  .t-text{font-size:14px;color:var(--muted);line-height:1.7}
+  .t-text strong{color:var(--ink);font-weight:500}
+
+  .text-sample{border:1px solid var(--border);padding:32px;margin:40px 0;border-radius:2px;position:relative}
+  .text-sample::before{content:'From the text';position:absolute;top:-10px;left:20px;background:var(--paper);padding:0 8px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+  .text-sample p{font-family:'Playfair Display',serif;font-size:17px;line-height:1.8;font-style:italic;margin-bottom:16px}
+  .text-sample cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:40px 0}
+  .btn-primary{background:var(--ink);color:var(--paper);padding:13px 28px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:background 0.2s;font-family:'DM Sans',sans-serif;font-weight:500;display:inline-block}
+  .btn-primary:hover{background:var(--accent)}
+  .btn-secondary{border:1px solid var(--ink);color:var(--ink);padding:13px 28px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:all 0.2s;font-family:'DM Sans',sans-serif;display:inline-block}
+  .btn-secondary:hover{background:var(--ink);color:var(--paper)}
+
+  h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,30px);line-height:1.2;margin:40px 0 16px}
+  p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+  @media(max-width:640px){nav{padding:16px 20px}.page-wrap{padding:90px 16px 60px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <a class="nav-back" href="index.html">← Home</a>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="eyebrow">B.R. Ambedkar · 1936</div>
+  <h1>Annihilation<br>of Caste</h1>
+  <p class="subtitle">The speech that was never delivered.</p>
+
+  <div class="context-box" id="context">
+    <h3>Why this text exists</h3>
+    <p style="color:rgba(245,240,232,0.7);font-size:14px;line-height:1.75;margin-bottom:12px">In 1936, the Jat-Pat-Todak Mandal — a Hindu reformist organisation in Lahore — invited Ambedkar to be the president of their annual conference. He prepared a speech. When the organisers read it in advance, they were disturbed by its content and demanded he revise it. Ambedkar refused.</p>
+    <p style="color:rgba(245,240,232,0.7);font-size:14px;line-height:1.75;margin-bottom:0">The conference was cancelled. Ambedkar published the speech himself at his own expense — including the full correspondence with the organisers. It became one of the most widely read political texts in South Asian history. The suppression became part of the text's power.</p>
+  </div>
+
+  <h2>A timeline</h2>
+  <div class="timeline">
+    <div class="t-item"><div class="t-year">1930</div><div class="t-text"><strong>Ambedkar leads the first Dalit rights conference</strong> at Nagpur, demanding equal access to public water sources.</div></div>
+    <div class="t-item"><div class="t-year">1935</div><div class="t-text"><strong>Ambedkar publicly declares</strong> he will not die a Hindu — beginning his 21-year study of world religions.</div></div>
+    <div class="t-item"><div class="t-year">1936</div><div class="t-text"><strong>Writes Annihilation of Caste</strong> as a presidential address for the Jat-Pat-Todak Mandal conference in Lahore. The conference is cancelled. He publishes it himself.</div></div>
+    <div class="t-item"><div class="t-year">1936</div><div class="t-text"><strong>Gandhi responds</strong> in Harijan magazine, disagreeing with Ambedkar's critique of the Hindu scriptures. Ambedkar publishes a sharp, detailed rejoinder.</div></div>
+    <div class="t-item"><div class="t-year">1947</div><div class="t-text"><strong>Ambedkar chairs the drafting committee</strong> of the Indian Constitution — encoding fundamental rights that directly challenged caste hierarchy.</div></div>
+    <div class="t-item"><div class="t-year">1956</div><div class="t-text"><strong>14 October, Nagpur.</strong> Ambedkar converts to Buddhism along with 600,000 followers — the largest mass religious conversion in history.</div></div>
+    <div class="t-item"><div class="t-year">2014</div><div class="t-text"><strong>Verso Books publishes</strong> a new annotated edition with an introduction by Arundhati Roy, bringing Annihilation of Caste to a global English-language audience.</div></div>
+  </div>
+
+  <div class="text-sample">
+    <p>"You cannot build anything on the foundation of caste. You cannot build up a nation, you cannot build up a morality. Anything you will build on the foundation of caste will crack and will never be a whole."</p>
+    <cite>— Annihilation of Caste, Part III</cite>
+  </div>
+
+  <div class="text-sample">
+    <p>"Turn in any direction you like, caste is the monster that crosses your path. You cannot have political reform, you cannot have economic reform, unless you kill this monster."</p>
+    <cite>— Annihilation of Caste, Part I</cite>
+  </div>
+
+  <div class="text-sample">
+    <p>"The Hindus claim to be a very tolerant people. In my opinion this is a mistake. On many occasions they can be intolerant and if on some occasions they are tolerant, that is because they are indifferent."</p>
+    <cite>— Annihilation of Caste, Part II</cite>
+  </div>
+
+  <h2>Read the full text</h2>
+  <p>The complete text of Annihilation of Caste is freely available from multiple public sources. We recommend the annotated Verso edition (2014) which includes Ambedkar's correspondence with the Jat-Pat-Todak Mandal and a comprehensive introduction.</p>
+
+  <div class="cta-row">
+    <a href="https://www.columbia.edu/itc/mealac/pritchett/00ambedkar/txt_ambedkar_annihilation.html" target="_blank" class="btn-primary" rel="noopener">Read online (Columbia University) ↗</a>
+    <a href="quiz.html" class="btn-secondary">Take the Caste Meter →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
