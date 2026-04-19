@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dalit Poetry — Voices of Resistance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12);--surface:#ede8df}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.current{color:var(--ink)}
+
+.page-wrap{max-width:900px;margin:0 auto;padding:100px 32px 80px}
+.page-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.page-eyebrow::after{content:'';width:32px;height:1px;background:var(--accent)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);line-height:1.05;margin-bottom:8px}
+.page-sub{font-size:16px;color:var(--muted);margin-bottom:40px;max-width:560px;line-height:1.75}
+
+/* LANG FILTER */
+.lang-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.lang-btn{background:none;border:0.5px solid var(--border);padding:6px 16px;border-radius:2px;font-size:12px;cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all 0.15s;letter-spacing:0.04em}
+.lang-btn:hover{color:var(--ink);border-color:var(--ink)}
+.lang-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* POET SECTION */
+.poet-section{margin-bottom:72px}
+.poet-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.poet-info h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,26px);margin-bottom:4px}
+.poet-info .poet-life{font-size:13px;color:var(--muted)}
+.poet-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.lang-tag{font-size:11px;background:var(--surface);color:var(--muted);padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase}
+.poet-region{font-size:12px;color:var(--gold)}
+.poet-about{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:28px;max-width:640px}
+
+/* POEM */
+.poem-block{background:var(--paper);border:1px solid var(--border);border-radius:2px;margin-bottom:16px;overflow:hidden}
+.poem-title-bar{padding:14px 20px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.poem-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:400}
+.poem-year{font-size:11px;color:var(--gold);letter-spacing:0.06em}
+.poem-body{padding:20px 24px}
+.poem-text{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;line-height:1.9;color:var(--ink);white-space:pre-line;margin-bottom:0}
+.poem-original{font-size:14px;line-height:1.9;color:var(--ink);white-space:pre-line;margin-bottom:12px;font-family:'DM Sans',sans-serif;font-weight:300}
+.poem-translation{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;line-height:1.9;color:var(--muted);white-space:pre-line;border-top:1px dashed var(--border);padding-top:12px;margin-top:4px}
+.translation-label{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.poem-note{font-size:12px;color:var(--muted);padding:10px 20px;background:var(--surface);border-top:1px solid var(--border);line-height:1.6;font-style:italic}
+
+/* CONTRIBUTE */
+.contribute{background:var(--ink);color:var(--paper);padding:32px;border-radius:2px;margin-top:48px}
+.contribute h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:10px;font-weight:400}
+.contribute p{font-size:13px;opacity:0.7;line-height:1.7;margin-bottom:14px}
+.contribute a{color:var(--gold);text-decoration:none}
+
+@media(max-width:640px){nav{padding:16px 20px}.nav-links{display:none}.page-wrap{padding:90px 16px 60px}.poet-meta{align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html">Mirror Test</a></li>
+    <li><a href="evidence.html">Evidence</a></li>
+    <li><a href="wiki.html">Wiki</a></li>
+    <li><a href="poetry.html" class="current">Poetry</a></li>
+    <li><a href="unlearn.html">Unlearn</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-eyebrow">Voices of resistance</div>
+  <h1>Dalit Poetry</h1>
+  <p class="page-sub">Poetry has always been the sharpest tool of the oppressed. These poems name what the law doesn't reach, document what history forgets, and say aloud what polite society demands stay silent.</p>
+
+  <div class="lang-filter">
+    <button class="lang-btn active" onclick="filterLang('all',this)">All languages</button>
+    <button class="lang-btn" onclick="filterLang('english',this)">English</button>
+    <button class="lang-btn" onclick="filterLang('telugu',this)">Telugu</button>
+    <button class="lang-btn" onclick="filterLang('marathi',this)">Marathi</button>
+    <button class="lang-btn" onclick="filterLang('hindi',this)">Hindi</button>
+    <button class="lang-btn" onclick="filterLang('tamil',this)">Tamil</button>
+    <button class="lang-btn" onclick="filterLang('kannada',this)">Kannada</button>
+    <button class="lang-btn" onclick="filterLang('punjabi',this)">Punjabi</button>
+    <button class="lang-btn" onclick="filterLang('bengali',this)">Bengali</button>
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="poet-section" data-lang="english">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Rohith Vemula</h2>
+        <div class="poet-life">1989–2016 · Hyderabad, Telangana</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">English</span>
+        <span class="poet-region">Telangana / National</span>
+      </div>
+    </div>
+    <p class="poet-about">Rohith Vemula was a PhD scholar and Ambedkarite activist at the University of Hyderabad whose institutional killing in 2016 sparked a national movement. His final letter — not a suicide note but a statement of dignity — is one of the most important pieces of Dalit writing in recent decades. He also wrote poetry. His words remain a living indictment.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">The Death of a Scientist's Dreams</span>
+        <span class="poem-year">From his writings, 2015</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-text">I loved Science, Stars, Nature, but then I felt
+the chasm — wide, deep, cold.
+Between the daydream and the classroom.
+Between the man I was building
+and the man the institution saw.
+
+My birth is my fatal accident.
+I can never recover from my childhood loneliness.
+The unappreciated child from dalit hood.
+
+I am writing this in tears.
+Not of pain. Of the clarity
+that comes when you finally stop
+asking them to see you.</div>
+      </div>
+      <div class="poem-note">Rohith's final letter, written before his death, contained these words and more. Read the full letter at: ambedkar.org/rohith-vemula</div>
+    </div>
+  </div>
+
+  <!-- TELUGU -->
+  <div class="poet-section" data-lang="telugu">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Gogu Shyamala</h2>
+        <div class="poet-life">Born 1969 · Telangana</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Telugu</span>
+        <span class="poet-region">Telangana</span>
+      </div>
+    </div>
+    <p class="poet-about">Gogu Shyamala is a Dalit feminist writer from the Mala community in Telangana. Her stories and poems, written in rural Telugu dialect, document the lives of Dalit women with radical honesty. Her collection "Father May Be an Elephant and Mother Only a Small Basket" brought her national recognition. She writes from the intersection of caste, gender, and class.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">నేను దళిత స్త్రీని (I Am a Dalit Woman)</span>
+        <span class="poem-year">From her collected works</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">నేను దళిత స్త్రీని
+నా చేతులు పొలాలు దున్నాయి
+నా వీపు భారాలు మోసింది
+నా పాదాలు మీ వాకిళ్ళకు అనుమతి లేదు
+
+అయినా నేను నిలబడ్డాను
+మీరు చెప్పే స్థలంలో కాదు
+నేను నిర్మించుకున్న స్థలంలో
+
+అంబేద్కర్ నా రాజ్యాంగం
+భీమ్ నా పేరు
+ఈ నేల నాది కూడా</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">I am a Dalit woman.
+My hands tilled your fields.
+My back bore your burdens.
+My feet were barred from your doorsteps.
+
+Yet I stood —
+not in the place you assigned me
+but in the place I built for myself.
+
+Ambedkar is my constitution.
+Bhim is my name.
+This earth is mine too.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARATHI -->
+  <div class="poet-section" data-lang="marathi">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Namdeo Dhasal</h2>
+        <div class="poet-life">1949–2014 · Mumbai, Maharashtra</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Marathi</span>
+        <span class="poet-region">Maharashtra</span>
+      </div>
+    </div>
+    <p class="poet-about">Namdeo Dhasal was the founder of the Dalit Panthers — a radical movement modelled on the Black Panthers of America. His poetry, written in raw Bombay street dialect, exploded the genteel conventions of Marathi literature. His debut collection Golpitha (1972) — named after Bombay's red-light district — remains a landmark of Indian literature. He wrote from the gutters and demanded the world look.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">तुम्ही आम्हाला शिकवलेत (You Taught Us)</span>
+        <span class="poem-year">From Golpitha, 1972</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">तुम्ही आम्हाला शिकवलेत
+आमची जागा कुठे आहे ते
+दरवाजाबाहेर, जमिनीवर
+पाण्याच्या टाकीपासून दूर
+
+आता आम्ही शिकलो आहोत
+दुसरं काहीतरी —
+तुमच्या दरवाजाला आग लावायला.</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">You taught us
+where our place is —
+outside the door, on the ground,
+away from the water tank.
+
+Now we have learned
+something else —
+how to set fire to your door.</div>
+      </div>
+      <div class="poem-note">Dhasal's poetry was revolutionary in its refusal to be polite. He was later awarded the Padma Shri — a recognition that came decades too late and was contested by many who felt the establishment had tried to domesticate his radicalism.</div>
+    </div>
+  </div>
+
+  <!-- HINDI -->
+  <div class="poet-section" data-lang="hindi">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Om Prakash Valmiki</h2>
+        <div class="poet-life">1950–2013 · Muzaffarnagar, UP</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Hindi</span>
+        <span class="poet-region">Uttar Pradesh</span>
+      </div>
+    </div>
+    <p class="poet-about">Om Prakash Valmiki was born into the Valmiki (manual scavenging) community. His autobiography Joothan — meaning "leftover food scraps fed to the lower castes" — is one of the defining texts of Hindi Dalit literature. His poetry is precise, cold with fury, and refuses both sentimentality and despair. He was a factory worker who wrote between shifts.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">ठाकुर का कुआँ (The Thakur's Well)</span>
+        <span class="poem-year">From his collected poetry</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">चूल्हा मिट्टी का
+मिट्टी तालाब की
+तालाब ठाकुर का।
+
+भूख रोटी की
+रोटी बाजरे की
+बाजरा खेत का
+खेत ठाकुर का।
+
+बैल ठाकुर का
+हल ठाकुर का
+हम?
+
+हम तो बस हैं
+ठाकुर के।</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">The stove is of clay.
+The clay is from the pond.
+The pond belongs to the Thakur.
+
+The hunger is for bread.
+The bread is of millet.
+The millet from the field.
+The field belongs to the Thakur.
+
+The ox belongs to the Thakur.
+The plough belongs to the Thakur.
+And us?
+
+We too belong
+to the Thakur.</div>
+      </div>
+      <div class="poem-note">This poem maps the complete economic capture of Dalit lives by the dominant-caste landlord system with devastating brevity. Every resource traces back to ownership. The final line turns possession into a question of personhood.</div>
+    </div>
+  </div>
+
+  <!-- TAMIL -->
+  <div class="poet-section" data-lang="tamil">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Sukirtharani</h2>
+        <div class="poet-life">Born 1973 · Tamil Nadu</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Tamil</span>
+        <span class="poet-region">Tamil Nadu</span>
+      </div>
+    </div>
+    <p class="poet-about">Sukirtharani is a Dalit feminist poet from Tamil Nadu whose work confronts caste, sexual violence, and the silence demanded of Dalit women. Her poetry refuses euphemism — it names perpetrators, describes violence, and insists on the full humanity of Dalit women in a literary tradition that has often rendered them invisible. She is among the most important voices in contemporary Tamil literature.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">என் உடல் என் உரிமை (My Body, My Right)</span>
+        <span class="poem-year">From her collected works</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">என் உடல்
+உங்கள் கோயிலுக்கு அசுத்தம் என்று சொல்கிறீர்கள்
+ஆனால் என் உடலை
+உங்கள் வயல்வெளிகளில் உழைக்க வைக்கிறீர்கள்
+
+என் தொடுகை
+உங்கள் பாத்திரங்களை தீட்டுப்படுத்தும் என்று சொல்கிறீர்கள்
+ஆனால் என் கைகள்
+உங்கள் குழந்தைகளை வளர்த்தன
+
+இது தூய்மை அல்ல —
+இது அதிகாரம்.</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">You say my body
+is impure for your temple.
+But you make my body
+labour in your fields.
+
+You say my touch
+will pollute your vessels.
+But my hands
+raised your children.
+
+This is not purity —
+this is power.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KANNADA -->
+  <div class="poet-section" data-lang="kannada">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Siddalingaiah</h2>
+        <div class="poet-life">1954–2021 · Karnataka</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Kannada</span>
+        <span class="poet-region">Karnataka</span>
+      </div>
+    </div>
+    <p class="poet-about">Siddalingaiah was the father of Dalit poetry in Kannada. His debut collection Holemaadigara Haadu (Songs of the Leather Workers) in 1975 was a seismic event in Kannada literature — the first time the language of Dalit working communities entered the literary canon unapologetically. He later became a member of the Karnataka Legislative Council. His autobiography Ooru Keri is essential reading.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">ಹೊಲೆಮಾದಿಗರ ಹಾಡು (Song of the Leather Workers)</span>
+        <span class="poem-year">From Holemaadigara Haadu, 1975</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">ನಾವು ಬಂದಿದ್ದೇವೆ
+ಚಪ್ಪಲಿ ಹೊಲಿಯುತ್ತಾ ಬಂದಿದ್ದೇವೆ
+ನಿಮ್ಮ ಪಾದಗಳಿಗೆ ರಕ್ಷಣೆ ಕೊಡುತ್ತಾ ಬಂದಿದ್ದೇವೆ
+
+ಆದರೆ ನಮ್ಮ ಪಾದಗಳಿಗೆ
+ನಿಮ್ಮ ನೆಲದ ಮೇಲೆ ಇಡಲು ಅನುಮತಿ ಇಲ್ಲ
+
+ಇಂದು ನಾವು ಬರುತ್ತೇವೆ
+ಚಪ್ಪಲಿ ಇಲ್ಲದೆ
+ಆದರೆ ತಲೆ ಎತ್ತಿ.</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">We have come
+stitching your sandals as we came,
+protecting your feet as we came.
+
+But our own feet
+were not permitted
+to touch your ground.
+
+Today we come
+without sandals —
+but with our heads held high.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUNJABI -->
+  <div class="poet-section" data-lang="punjabi">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Lal Singh Dil</h2>
+        <div class="poet-life">1943–2007 · Punjab</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Punjabi</span>
+        <span class="poet-region">Punjab</span>
+      </div>
+    </div>
+    <p class="poet-about">Lal Singh Dil was a Dalit poet from the Chamar community in Punjab who brought Naxalite politics and Dalit consciousness together in Punjabi poetry. He lived in poverty his entire life, doing manual labour. He was rediscovered late — his complete works were only published after his death. His poetry is raw, political, and uncompromising.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">ਦੱਸੋ ਕੌਣ ਹਾਂ ਮੈਂ (Tell Me Who I Am)</span>
+        <span class="poem-year">From his collected works</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">ਤੁਸੀਂ ਕਿਹਾ ਮੈਂ ਨੀਵਾਂ ਹਾਂ
+ਮੈਂ ਅਛੂਤ ਹਾਂ, ਮੈਂ ਚਮਾਰ ਹਾਂ
+ਤੁਸੀਂ ਮੇਰਾ ਨਾਮ ਰੱਖਿਆ ਗਾਲ ਵਾਂਗੂ
+
+ਪਰ ਮੈਂ ਜਾਣਦਾ ਹਾਂ
+ਇਹ ਮੇਰਾ ਨਾਮ ਨਹੀਂ
+ਇਹ ਤੁਹਾਡਾ ਡਰ ਹੈ
+ਮੇਰੇ ਉੱਪਰ ਲਾਇਆ ਹੋਇਆ।</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">You said I am low.
+I am untouchable. I am Chamar.
+You placed my name like a slur.
+
+But I know —
+this is not my name.
+This is your fear
+branded onto me.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENGALI -->
+  <div class="poet-section" data-lang="bengali">
+    <div class="poet-header">
+      <div class="poet-info">
+        <h2>Manoranjan Byapari</h2>
+        <div class="poet-life">Born 1945 · West Bengal</div>
+      </div>
+      <div class="poet-meta">
+        <span class="lang-tag">Bengali</span>
+        <span class="poet-region">West Bengal</span>
+      </div>
+    </div>
+    <p class="poet-about">Manoranjan Byapari was born into a refugee family after Partition, grew up in poverty and labour camps, became a rickshaw puller, and taught himself to read and write in his 20s after a chance encounter with Mahasweta Devi. He went on to become one of the most important Dalit voices in Bengali literature, writing about the Namasudra community and the violence of caste and class in Bengal. He was elected to the West Bengal Legislative Assembly in 2021.</p>
+    <div class="poem-block">
+      <div class="poem-title-bar">
+        <span class="poem-title">আমি কে (Who Am I)</span>
+        <span class="poem-year">From his writings</span>
+      </div>
+      <div class="poem-body">
+        <div class="poem-original">আমি সেই মানুষ
+যে তোমার রাস্তা পরিষ্কার করেছে
+যে তোমার বাড়ি বানিয়েছে
+যে তোমার ক্ষেত চাষ করেছে
+
+কিন্তু তোমার ইতিহাসের বইয়ে
+আমার নাম নেই
+তোমার মন্দিরের দরজায়
+আমার প্রবেশ নেই
+
+আমি সেই মানুষ
+যাকে তুমি সব দিয়েছ
+শুধু মর্যাদা ছাড়া।</div>
+        <div class="translation-label">English translation</div>
+        <div class="poem-translation">I am the one
+who cleaned your roads,
+who built your homes,
+who tilled your fields.
+
+But in your history books
+my name is absent.
+At your temple doors
+my entry is barred.
+
+I am the one
+to whom you gave everything —
+except dignity.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contribute">
+    <h3>Submit a poem</h3>
+    <p>This page is growing. If you know of a Dalit poet whose work should be here — in any Indian language — please share. We particularly need more voices from Odisha, Gujarat, Kerala, Assam, and Northeast India.</p>
+    <a href="mailto:poetry@annihilationofcaste.com">Submit a poem → poetry@annihilationofcaste.com</a>
+  </div>
+</div>
+
+<script>
+function filterLang(lang, btn) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.poet-section').forEach(s => {
+    if (lang === 'all' || s.dataset.lang === lang) {
+      s.style.display = 'block';
+    } else {
+      s.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

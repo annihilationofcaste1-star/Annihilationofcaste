@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlearn — The Path to Anti-Caste Consciousness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12);--surface:#ede8df}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.current{color:var(--ink)}
+
+.layout{display:grid;grid-template-columns:200px 1fr;max-width:1100px;margin:0 auto;padding-top:72px}
+.sidebar{padding:28px 20px;border-right:1px solid var(--border);position:sticky;top:72px;height:calc(100vh - 72px);overflow-y:auto}
+.sidebar-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:20px}
+.sidebar-label:first-child{margin-top:0}
+.sidebar nav a{display:block;font-size:13px;color:var(--muted);text-decoration:none;padding:5px 0 5px 10px;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ink);border-left-color:var(--accent)}
+
+.content{padding:40px 48px 80px}
+.page-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.page-eyebrow::after{content:'';width:32px;height:1px;background:var(--accent)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);line-height:1.1;margin-bottom:8px}
+.page-sub{font-size:16px;color:var(--muted);margin-bottom:48px;max-width:560px;line-height:1.75}
+
+.section{margin-bottom:64px;scroll-margin-top:100px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,26px);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+h3{font-family:'Playfair Display',serif;font-size:18px;margin:28px 0 10px;font-weight:400;color:var(--ink)}
+p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:14px}
+p strong{color:var(--ink);font-weight:500}
+
+/* STAGE CARDS */
+.stages{display:flex;flex-direction:column;gap:0;margin:20px 0}
+.stage{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border)}
+.stage:last-child{border-bottom:none}
+.stage-num{font-family:'Playfair Display',serif;font-size:32px;color:var(--border);font-weight:700;line-height:1;margin-top:4px}
+.stage-content{}
+.stage-title{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.stage-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:8px}
+.stage-signs{font-size:12px;color:var(--muted);background:var(--surface);padding:10px 14px;border-radius:2px;line-height:1.7}
+.stage-signs strong{color:var(--ink);font-size:11px;display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:0.06em}
+
+/* PRIVILEGE CHECKLIST */
+.privilege-group{margin:20px 0}
+.privilege-group-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500}
+.privilege-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.privilege-item:last-child{border-bottom:none}
+.p-check{width:20px;height:20px;border:1px solid var(--border);border-radius:2px;flex-shrink:0;margin-top:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;background:var(--paper)}
+.p-check:hover{border-color:var(--ink)}
+.p-check.checked{background:var(--ink);border-color:var(--ink)}
+.p-check.checked::after{content:'✓';color:var(--paper);font-size:12px}
+.p-text{font-size:14px;color:var(--muted);line-height:1.65}
+.p-text strong{color:var(--ink)}
+.privilege-score{background:var(--surface);padding:16px 20px;border-radius:2px;margin-top:16px;display:flex;justify-content:space-between;align-items:center}
+.privilege-score-text{font-size:13px;color:var(--muted)}
+.privilege-score-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--ink)}
+
+/* TRAUMA SECTION */
+.trauma-box{background:var(--ink);color:var(--paper);padding:28px 32px;border-radius:2px;margin:24px 0}
+.trauma-box h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:14px;font-weight:400;color:var(--paper)}
+.trauma-box p{font-size:14px;color:rgba(245,240,232,0.75);line-height:1.8;margin-bottom:12px}
+.trauma-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:16px}
+.trauma-type{background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.1);padding:16px;border-radius:2px}
+.trauma-type-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500}
+.trauma-type p{font-size:12px;color:rgba(245,240,232,0.65);line-height:1.65;margin-bottom:0}
+
+/* ACTION STEPS */
+.action-steps{display:flex;flex-direction:column;gap:12px;margin:20px 0}
+.action-step{display:flex;gap:16px;padding:18px;background:var(--surface);border-radius:2px}
+.action-step-num{font-family:'Playfair Display',serif;font-size:22px;color:var(--accent);font-weight:700;flex-shrink:0;line-height:1}
+.action-step-body{}
+.action-step-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.action-step-desc{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* REFLECTION EXERCISES */
+.exercise{border:1px solid var(--border);border-radius:2px;margin-bottom:16px;overflow:hidden}
+.exercise-header{padding:14px 20px;background:var(--surface);display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.exercise-title{font-size:14px;font-weight:500;color:var(--ink)}
+.exercise-tag{font-size:10px;background:var(--paper);color:var(--muted);padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:0.04em}
+.exercise-body{display:none;padding:20px;border-top:1px solid var(--border)}
+.exercise-body.open{display:block}
+.exercise-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:10px}
+.exercise-body ol{padding-left:18px}
+.exercise-body li{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:6px;padding-left:6px}
+.exercise-icon{font-size:16px;color:var(--muted);transition:transform 0.2s}
+.exercise-icon.open{transform:rotate(45deg)}
+
+/* QUOTE */
+.quote-block{border-left:3px solid var(--gold);padding:0 0 0 20px;margin:24px 0}
+.quote-block p{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:6px}
+.quote-block cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+/* READING LIST */
+.reading-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0}
+.reading-item{border:1px solid var(--border);padding:14px;border-radius:2px}
+.reading-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.reading-author{font-size:12px;color:var(--gold);margin-bottom:6px}
+.reading-why{font-size:12px;color:var(--muted);line-height:1.5}
+
+@media(max-width:768px){nav{padding:16px 20px}.nav-links{display:none}.layout{grid-template-columns:1fr}.sidebar{display:none}.content{padding:24px 16px 60px}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html">Mirror Test</a></li>
+    <li><a href="evidence.html">Evidence</a></li>
+    <li><a href="wiki.html">Wiki</a></li>
+    <li><a href="poetry.html">Poetry</a></li>
+    <li><a href="unlearn.html" class="current">Unlearn</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-label">On this page</div>
+    <nav>
+      <a href="#what">What is unlearning?</a>
+      <a href="#stages">Stages of awareness</a>
+      <a href="#privilege">Privilege audit</a>
+      <a href="#trauma">Dalit trauma</a>
+      <a href="#actions">Concrete actions</a>
+      <a href="#exercises">Reflection exercises</a>
+      <a href="#reading">Reading path</a>
+    </nav>
+    <div class="sidebar-label">Take next</div>
+    <nav>
+      <a href="quiz.html">Mirror Test →</a>
+      <a href="evidence.html">See the evidence →</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="page-eyebrow">The path forward</div>
+    <h1>Unlearn</h1>
+    <p class="page-sub">A guide for people who want to understand and dismantle their own caste conditioning — including those who are convinced they don't have any. This page covers both dominant-caste privilege recognition and what Dalit trauma actually looks like.</p>
+
+    <!-- WHAT IS UNLEARNING -->
+    <div class="section" id="what">
+      <h2>What unlearning actually means</h2>
+      <p>Unlearning caste is not a single event — it is not reading one book, having one conversation, or reaching one conclusion. It is a practice: ongoing, uncomfortable, and never complete.</p>
+      <p>Caste conditioning is not just about explicit prejudice. It lives in <strong>assumptions you don't know you're making</strong> — about who is qualified, who is trustworthy, who belongs in which spaces, who you introduce to your parents, whose discomfort you notice, whose you don't.</p>
+      <p>The goal is not to feel guilty. Guilt without action is a comfort — it allows you to feel the weight of the problem without doing anything about it. The goal is <strong>clear-eyed recognition followed by changed behaviour</strong>.</p>
+
+      <div class="quote-block">
+        <p>"The relationship between the oppressor and the oppressed is never static. The oppressed, who have been shaped by the death-affirming climate of oppression, must find through their struggle the way to life-affirming transformation."</p>
+        <cite>— Paulo Freire, Pedagogy of the Oppressed</cite>
+      </div>
+
+      <p>One important distinction: <strong>unlearning is not the same as allyship performance.</strong> Sharing posts, attending events, using the right vocabulary — these mean nothing if your actual relationships, hiring decisions, marriage choices, and daily behaviour remain shaped by caste. Unlearning is internal work that produces external change. Not the other way around.</p>
+    </div>
+
+    <!-- STAGES -->
+    <div class="section" id="stages">
+      <h2>Stages of caste awareness</h2>
+      <p>Most people move through recognisable stages when confronting their own caste conditioning. These are not linear — people move back and forth. But knowing where you are helps you understand what work remains.</p>
+      <div class="stages">
+        <div class="stage">
+          <div class="stage-num">1</div>
+          <div class="stage-content">
+            <div class="stage-title">Denial — "Caste doesn't exist anymore"</div>
+            <div class="stage-desc">At this stage, caste discrimination is seen as historical, rural, or exaggerated. The person may cite Dalit friends, inter-caste dining, or the Constitution as evidence that the problem has been solved.</div>
+            <div class="stage-signs"><strong>Common at this stage</strong>"I don't see caste." / "My family is not like that." / "The SC/ST Act is being misused." / "Why do we keep dividing people by caste?"</div>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">2</div>
+          <div class="stage-content">
+            <div class="stage-title">Discomfort — "Maybe there's something to this"</div>
+            <div class="stage-desc">A crack appears — a news story, a conversation, reading data. The person begins to sense that the denial is incomplete. This stage often produces defensiveness, because accepting the reality of caste means accepting complicity.</div>
+            <div class="stage-signs"><strong>Common at this stage</strong>"Okay, but not everyone is like that." / "I personally have never discriminated." / "Both sides have problems." / Deflecting to class rather than caste.</div>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">3</div>
+          <div class="stage-content">
+            <div class="stage-title">Recognition — "I have been conditioned"</div>
+            <div class="stage-desc">The person begins to see caste not just in others but in themselves — in assumptions, preferences, and reactions that they did not consciously choose. This is the most important and most difficult stage. It often produces shame, which must be processed rather than wallowed in.</div>
+            <div class="stage-signs"><strong>Common at this stage</strong>Noticing automatic assumptions about surnames. Realising the homogeneity of one's own social circle. Discomfort in reading Dalit narratives that feel "too close".</div>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">4</div>
+          <div class="stage-content">
+            <div class="stage-title">Learning — building structural understanding</div>
+            <div class="stage-desc">The person moves from personal recognition to structural understanding — seeing caste not just as prejudice but as a system that operates through law, economy, marriage, housing, and language. This stage requires sustained reading and listening.</div>
+            <div class="stage-signs"><strong>Common at this stage</strong>Reading Ambedkar, Yengde, Ilaiah. Listening to Dalit voices rather than dominant-caste interpreters. Beginning to understand reservations as structural correction rather than charity.</div>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">5</div>
+          <div class="stage-content">
+            <div class="stage-title">Action — changed behaviour and accountability</div>
+            <div class="stage-desc">Understanding translates into action — in hiring decisions, social circles, family conversations, political positions, and how one spends money and time. This stage has no endpoint. It requires continuous self-examination and willingness to be corrected.</div>
+            <div class="stage-signs"><strong>Common at this stage</strong>Actively diversifying one's professional and social networks. Speaking up in family settings. Supporting Dalit-led organisations financially. Changing voting behaviour based on caste justice.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIVILEGE AUDIT -->
+    <div class="section" id="privilege">
+      <h2>Dominant-caste privilege audit</h2>
+      <p>Privilege is not about being wealthy or having an easy life. It is about the advantages you carry that you did not earn and often cannot see. Check each item that applies to your experience — not to make you feel guilty, but to make the invisible visible.</p>
+
+      <div class="privilege-group">
+        <div class="privilege-group-label">Everyday life</div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I have never had a landlord refuse to rent to me because of my surname or community.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I can enter any temple, restaurant, or public space without being questioned about my caste.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">My surname has never been used as a reason to reject my job application, I believe.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I have never been made to use separate utensils or eat separately because of my caste.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I can marry whom I choose without fear of honour violence from my family or community.</div>
+        </div>
+      </div>
+
+      <div class="privilege-group">
+        <div class="privilege-group-label">Education & career</div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">My teachers in school treated me the same as all other students regardless of my background.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I have access to family members or community networks who can guide me into professional opportunities.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">If I succeed at work, no one attributes it to my caste background rather than my merit.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I have never had a mentor, professor, or senior colleague make me feel I don't belong in my field because of my caste.</div>
+        </div>
+      </div>
+
+      <div class="privilege-group">
+        <div class="privilege-group-label">Safety & state</div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">When I or someone in my family interacts with police, I am not automatically assumed to be a suspect.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">If I filed a complaint at a police station, I would expect to be heard and have my FIR registered.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I have never feared that asserting my rights publicly might result in violence against me or my family.</div>
+        </div>
+      </div>
+
+      <div class="privilege-group">
+        <div class="privilege-group-label">Cultural & psychological</div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">The history I was taught in school included people who looked like me and shared my background as heroes.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I can speak about my community's traditions and practices without those being used to demean me.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">I do not carry the psychological weight of representing my entire community in every professional or social setting.</div>
+        </div>
+        <div class="privilege-item">
+          <div class="p-check" onclick="toggleCheck(this)"></div>
+          <div class="p-text">My children will not inherit a social stigma that limits their life chances before they are born.</div>
+        </div>
+      </div>
+
+      <div class="privilege-score">
+        <div class="privilege-score-text">Items checked — privileges you hold that Dalits do not</div>
+        <div class="privilege-score-num" id="priv-count">0 / 17</div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:10px">This is not a competition or a score. Every item checked is a door that was open for you and closed for others — not because of anything you did, but because of what you were born into. The question is what you do with that recognition.</p>
+    </div>
+
+    <!-- DALIT TRAUMA -->
+    <div class="section" id="trauma">
+      <h2>Understanding Dalit trauma</h2>
+      <p>Trauma is not only individual. Caste produces <strong>intergenerational, collective, and ongoing trauma</strong> that operates differently from most frameworks used in mainstream mental health discourse — frameworks designed around individual experience in dominant-caste contexts.</p>
+
+      <div class="trauma-box">
+        <h3>Four types of caste trauma</h3>
+        <p>Dominant-caste people often reduce Dalit suffering to specific incidents — a beating, a denial of entry. But caste trauma is cumulative, ambient, and structural. Understanding its forms is essential to understanding why "just move on" is not a solution.</p>
+        <div class="trauma-types">
+          <div class="trauma-type">
+            <div class="trauma-type-label">Intergenerational</div>
+            <p>Trauma passed through families — of forced labour, sexual violence, dispossession — that shapes how Dalit families navigate the world today. The grandmother who tells her grandchildren to walk carefully around upper-caste neighbours is transmitting survival knowledge soaked in decades of fear.</p>
+          </div>
+          <div class="trauma-type">
+            <div class="trauma-type-label">Ambient / chronic</div>
+            <p>The daily accumulation of small caste signals — a tone of voice, a name used as an insult, a door not opened, a seat not offered — that never reaches the threshold of a "reportable incident" but produces constant psychological vigilance and exhaustion.</p>
+          </div>
+          <div class="trauma-type">
+            <div class="trauma-type-label">Institutional</div>
+            <p>The specific trauma of educated Dalits navigating institutions designed for and by dominant castes — where being the "first" and "only" carries the weight of every Dalit who was barred before you, and where microaggressions from faculty, peers, and administrators are routine. Rohith Vemula named this precisely.</p>
+          </div>
+          <div class="trauma-type">
+            <div class="trauma-type-label">Testimonial injustice</div>
+            <p>The trauma of not being believed — when Dalit women report assault and are disbelieved by police, when Dalit students report discrimination and are told they are "oversensitive," when Dalit families report atrocities and cases are not registered. Being disbelieved is itself a violence.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>What dominant-caste people must understand about Dalit trauma</h3>
+      <p><strong>Anger is not aggression.</strong> When Dalit individuals or communities express anger at caste oppression, the dominant-caste reflex is often to reframe this as hostility, divisiveness, or reverse discrimination. Anger at injustice is rational and necessary. It does not require your comfort to be valid.</p>
+      <p><strong>Distrust is not paranoia.</strong> When Dalits are wary of dominant-caste people — even well-meaning ones — this wariness is built on centuries of evidence. Trust is not owed. It is earned, slowly, through consistent action over time.</p>
+      <p><strong>Exhaustion is political.</strong> The emotional labour of educating dominant-caste people about their own privilege, of explaining the same things repeatedly, of being the representative of an entire community in every room — this is a form of unpaid, unacknowledged work. Reducing this labour is itself an anti-caste act.</p>
+      <p><strong>Resilience is not the same as being okay.</strong> Dominant-caste culture often celebrates Dalit resilience — surviving despite everything. But resilience in the face of injustice is not a gift. It is a response to conditions that should not exist. Celebrating resilience without addressing the conditions that require it is a form of cruelty.</p>
+
+      <div class="quote-block">
+        <p>"The worst thing about being lied to is simply knowing you weren't worth the truth."</p>
+        <cite>— on testimonial injustice, cited in Dalit feminist scholarship</cite>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="section" id="actions">
+      <h2>Concrete actions — not just awareness</h2>
+      <p>Awareness without action is indulgence. These are things that can be done — at different levels of commitment and capacity.</p>
+      <div class="action-steps">
+        <div class="action-step">
+          <div class="action-step-num">01</div>
+          <div class="action-step-body">
+            <div class="action-step-title">Audit your social circle</div>
+            <div class="action-step-desc">Look at who you call friends, who you professionally mentor, who you recommend for opportunities. If your circle is entirely dominant-caste, that is not coincidence — it is the product of caste-segregated schooling, housing, and networks. Actively build relationships across caste — not as charity but as correction.</div>
+          </div>
+        </div>
+        <div class="action-step">
+          <div class="action-step-num">02</div>
+          <div class="action-step-body">
+            <div class="action-step-title">Examine your hiring and recommendation practices</div>
+            <div class="action-step-desc">If you hire, mentor, or recommend people for opportunities — examine who you hire. If your team is caste-homogeneous, that is data. Actively seek candidates from underrepresented caste communities. Support reservations in your own institution even when it is not legally required.</div>
+          </div>
+        </div>
+        <div class="action-step">
+          <div class="action-step-num">03</div>
+          <div class="action-step-body">
+            <div class="action-step-title">Intervene in family settings</div>
+            <div class="action-step-desc">The hardest conversations are at the dinner table — when a relative makes a casteist remark, when an inter-caste relationship is discussed as a problem, when someone says the SC/ST Act is being misused. These conversations are where caste is most resilient and where anti-caste action is most needed. Not lecturing — asking questions that create discomfort without shutting down.</div>
+          </div>
+        </div>
+        <div class="action-step">
+          <div class="action-step-num">04</div>
+          <div class="action-step-body">
+            <div class="action-step-title">Support Dalit-led organisations financially</div>
+            <div class="action-step-desc">Donate to organisations led by Dalits working on caste justice — legal aid, education, manual scavenging rehabilitation, atrocity survivor support. Not dominant-caste NGOs "working for Dalits" — organisations led by Dalits themselves. The Safai Karmachari Andolan, Dalit Arthik Adhikar Andolan, and Navsarjan Trust are examples.</div>
+          </div>
+        </div>
+        <div class="action-step">
+          <div class="action-step-num">05</div>
+          <div class="action-step-body">
+            <div class="action-step-title">Read and amplify Dalit voices — not dominant-caste interpreters</div>
+            <div class="action-step-desc">When learning about caste, read Ambedkar, Yengde, Ilaiah, Shyamala, Vemula, Valmiki — not primarily dominant-caste writers explaining caste to you. Amplify Dalit writers, journalists, and thinkers in your professional and social networks. Citation is power.</div>
+          </div>
+        </div>
+        <div class="action-step">
+          <div class="action-step-num">06</div>
+          <div class="action-step-body">
+            <div class="action-step-title">Change your voting behaviour</div>
+            <div class="action-step-desc">Vote for parties and candidates with explicit commitments to caste justice — protection of the SC/ST Act, expansion of reservations, accountability for atrocities, Dalit representation in the judiciary and bureaucracy. Caste justice is not a "social issue" separate from development — it is the foundation on which any real development must be built.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFLECTION EXERCISES -->
+    <div class="section" id="exercises">
+      <h2>Self-reflection exercises</h2>
+      <p>These are not comfortable. That is the point. Do them alone, in writing, without an audience.</p>
+
+      <div class="exercise">
+        <div class="exercise-header" onclick="toggleEx(this)">
+          <span class="exercise-title">The surname audit</span>
+          <div style="display:flex;align-items:center;gap:10px"><span class="exercise-tag">15 minutes</span><span class="exercise-icon">+</span></div>
+        </div>
+        <div class="exercise-body">
+          <p>List 10 people you have hired, recommended, mentored, or introduced to professional opportunities in the last 3 years. Write down their surnames. Research which community those surnames typically belong to. Look at the pattern.</p>
+          <p>If the list is caste-homogeneous — which it is likely to be — ask: is this because dominant-caste candidates are genuinely more qualified? Or because your networks, your comfort, your mental model of "fits the role" is shaped by caste?</p>
+          <p>You do not need to share this exercise with anyone. Its only purpose is to make visible what operates invisibly.</p>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header" onclick="toggleEx(this)">
+          <span class="exercise-title">The earliest memory of caste</span>
+          <div style="display:flex;align-items:center;gap:10px"><span class="exercise-tag">30 minutes</span><span class="exercise-icon">+</span></div>
+        </div>
+        <div class="exercise-body">
+          <p>Write down your earliest memory of being aware of caste — in your family, your neighbourhood, your school. What was the situation? What was said? What did you understand from it?</p>
+          <p>Then write: what were you taught — explicitly or implicitly — about where your community stood relative to others? What were the messages about who to trust, who to avoid, who was "like us"?</p>
+          <p>The point is not to blame your parents or community. The point is to trace where your conditioning came from — so you can examine it rather than simply live inside it.</p>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header" onclick="toggleEx(this)">
+          <span class="exercise-title">The discomfort inventory</span>
+          <div style="display:flex;align-items:center;gap:10px"><span class="exercise-tag">20 minutes</span><span class="exercise-icon">+</span></div>
+        </div>
+        <div class="exercise-body">
+          <p>Think about the last time you felt discomfort in a conversation about caste. Write down: what was being said? What made you uncomfortable? Was the discomfort coming from genuine moral concern — or from the feeling that you were being implicated?</p>
+          <p>The distinction matters. Discomfort-as-guilt is about you. Discomfort-as-concern is about the people being harmed. Only the second one motivates action. The first one often motivates defensiveness.</p>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header" onclick="toggleEx(this)">
+          <span class="exercise-title">Reading Rohith's letter</span>
+          <div style="display:flex;align-items:center;gap:10px"><span class="exercise-tag">45 minutes</span><span class="exercise-icon">Dalit experience</span></div>
+        </div>
+        <div class="exercise-body">
+          <p>Read Rohith Vemula's final letter in full. Not a summary. The full letter. Slowly.</p>
+          <ol>
+            <li>Read it once just to take it in.</li>
+            <li>Read it a second time and write down every sentence that produces a reaction in you — discomfort, recognition, grief, defensiveness.</li>
+            <li>For each reaction, ask: where does this reaction come from? What does it tell me about what I have been taught to value, fear, or dismiss?</li>
+          </ol>
+          <p>The letter is available at: <a href="https://www.thehindu.com/news/national/telangana/here-is-the-full-text-of-rohith-vemulas-letter/article8113545.ece" target="_blank" style="color:var(--accent)">The Hindu ↗</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- READING PATH -->
+    <div class="section" id="reading">
+      <h2>A reading path</h2>
+      <p>In this order, if you are starting from the beginning.</p>
+      <div class="reading-list">
+        <div class="reading-item">
+          <div class="reading-title">Annihilation of Caste</div>
+          <div class="reading-author">B.R. Ambedkar</div>
+          <div class="reading-why">Start here. The foundational text. Read it to understand the argument, not just to know that it exists.</div>
+        </div>
+        <div class="reading-item">
+          <div class="reading-title">Joothan</div>
+          <div class="reading-author">Om Prakash Valmiki</div>
+          <div class="reading-why">A memoir. Read it to understand what caste feels like from inside — not as data but as lived experience.</div>
+        </div>
+        <div class="reading-item">
+          <div class="reading-title">Caste Matters</div>
+          <div class="reading-author">Suraj Yengde</div>
+          <div class="reading-why">Contemporary analysis. Bridges Ambedkar and the present. Essential for understanding caste in modern India.</div>
+        </div>
+        <div class="reading-item">
+          <div class="reading-title">The Doctor and the Saint</div>
+          <div class="reading-author">Arundhati Roy</div>
+          <div class="reading-why">A dominant-caste writer examining her own community's role in caste. Useful for dominant-caste readers beginning this journey.</div>
+        </div>
+        <div class="reading-item">
+          <div class="reading-title">Why I Am Not a Hindu</div>
+          <div class="reading-author">Kancha Ilaiah</div>
+          <div class="reading-why">A Bahujan perspective on Hindu culture. Challenges dominant-caste assumptions about what Indian civilisation is.</div>
+        </div>
+        <div class="reading-item">
+          <div class="reading-title">Ants Among Elephants</div>
+          <div class="reading-author">Sujatha Gidla</div>
+          <div class="reading-why">A Dalit family memoir from Andhra Pradesh. Rare Telugu Dalit voice in English. Deeply personal and politically sharp.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  const total = document.querySelectorAll('.p-check').length;
+  const checked = document.querySelectorAll('.p-check.checked').length;
+  document.getElementById('priv-count').textContent = checked + ' / ' + total;
+}
+
+function toggleEx(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.exercise-icon');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.exercise-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.exercise-icon').forEach(i => { i.classList.remove('open'); i.textContent = '+'; });
+  if (!isOpen) { body.classList.add('open'); icon.classList.add('open'); icon.textContent = '×'; }
+}
+
+const sections = document.querySelectorAll('.section');
+const links = document.querySelectorAll('.sidebar nav a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('.sidebar nav a[href="#' + e.target.id + '"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, { threshold: 0.2 });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
