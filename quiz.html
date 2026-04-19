@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caste Meter Quiz — Annihilation of Caste</title>
+<title>Mirror Test Quiz — Annihilation of Caste</title>
 <meta name="description" content="A 15-question quiz to examine your own caste conditioning — including the beliefs of people who are certain they aren't casteist.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -83,21 +83,77 @@
   .ambedkar-quote cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
 
   @media(max-width:640px){nav{padding:16px 20px}.quiz-wrap{padding:90px 16px 60px}}
+
+/* ── RESPONSIVE BASE ───────────────────────────────────────────────── */
+@media(max-width:768px){
+  nav{padding:0 16px;height:52px}
+  .nav-logo{font-size:13px}
+  .nav-links{display:none}
+  /* Mobile hamburger menu */
+  .mob-menu-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:none;border:0.5px solid var(--border);border-radius:2px;cursor:pointer;flex-direction:column;gap:4px;padding:8px}
+  .mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink);transition:all 0.2s}
+  .mob-nav{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--border);z-index:99;padding:8px 0}
+  .mob-nav.open{display:block}
+  .mob-nav a{display:block;padding:12px 20px;font-size:14px;color:var(--muted);text-decoration:none;border-bottom:0.5px solid var(--border);letter-spacing:0.03em}
+  .mob-nav a:last-child{border-bottom:none}
+  .mob-nav a:hover,.mob-nav a.current{color:var(--ink);background:var(--surface)}
+  .mob-nav a.featured{color:var(--accent);font-weight:500}
+  .mob-nav .mob-section-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:12px 20px 4px;display:block;background:var(--surface)}
+}
+@media(min-width:769px){
+  .mob-menu-btn{display:none}
+  .mob-nav{display:none!important}
+}
+
+@media(max-width:768px){
+  .quiz-wrap{padding:72px 16px 60px}
+  .intro-title{font-size:36px}
+  .opt-btn{font-size:14px;padding:12px 14px}
+  .compass-wrap{padding:16px}
+  .scores-row{grid-template-columns:1fr 1fr}
+  .result-actions{flex-direction:column}
+  .result-actions a,.result-actions button{width:100%;text-align:center}
+}
 </style>
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="index.html">Annihilation of Caste</a>
-  <a class="nav-back" href="index.html">← Back to home</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html" class="current">Mirror Test</a></li>
+    <li><a href="evidence.html">Evidence</a></li>
+    <li><a href="wiki.html">Wiki</a></li>
+    <li><a href="poetry.html">Poetry</a></li>
+    <li><a href="unlearn.html">Unlearn</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+  <button class="mob-menu-btn" onclick="toggleMobNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mob-nav" id="mob-nav">
+    <span class="mob-section-label">Start here</span>
+    <a href="quiz.html" class="featured current">Mirror Test</a>
+    <a href="unlearn.html" class="featured">Unlearn</a>
+
+    <span class="mob-section-label">More pages</span>
+    <a href="index.html">Home</a>
+    <a href="text.html">The Text</a>
+    <a href="evidence.html">Evidence</a>
+    <a href="wiki.html">Wiki</a>
+    <a href="poetry.html">Poetry</a>
+    <a href="resources.html">Resources</a>
+</div>
 
 <div class="quiz-wrap">
 
   <!-- INTRO SCREEN -->
   <div id="screen-intro" class="screen active">
-    <span class="intro-tag">Self-reflection tool · v2</span>
-    <h1 class="intro-title">Caste <em>Meter</em></h1>
+    <span class="intro-tag">Mirror Test · v2</span>
+    <h1 class="intro-title">Mirror <em>Test</em></h1>
     <p class="intro-desc">Caste operates in two ways: through open prejudice, and through denial. This quiz covers both — including the beliefs of people who are absolutely certain they aren't casteist.</p>
     <p style="font-size:14px;color:var(--muted);margin-bottom:6px">15 questions across two dimensions:</p>
     <div class="axis-pills">

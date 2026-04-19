@@ -57,6 +57,38 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);line-heig
 .contribute a{color:var(--gold);text-decoration:none}
 
 @media(max-width:640px){nav{padding:16px 20px}.nav-links{display:none}.page-wrap{padding:90px 16px 60px}.poet-meta{align-items:flex-start}}
+
+/* ── RESPONSIVE BASE ───────────────────────────────────────────────── */
+@media(max-width:768px){
+  nav{padding:0 16px;height:52px}
+  .nav-logo{font-size:13px}
+  .nav-links{display:none}
+  /* Mobile hamburger menu */
+  .mob-menu-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:none;border:0.5px solid var(--border);border-radius:2px;cursor:pointer;flex-direction:column;gap:4px;padding:8px}
+  .mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink);transition:all 0.2s}
+  .mob-nav{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--border);z-index:99;padding:8px 0}
+  .mob-nav.open{display:block}
+  .mob-nav a{display:block;padding:12px 20px;font-size:14px;color:var(--muted);text-decoration:none;border-bottom:0.5px solid var(--border);letter-spacing:0.03em}
+  .mob-nav a:last-child{border-bottom:none}
+  .mob-nav a:hover,.mob-nav a.current{color:var(--ink);background:var(--surface)}
+  .mob-nav a.featured{color:var(--accent);font-weight:500}
+  .mob-nav .mob-section-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:12px 20px 4px;display:block;background:var(--surface)}
+}
+@media(min-width:769px){
+  .mob-menu-btn{display:none}
+  .mob-nav{display:none!important}
+}
+
+@media(max-width:768px){
+  .page-wrap{padding:80px 16px 60px}
+  .lang-filter{gap:6px}
+  .lang-btn{font-size:11px;padding:5px 10px}
+  .poet-header{flex-direction:column;gap:8px}
+  .poet-meta{align-items:flex-start;flex-direction:row;gap:10px}
+  .poem-body{padding:16px}
+  .poem-text,.poem-original{font-size:14px}
+  .poem-translation{font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -72,7 +104,23 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);line-heig
     <li><a href="unlearn.html">Unlearn</a></li>
     <li><a href="resources.html">Resources</a></li>
   </ul>
+  <button class="mob-menu-btn" onclick="toggleMobNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mob-nav" id="mob-nav">
+    <span class="mob-section-label">Start here</span>
+    <a href="quiz.html" class="featured">Mirror Test</a>
+    <a href="unlearn.html" class="featured">Unlearn</a>
+
+    <span class="mob-section-label">More pages</span>
+    <a href="index.html">Home</a>
+    <a href="text.html">The Text</a>
+    <a href="evidence.html">Evidence</a>
+    <a href="wiki.html">Wiki</a>
+    <a href="poetry.html" class="current">Poetry</a>
+    <a href="resources.html">Resources</a>
+</div>
 
 <div class="page-wrap">
   <div class="page-eyebrow">Voices of resistance</div>
