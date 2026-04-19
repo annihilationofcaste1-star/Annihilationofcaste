@@ -48,10 +48,12 @@
   .hero-aside cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
 
   /* MARQUEE */
-  .marquee-wrap{background:var(--ink);color:var(--paper);padding:14px 0;overflow:hidden;white-space:nowrap}
-  .marquee-track{display:inline-flex;animation:marquee 30s linear infinite}
-  .marquee-track span{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:0 40px;opacity:0.7}
-  .marquee-track span.dot{opacity:0.3;padding:0 10px}
+  .marquee-wrap{background:var(--ink);color:var(--paper);padding:16px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-flex;align-items:center;animation:marquee 80s linear infinite}
+  .marquee-track .q{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;padding:0 32px;opacity:0.85;color:var(--paper)}
+  .marquee-track .src{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0 8px;opacity:0.7;flex-shrink:0}
+  .marquee-track .src::before{content:'— '}
+  .marquee-track .src::after{content:' ·';margin-left:24px;opacity:0.3}
   @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* SECTIONS */
@@ -128,7 +130,7 @@
 
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow">B.R. Ambedkar · 1936</div>
+    <div class="hero-eyebrow">B.R. Ambedkar</div>
     <h1>Annihilation<br>of <em>Caste</em></h1>
     <div class="hero-year">The undelivered speech.</div>
     <p class="hero-desc">A text that was never spoken aloud — yet became one of the most radical challenges to social hierarchy in modern history. Read it. Understand it. Act on it.</p>
@@ -139,33 +141,37 @@
   </div>
   <div class="hero-aside">
     <blockquote>"Turn in any direction you like, caste is the monster that crosses your path."</blockquote>
-    <cite>— B.R. Ambedkar, 1936</cite>
+    <cite>— B.R. Ambedkar</cite>
   </div>
 </section>
 
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span>Annihilation of Caste</span><span class="dot">·</span>
-    <span>B.R. Ambedkar</span><span class="dot">·</span>
-    <span>1936</span><span class="dot">·</span>
-    <span>Dalit Lives Matter</span><span class="dot">·</span>
-    <span>Jai Bhim</span><span class="dot">·</span>
-    <span>Social Justice</span><span class="dot">·</span>
-    <span>Constitutional Morality</span><span class="dot">·</span>
-    <span>Annihilation of Caste</span><span class="dot">·</span>
-    <span>B.R. Ambedkar</span><span class="dot">·</span>
-    <span>1936</span><span class="dot">·</span>
-    <span>Dalit Lives Matter</span><span class="dot">·</span>
-    <span>Jai Bhim</span><span class="dot">·</span>
-    <span>Social Justice</span><span class="dot">·</span>
-    <span>Constitutional Morality</span><span class="dot">·</span>
+    <span class="q">"Caste is the monster that crosses your path."</span><span class="src">Annihilation of Caste</span>
+    <span class="q">"I measure the progress of a community by the degree of progress women have achieved."</span><span class="src">Speeches</span>
+    <span class="q">"Life should be great rather than long."</span><span class="src">Writings</span>
+    <span class="q">"Political tyranny is nothing compared to social tyranny."</span><span class="src">Annihilation of Caste</span>
+    <span class="q">"Lost rights are never regained by appeals to the conscience of the usurpers."</span><span class="src">What Congress and Gandhi Have Done to the Untouchables</span>
+    <span class="q">"Religion and slavery are incompatible."</span><span class="src">The Buddha and His Dhamma</span>
+    <span class="q">"Men are mortal. So are ideas. An idea needs propagation as much as a plant needs watering."</span><span class="src">Writings</span>
+    <span class="q">"Cultivation of mind should be the ultimate aim of human existence."</span><span class="src">Writings</span>
+    <span class="q">"A great man is different from an eminent one in that he is ready to be the servant of society."</span><span class="src">Writings</span>
+    <span class="q">"Caste is a monster that crosses your path."</span><span class="src">Annihilation of Caste</span>
+    <span class="q">"I measure the progress of a community by the degree of progress women have achieved."</span><span class="src">Speeches</span>
+    <span class="q">"Life should be great rather than long."</span><span class="src">Writings</span>
+    <span class="q">"Political tyranny is nothing compared to social tyranny."</span><span class="src">Annihilation of Caste</span>
+    <span class="q">"Lost rights are never regained by appeals to the conscience of the usurpers."</span><span class="src">What Congress and Gandhi Have Done to the Untouchables</span>
+    <span class="q">"Religion and slavery are incompatible."</span><span class="src">The Buddha and His Dhamma</span>
+    <span class="q">"Men are mortal. So are ideas. An idea needs propagation as much as a plant needs watering."</span><span class="src">Writings</span>
+    <span class="q">"Cultivation of mind should be the ultimate aim of human existence."</span><span class="src">Writings</span>
+    <span class="q">"A great man is different from an eminent one in that he is ready to be the servant of society."</span><span class="src">Writings</span>
   </div>
 </div>
 
 <section id="about" style="max-width:1100px;margin:0 auto">
   <div class="section-label fade-up">About the text</div>
   <h2 class="fade-up">A speech that was never delivered — <em style="font-family:'Playfair Display',serif;font-style:italic">and changed everything.</em></h2>
-  <p style="max-width:580px;color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:48px" class="fade-up">In 1936, Ambedkar was invited to address the Jat-Pat-Todak Mandal — a Hindu reformist group in Lahore. When the organizers read his speech in advance, they cancelled the event. Ambedkar published it himself. It became one of the most important political texts of the 20th century.</p>
+  <p style="max-width:580px;color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:48px" class="fade-up">Ambedkar was invited to address the Jat-Pat-Todak Mandal — a Hindu reformist group in Lahore. When the organizers read his speech in advance, they cancelled the event. Ambedkar published it himself. It became one of the most important political texts of the 20th century.</p>
 
   <div class="cards-grid">
     <div class="card fade-up">
@@ -196,7 +202,7 @@
 </section>
 
 <section class="pullquote-section">
-  <div class="section-label" style="color:rgba(245,240,232,0.4)">Ambedkar, 1936</div>
+  <div class="section-label" style="color:rgba(245,240,232,0.4)">B.R. Ambedkar</div>
   <blockquote>"You cannot build anything on the foundation of caste. You cannot build up a nation, you cannot build up a morality. Anything you will build on the foundation of caste will crack and will never be a whole."</blockquote>
   <cite>— B.R. Ambedkar, Annihilation of Caste</cite>
 </section>

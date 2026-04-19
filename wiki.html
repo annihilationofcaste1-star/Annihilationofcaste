@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ambedkar Wiki — Life, Work & Legacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12);--surface:#ede8df}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+
+.layout{display:grid;grid-template-columns:220px 1fr;gap:0;max-width:1100px;margin:0 auto;padding-top:72px;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{padding:32px 24px;border-right:1px solid var(--border);position:sticky;top:72px;height:calc(100vh - 72px);overflow-y:auto}
+.sidebar-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;margin-top:24px}
+.sidebar-label:first-child{margin-top:0}
+.sidebar nav a{display:block;font-size:13px;color:var(--muted);text-decoration:none;padding:5px 0;border-left:2px solid transparent;padding-left:10px;transition:all 0.15s;line-height:1.4}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ink);border-left-color:var(--accent)}
+
+/* CONTENT */
+.content{padding:40px 48px 80px}
+.page-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.page-eyebrow::after{content:'';width:32px;height:1px;background:var(--accent)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);line-height:1.1;margin-bottom:8px}
+.page-sub{font-size:16px;color:var(--muted);margin-bottom:48px;max-width:560px;line-height:1.7}
+
+/* SECTIONS */
+.wiki-section{margin-bottom:64px;scroll-margin-top:100px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(22px,2.5vw,28px);line-height:1.2;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:10px;font-weight:400;color:var(--ink)}
+p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+p strong{color:var(--ink);font-weight:500}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border)}
+.t-item{position:relative;margin-bottom:0}
+.t-item::before{content:'';position:absolute;left:-28px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border)}
+.t-item.milestone::before{background:var(--accent);border-color:var(--accent)}
+.t-item-inner{padding:16px 0 16px 0;border-bottom:1px solid var(--border)}
+.t-item:last-child .t-item-inner{border-bottom:none}
+.t-year{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px}
+.t-title{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.t-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0}
+.stat-card{background:var(--surface);border-radius:2px;padding:16px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1}
+.stat-label{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:0}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 0;font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'DM Sans',sans-serif;gap:16px}
+.faq-q:hover{color:var(--accent)}
+.faq-icon{font-size:20px;color:var(--muted);flex-shrink:0;transition:transform 0.2s;line-height:1}
+.faq-a{display:none;font-size:14px;color:var(--muted);line-height:1.75;padding-bottom:18px;max-width:640px}
+.faq-a.open{display:block}
+.faq-icon.open{transform:rotate(45deg);color:var(--accent)}
+
+/* QUOTE BLOCK */
+.quote-block{border-left:3px solid var(--gold);padding:0 0 0 20px;margin:24px 0}
+.quote-block p{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:6px}
+.quote-block cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+
+/* WRITINGS TABLE */
+.writings-list{display:flex;flex-direction:column;gap:0}
+.writing-item{display:grid;grid-template-columns:1fr auto;align-items:start;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.writing-item:last-child{border-bottom:none}
+.writing-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.writing-year{font-size:12px;color:var(--gold)}
+.writing-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-top:2px}
+.writing-tag{font-size:10px;background:var(--surface);color:var(--muted);padding:3px 8px;border-radius:2px;white-space:nowrap;letter-spacing:0.04em;text-transform:uppercase;align-self:start;margin-top:2px}
+
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .content{padding:24px 20px 60px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html">Caste Meter</a></li>
+    <li><a href="evidence.html">Caste Evidence</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-label">On this page</div>
+    <nav>
+      <a href="#life">Life & timeline</a>
+      <a href="#education">Education</a>
+      <a href="#writings">Major writings</a>
+      <a href="#constitution">The Constitution</a>
+      <a href="#conversion">Conversion</a>
+      <a href="#legacy">Legacy</a>
+      <a href="#faq">Common questions</a>
+    </nav>
+    <div class="sidebar-label">Pages</div>
+    <nav>
+      <a href="text.html">The text</a>
+      <a href="resources.html">Resources</a>
+      <a href="evidence.html">Caste evidence</a>
+      <a href="quiz.html">Caste Meter</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <div class="page-eyebrow">Ambedkar Wiki</div>
+    <h1>Dr. B.R. Ambedkar</h1>
+    <p class="page-sub">Bhimrao Ramji Ambedkar (1891–1956) — jurist, economist, social reformer, and the principal architect of the Indian Constitution. The most educated leader of his generation and one of the most consequential figures in modern history.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Doctorates from Columbia & LSE</div></div>
+      <div class="stat-card"><div class="stat-num">46</div><div class="stat-label">Books & major writings</div></div>
+      <div class="stat-card"><div class="stat-num">600K</div><div class="stat-label">Converted to Buddhism with him</div></div>
+      <div class="stat-card"><div class="stat-num">395</div><div class="stat-label">Articles in the Constitution</div></div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="wiki-section" id="life">
+      <h2>Life & timeline</h2>
+      <div class="timeline">
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">14 April 1891</div>
+            <div class="t-title">Born in Mhow, Central Provinces</div>
+            <div class="t-desc">Born the 14th child of Ramji Maloji Sakpal and Bhimabai, a Mahar (Dalit) family. His father was an army officer. The family faced severe caste discrimination despite the father's military service — children were made to sit separately in school and were denied water by upper-caste teachers.</div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-item-inner">
+            <div class="t-year">1907</div>
+            <div class="t-title">Matriculation — a milestone for a Dalit student</div>
+            <div class="t-desc">Passed matriculation from Bombay University — rare for a Dalit student at the time. His success attracted the attention of Maharaja Sayajirao Gaekwad of Baroda, who would later sponsor his overseas education.</div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-item-inner">
+            <div class="t-year">1913</div>
+            <div class="t-title">Sails to New York — Columbia University</div>
+            <div class="t-desc">At age 22, Ambedkar left for Columbia University, New York, on a scholarship from Baroda State. He studied under John Dewey, the philosopher of democracy, who had a profound influence on his thinking about liberty and social equality.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">1915–1917</div>
+            <div class="t-title">MA and PhD from Columbia University</div>
+            <div class="t-desc">Completed MA (1915) and PhD (1917) in Economics. His doctoral thesis, "The Evolution of Provincial Finance in British India," was groundbreaking. He then went to London School of Economics and Gray's Inn to study law and economics simultaneously.</div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-item-inner">
+            <div class="t-year">1920</div>
+            <div class="t-title">Founds Mooknayak newspaper</div>
+            <div class="t-desc">Launches a fortnightly newspaper Mooknayak (Leader of the Silent) to give voice to Dalit issues. The name referred to the millions of Dalits whose suffering went unspoken in mainstream politics and press.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">1927</div>
+            <div class="t-title">Mahad Satyagraha — right to drink water</div>
+            <div class="t-desc">Led the historic Mahad Satyagraha, where thousands of Dalits marched to drink water from the Chavdar Tank — a public water source they were barred from using. He publicly burned the Manusmriti — the Hindu text codifying caste hierarchy — calling it an act of liberation.</div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-item-inner">
+            <div class="t-year">1930</div>
+            <div class="t-title">Nasik Temple Entry Satyagraha</div>
+            <div class="t-desc">Led Dalits to assert their right to enter the Kalaram Temple in Nasik. The campaign lasted five years. It exposed the contradiction between Hindu reformers who claimed inclusivity while maintaining caste exclusion in practice.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">1935</div>
+            <div class="t-title">"I will not die a Hindu"</div>
+            <div class="t-desc">At the Yeola Conference, Ambedkar publicly declared he would not die a Hindu. He began 21 years of comparative study of world religions — Islam, Christianity, Sikhism, and Buddhism — before choosing Buddhism as the vehicle for Dalit liberation.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">1936</div>
+            <div class="t-title">Writes Annihilation of Caste</div>
+            <div class="t-desc">Writes the presidential address for the Jat-Pat-Todak Mandal conference in Lahore. The Hindu reformers cancel the event after reading the draft — it too directly challenges Hindu scripture as the root of caste. Ambedkar publishes it at his own expense, including the full correspondence with the organisers.</div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-item-inner">
+            <div class="t-year">1942</div>
+            <div class="t-title">Labour Member, Viceroy's Executive Council</div>
+            <div class="t-desc">Appointed as Labour Member, where he pushed for workers' rights, established the Employment Exchange system, and set the groundwork for the Employees' State Insurance Act. His economic contributions are among his least-discussed but most consequential.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">1947–1951</div>
+            <div class="t-title">Drafts the Indian Constitution</div>
+            <div class="t-desc">Appointed Law Minister and chairman of the Constitution Drafting Committee. The document he produced abolished untouchability (Article 17), guaranteed fundamental rights, established affirmative action, and enshrined equality before law — all directly targeting the caste system.</div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-item-inner">
+            <div class="t-year">1951</div>
+            <div class="t-title">Resigns from Cabinet over Hindu Code Bill</div>
+            <div class="t-desc">Resigned as Law Minister when Nehru's government stalled the Hindu Code Bill — which would have given Hindu women rights to divorce and inheritance. Ambedkar saw the delay as caste Hindu patriarchy overriding constitutional reform.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">14 October 1956</div>
+            <div class="t-title">Conversion to Buddhism — Nagpur</div>
+            <div class="t-desc">On Ashoka Vijaya Dashami, Ambedkar converted to Buddhism at Deekshabhoomi, Nagpur, along with approximately 600,000 followers — the largest mass religious conversion in recorded history. He chose Buddhism for its rejection of the soul (which caste-Hinduism uses to justify birth-hierarchy) and its emphasis on reason and equality.</div>
+          </div>
+        </div>
+        <div class="t-item milestone">
+          <div class="t-item-inner">
+            <div class="t-year">6 December 1956</div>
+            <div class="t-title">Mahaparinirvana</div>
+            <div class="t-desc">Ambedkar passed away in his sleep at his Delhi residence, just 47 days after his conversion. He was 65. He had been working on his final book, The Buddha and His Dhamma, which was completed and published posthumously. 6 December is observed as Mahaparinirvan Din.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="wiki-section" id="education">
+      <h2>Education — the most credentialed leader of his era</h2>
+      <p>Ambedkar's academic achievements were extraordinary for anyone of his generation — and almost unimaginable for a Dalit born in 1891 who was made to sit on the floor in school and denied water by upper-caste teachers.</p>
+      <div class="writings-list">
+        <div class="writing-item"><div><div class="writing-title">BA — Bombay University</div><div class="writing-year">1912</div><div class="writing-desc">Economics and Political Science. One of very few Dalits to complete undergraduate education at the time.</div></div><span class="writing-tag">Bombay</span></div>
+        <div class="writing-item"><div><div class="writing-title">MA — Columbia University, New York</div><div class="writing-year">1915</div><div class="writing-desc">Economics. Studied under philosopher John Dewey.</div></div><span class="writing-tag">Columbia</span></div>
+        <div class="writing-item"><div><div class="writing-title">PhD — Columbia University</div><div class="writing-year">1917</div><div class="writing-desc">"The Evolution of Provincial Finance in British India." One of the first Indians to earn a doctorate from an American university.</div></div><span class="writing-tag">Columbia</span></div>
+        <div class="writing-item"><div><div class="writing-title">MSc — London School of Economics</div><div class="writing-year">1921</div><div class="writing-desc">Economics.</div></div><span class="writing-tag">LSE</span></div>
+        <div class="writing-item"><div><div class="writing-title">DSc — London School of Economics</div><div class="writing-year">1923</div><div class="writing-desc">"The Problem of the Rupee." A landmark work on Indian monetary policy.</div></div><span class="writing-tag">LSE</span></div>
+        <div class="writing-item"><div><div class="writing-title">Bar-at-Law — Gray's Inn, London</div><div class="writing-year">1923</div><div class="writing-desc">Called to the Bar. Studied law simultaneously with his LSE doctorate.</div></div><span class="writing-tag">Gray's Inn</span></div>
+        <div class="writing-item"><div><div class="writing-title">LLD (Honorary) — Columbia University</div><div class="writing-year">1952</div><div class="writing-desc">Conferred posthumously in recognition of his work on the Indian Constitution.</div></div><span class="writing-tag">Honorary</span></div>
+      </div>
+    </div>
+
+    <!-- WRITINGS -->
+    <div class="wiki-section" id="writings">
+      <h2>Major writings</h2>
+      <p>Ambedkar wrote extensively across law, economics, history, religion, and social theory. His collected works run to 22 volumes, published by the Government of Maharashtra.</p>
+      <div class="writings-list">
+        <div class="writing-item"><div><div class="writing-title">Annihilation of Caste</div><div class="writing-year">1936</div><div class="writing-desc">The undelivered speech that became a foundational text of the Dalit movement. A direct critique of caste as a social institution rooted in Hindu scripture.</div></div><span class="writing-tag">Social</span></div>
+        <div class="writing-item"><div><div class="writing-title">Who Were the Shudras?</div><div class="writing-year">1946</div><div class="writing-desc">Historical analysis of the origins of the Shudra varna and how they were degraded from Kshatriyas.</div></div><span class="writing-tag">History</span></div>
+        <div class="writing-item"><div><div class="writing-title">What Congress and Gandhi Have Done to the Untouchables</div><div class="writing-year">1945</div><div class="writing-desc">A sharp critique of Gandhi's paternalistic approach to Dalit rights and the Congress party's betrayal of Untouchables.</div></div><span class="writing-tag">Politics</span></div>
+        <div class="writing-item"><div><div class="writing-title">Pakistan or the Partition of India</div><div class="writing-year">1940</div><div class="writing-desc">A scholarly analysis of the partition question — often cited by both those for and against partition.</div></div><span class="writing-tag">Politics</span></div>
+        <div class="writing-item"><div><div class="writing-title">The Buddha and His Dhamma</div><div class="writing-year">1957 (posth.)</div><div class="writing-desc">His final work — a retelling of the Buddha's life and philosophy from the perspective of social liberation. The scripture of the Navayana Buddhist movement.</div></div><span class="writing-tag">Religion</span></div>
+        <div class="writing-item"><div><div class="writing-title">Thoughts on Pakistan</div><div class="writing-year">1941</div><div class="writing-desc">An analysis of the Muslim League's demand and its implications for minority communities.</div></div><span class="writing-tag">Politics</span></div>
+        <div class="writing-item"><div><div class="writing-title">The Untouchables: Who Were They and Why They Became Untouchables</div><div class="writing-year">1948</div><div class="writing-desc">A historical account of the origins of untouchability in India.</div></div><span class="writing-tag">History</span></div>
+        <div class="writing-item"><div><div class="writing-title">Riddles in Hinduism</div><div class="writing-year">1987 (posth.)</div><div class="writing-desc">A critical examination of Hindu texts, rituals, and their role in maintaining social hierarchy. Controversial and suppressed for decades.</div></div><span class="writing-tag">Religion</span></div>
+        <div class="writing-item"><div><div class="writing-title">The Evolution of Provincial Finance in British India</div><div class="writing-year">1917</div><div class="writing-desc">His Columbia PhD thesis — a rigorous economic analysis of British India's fiscal system.</div></div><span class="writing-tag">Economics</span></div>
+        <div class="writing-item"><div><div class="writing-title">The Problem of the Rupee</div><div class="writing-year">1923</div><div class="writing-desc">His LSE doctorate — on Indian monetary policy. The Reserve Bank of India's founding structure drew on his recommendations.</div></div><span class="writing-tag">Economics</span></div>
+      </div>
+    </div>
+
+    <!-- CONSTITUTION -->
+    <div class="wiki-section" id="constitution">
+      <h2>The Constitution — Ambedkar's most powerful act</h2>
+      <p>When India became independent, Ambedkar was appointed Law Minister and chairman of the Constitution Drafting Committee. The document he produced was designed to dismantle, from above, the caste hierarchy that had structured Indian society for millennia.</p>
+      <div class="quote-block">
+        <p>"Constitutional morality is not a natural sentiment. It has to be cultivated. We must realise that our people have yet to learn it. Democracy in India is only a top dressing on an Indian soil which is essentially undemocratic."</p>
+        <cite>— B.R. Ambedkar, Constituent Assembly, 1948</cite>
+      </div>
+      <p><strong>Key provisions Ambedkar fought for:</strong></p>
+      <p><strong>Article 17</strong> abolishes untouchability and makes its practice a punishable offence. This was the first time a nation constitutionally abolished a social practice targeting a specific community.</p>
+      <p><strong>Articles 15 and 16</strong> prohibit discrimination on grounds of religion, race, caste, sex, or place of birth, and provide for affirmative action in public employment.</p>
+      <p><strong>Article 21</strong> — the right to life — has been interpreted by the Supreme Court to include the right to live with dignity, a provision Ambedkar intended as a bulwark against caste-based dehumanisation.</p>
+      <p>Ambedkar resigned as Law Minister in 1951 when Nehru's government stalled the Hindu Code Bill — which would have given Hindu women rights to divorce and property inheritance. He saw the delay as a failure of constitutional morality, surrendering to caste-Hindu conservative pressure.</p>
+    </div>
+
+    <!-- CONVERSION -->
+    <div class="wiki-section" id="conversion">
+      <h2>The conversion — 14 October 1956</h2>
+      <p>After 21 years of comparative religious study, Ambedkar chose Buddhism. He spent those years studying Islam, Christianity, Sikhism, and Buddhism before concluding that Buddhism was the only major religion whose foundational philosophy was incompatible with caste hierarchy.</p>
+      <div class="quote-block">
+        <p>"I was born a Hindu. I had no choice. But I will not die a Hindu."</p>
+        <cite>— B.R. Ambedkar, Yeola Conference, 1935</cite>
+      </div>
+      <p>He chose Buddhism specifically because it rejected the concept of the atman (soul) — which caste-Hinduism uses to justify birth-based hierarchy (the soul is "born into" a varna). Without the soul, there is no justification for caste as a spiritual category.</p>
+      <p>On 14 October 1956, at Deekshabhoomi in Nagpur, he took the Three Refuges and the Five Precepts from a Sri Lankan Buddhist monk, U Chandramani. He then administered the same oath to approximately 600,000 followers — the largest mass conversion in history. He died 47 days later.</p>
+    </div>
+
+    <!-- LEGACY -->
+    <div class="wiki-section" id="legacy">
+      <h2>Legacy</h2>
+      <p>Ambedkar's legacy operates on multiple levels simultaneously — as a constitutional architect, as an economist who shaped the Reserve Bank of India, as a social reformer who gave Dalits a political identity, and as a philosopher whose writings continue to define the terms of the debate on caste.</p>
+      <p><strong>Bharat Ratna</strong> — India's highest civilian award — was conferred posthumously in 1990, 34 years after his death. The delay itself is a statement about how dominant-caste India viewed his legacy.</p>
+      <p><strong>Jai Bhim</strong> — the salutation used by Ambedkarites — is now one of the most recognised political greetings in India, used by Dalits, anti-caste activists, and progressives globally.</p>
+      <p><strong>Deekshabhoomi</strong>, Nagpur, where he converted, is now one of the most visited pilgrimage sites in India, drawing millions of Dalits each year on 14 October.</p>
+      <p>His writings continue to be suppressed, misrepresented, and removed from curricula — most notably Riddles in Hinduism, which has been banned in various states. The suppression of Ambedkar's ideas is itself evidence of their continuing relevance.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="wiki-section" id="faq">
+      <h2>Common questions</h2>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Was Ambedkar anti-Hindu or anti-religion?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Ambedkar was not anti-religion — he converted to Buddhism and wrote extensively on religious philosophy. He was specifically critical of caste-Hinduism's use of scripture (particularly Manusmriti and the Varna system) to justify social hierarchy. He distinguished between personal faith and institutionalised discrimination. His criticism was structural, not spiritual.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What was the conflict between Ambedkar and Gandhi?<span class="faq-icon">+</span></button>
+        <div class="faq-a">The central conflict was over the Poona Pact (1932). Ambedkar had won separate electorates for Untouchables in the Communal Award — meaning Dalits could elect their own representatives. Gandhi fasted unto death to oppose this, calling separate electorates a division of Hindus. Ambedkar was forced to sign the Poona Pact (giving up separate electorates) to save Gandhi's life — a decision he called one of the greatest betrayals of Dalit political rights. He wrote a detailed critique of Gandhi's approach in "What Congress and Gandhi Have Done to the Untouchables."</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Did Ambedkar support Pakistan?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Ambedkar wrote a rigorous scholarly analysis of the partition question — "Pakistan or the Partition of India" (1940). He was not an advocate of partition in the political sense, but he analysed it as an intellectual problem with a historian's detachment. He warned about the implications for minorities on both sides of any partition. His views were complex and have been selectively quoted by both sides of the debate.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Why is Ambedkar not taught more widely in Indian schools?<span class="faq-icon">+</span></button>
+        <div class="faq-a">The educational curriculum in India is substantially controlled by dominant-caste interests. Ambedkar's writings — particularly Annihilation of Caste and Riddles in Hinduism — directly challenge the religious and cultural foundations that upper-caste communities use to justify their social position. The NCERT curriculum includes Ambedkar but in a sanitised, depoliticised form — focusing on his constitutional role and erasing his radical social critique. His portrait hangs in Parliament; his most important ideas are kept out of classrooms.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is Navayana Buddhism?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Navayana (literally "new vehicle") is the form of Buddhism that Ambedkar founded. It differs from Theravada, Mahayana, and Vajrayana Buddhism in that it places social liberation and the abolition of caste at its centre. Ambedkar rejected karma as a justification for social inequality — he reinterpreted the Buddha's teachings through the lens of social justice. The Buddha and His Dhamma is the scripture of Navayana Buddhism. Today, the majority of Indian Buddhists are Ambedkarite Dalits.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Did Ambedkar design the Reserve Bank of India?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. Ambedkar's doctoral thesis at LSE, "The Problem of the Rupee" (1923), provided the intellectual foundation for India's central banking framework. The Hilton Young Commission, which recommended the establishment of the Reserve Bank of India in 1934, drew directly on his work. This is one of Ambedkar's contributions that is least known — that the architect of India's social justice framework also shaped its monetary architecture.</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling;
+  const icon=btn.querySelector('.faq-icon');
+  const isOpen=ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
+  document.querySelectorAll('.faq-icon').forEach(i=>{i.classList.remove('open');i.textContent='+'});
+  if(!isOpen){ans.classList.add('open');icon.classList.add('open');icon.textContent='+'}
+}
+const sections=document.querySelectorAll('.wiki-section');
+const links=document.querySelectorAll('.sidebar nav a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const active=document.querySelector('.sidebar nav a[href="#'+e.target.id+'"]');
+      if(active)active.classList.add('active');
+    }
+  });
+},{threshold:0.3});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

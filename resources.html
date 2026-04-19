@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Ambedkar's Writings & Further Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12);--surface:#ede8df}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+
+.page-wrap{max-width:1000px;margin:0 auto;padding:100px 32px 80px}
+.page-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.page-eyebrow::after{content:'';width:32px;height:1px;background:var(--accent)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);line-height:1.1;margin-bottom:8px}
+.page-sub{font-size:16px;color:var(--muted);margin-bottom:48px;max-width:560px;line-height:1.7}
+
+/* FILTER TABS */
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;border-bottom:1px solid var(--border);padding-bottom:16px}
+.tab{background:none;border:0.5px solid var(--border);padding:7px 16px;border-radius:2px;font-size:13px;cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all 0.15s;letter-spacing:0.03em}
+.tab:hover{color:var(--ink);border-color:var(--ink)}
+.tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* VOLUMES GRID */
+.section-title{font-family:'Playfair Display',serif;font-size:22px;margin:40px 0 6px}
+.section-note{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.section-note a{color:var(--accent);text-decoration:none}
+.section-note a:hover{text-decoration:underline}
+
+.volumes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:48px}
+.vol-card{background:var(--paper);border:1px solid var(--border);border-radius:2px;padding:20px;display:flex;flex-direction:column;gap:10px;transition:border-color 0.15s,transform 0.15s}
+.vol-card:hover{border-color:rgba(26,18,9,0.3);transform:translateY(-2px)}
+.vol-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.vol-num{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-weight:500;flex-shrink:0}
+.vol-tag{font-size:10px;background:var(--surface);color:var(--muted);padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:0.04em;flex-shrink:0}
+.vol-title{font-size:15px;font-weight:500;color:var(--ink);line-height:1.3}
+.vol-desc{font-size:12px;color:var(--muted);line-height:1.6;flex:1}
+.vol-actions{display:flex;gap:8px;margin-top:4px}
+.btn-pdf{background:var(--accent);color:#fff;border:none;padding:7px 14px;font-size:12px;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-block;transition:background 0.15s;letter-spacing:0.03em}
+.btn-pdf:hover{background:#a93226}
+.btn-read{background:transparent;border:1px solid var(--border);color:var(--ink);padding:7px 14px;font-size:12px;border-radius:2px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-block;transition:all 0.15s}
+.btn-read:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* READING PANE */
+.reading-pane{display:none;position:fixed;top:0;right:0;bottom:0;width:min(600px,100vw);background:var(--paper);border-left:1px solid var(--border);z-index:200;flex-direction:column;box-shadow:-8px 0 32px rgba(26,18,9,0.08)}
+.reading-pane.open{display:flex}
+.pane-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.pane-title{font-family:'Playfair Display',serif;font-size:16px}
+.pane-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:4px 8px;line-height:1}
+.pane-close:hover{color:var(--ink)}
+.pane-body{flex:1;overflow:auto;padding:24px}
+.pane-body p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.pane-body h3{font-family:'Playfair Display',serif;font-size:18px;margin:24px 0 10px;color:var(--ink)}
+.pane-pdf-link{display:block;background:var(--ink);color:var(--paper);text-align:center;padding:14px;text-decoration:none;font-size:14px;margin-bottom:20px;border-radius:2px;transition:background 0.15s}
+.pane-pdf-link:hover{background:var(--accent)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(26,18,9,0.3);z-index:199}
+.overlay.open{display:block}
+
+/* OTHER RESOURCES */
+.res-section{margin-bottom:48px}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:16px}
+.res-item{border:1px solid var(--border);padding:16px;border-radius:2px}
+.res-item-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.res-item-sub{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5}
+.res-item a{font-size:12px;color:var(--accent);text-decoration:none;letter-spacing:0.03em}
+.res-item a:hover{text-decoration:underline}
+
+@media(max-width:640px){nav{padding:16px 20px}.nav-links{display:none}.page-wrap{padding:90px 16px 60px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="wiki.html">Wiki</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html">Caste Meter</a></li>
+    <li><a href="evidence.html">Caste Evidence</a></li>
+  </ul>
+</nav>
+
+<div class="overlay" id="overlay" onclick="closePane()"></div>
+<div class="reading-pane" id="reading-pane">
+  <div class="pane-header">
+    <span class="pane-title" id="pane-title">Volume title</span>
+    <button class="pane-close" onclick="closePane()">×</button>
+  </div>
+  <div class="pane-body" id="pane-body"></div>
+</div>
+
+<div class="page-wrap">
+
+  <div class="page-eyebrow">Library</div>
+  <h1>Resources</h1>
+  <p class="page-sub">All 22 volumes of Ambedkar's collected works — free to download from the Government of India — plus curated books, films, and data sources for going deeper.</p>
+
+  <div class="filter-tabs">
+    <button class="tab active" onclick="filterVols('all',this)">All volumes</button>
+    <button class="tab" onclick="filterVols('Social',this)">Social theory</button>
+    <button class="tab" onclick="filterVols('Religion',this)">Religion</button>
+    <button class="tab" onclick="filterVols('Politics',this)">Politics</button>
+    <button class="tab" onclick="filterVols('Economics',this)">Economics</button>
+    <button class="tab" onclick="filterVols('History',this)">History</button>
+  </div>
+
+  <h2 class="section-title">Ambedkar's Collected Works — 22 Volumes</h2>
+  <p class="section-note">Published by the <strong>Dr. Ambedkar Foundation, Ministry of Social Justice and Empowerment, Government of India.</strong> All volumes are free and in the public domain. Direct PDF links below. <a href="https://www.ambedkar.org/ambcd/" target="_blank" rel="noopener">Also available at ambedkar.org ↗</a></p>
+
+  <div class="volumes-grid" id="volumes-grid">
+  </div>
+
+  <!-- OTHER BOOKS -->
+  <div class="res-section">
+    <h2 class="section-title">Books to read next</h2>
+    <p class="section-note">Curated for readers who want to understand caste beyond Ambedkar — through sociology, memoir, fiction, and contemporary scholarship.</p>
+    <div class="res-grid">
+      <div class="res-item"><div class="res-item-title">Caste Matters</div><div class="res-item-sub">Suraj Yengde, 2019 — Contemporary analysis of caste in modern India by a Dalit scholar.</div><a href="https://www.amazon.in/Caste-Matters-Suraj-Yengde/dp/067009190X" target="_blank">Find the book ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Why I Am Not a Hindu</div><div class="res-item-sub">Kancha Ilaiah, 1996 — A Bahujan perspective on Hindu culture and social exclusion.</div><a href="https://www.amazon.in/Why-Am-Not-Hindu-Perspective/dp/8185604878" target="_blank">Find the book ↗</a></div>
+      <div class="res-item"><div class="res-item-title">The Doctor and the Saint</div><div class="res-item-sub">Arundhati Roy, 2014 — An introduction to Annihilation of Caste, examining the Ambedkar-Gandhi conflict.</div><a href="https://www.amazon.in/Doctor-Saint-Ambedkar-Gandhi-Untouchables/dp/9351775429" target="_blank">Find the book ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Ants Among Elephants</div><div class="res-item-sub">Sujatha Gidla, 2017 — A Dalit family memoir from Andhra Pradesh. Rare and essential.</div><a href="https://www.amazon.in/Ants-Among-Elephants-Untouchable-Family/dp/0374104131" target="_blank">Find the book ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Becoming Babasaheb</div><div class="res-item-sub">Dhananjay Keer, 1954 — The definitive biography of Ambedkar.</div><a href="https://www.amazon.in/Ambedkar-Life-Mission-Dhananjay-Keer/dp/8171542301" target="_blank">Find the book ↗</a></div>
+      <div class="res-item"><div class="res-item-title">The Prisons We Broke</div><div class="res-item-sub">Baby Kamble, 2008 — Memoir of Dalit life in Maharashtra. First-person witness to untouchability.</div><a href="https://www.amazon.in/Prisons-We-Broke-Baby-Kamble/dp/8125033521" target="_blank">Find the book ↗</a></div>
+    </div>
+  </div>
+
+  <!-- FILMS -->
+  <div class="res-section">
+    <h2 class="section-title">Films & documentaries</h2>
+    <div class="res-grid">
+      <div class="res-item"><div class="res-item-title">Jai Bhim (2021)</div><div class="res-item-sub">Tamil — True story of a lawyer fighting for a Dalit man tortured in police custody.</div><a href="https://www.amazon.com/Jai-Bhim/dp/B09NZ3R7NX" target="_blank">Watch on Prime ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Dr. Babasaheb Ambedkar (2000)</div><div class="res-item-sub">Official biopic directed by Jabbar Patel. Mammootty as Ambedkar.</div><a href="https://www.youtube.com/watch?v=GgKD8r-XNWE" target="_blank">Watch on YouTube ↗</a></div>
+      <div class="res-item"><div class="res-item-title">India Untouched (2007)</div><div class="res-item-sub">Documentary by Stalin K. Exposes untouchability across all religions and regions of India.</div><a href="https://www.youtube.com/watch?v=W4_Q2MAW1sA" target="_blank">Watch on YouTube ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Sairat (2016)</div><div class="res-item-sub">Marathi — Inter-caste love story. One of the most powerful films on caste violence.</div><a href="https://www.netflix.com/title/80144997" target="_blank">Watch on Netflix ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Kaala (2018)</div><div class="res-item-sub">Tamil — Rajinikanth in a film explicitly about Ambedkarite politics and land rights.</div><a href="https://www.netflix.com/title/80244532" target="_blank">Watch on Netflix ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Article 15 (2019)</div><div class="res-item-sub">Hindi — A police officer investigates caste-based crimes in rural UP.</div><a href="https://www.netflix.com/title/81067639" target="_blank">Watch on Netflix ↗</a></div>
+    </div>
+  </div>
+
+  <!-- DATA -->
+  <div class="res-section">
+    <h2 class="section-title">Data & official reports</h2>
+    <div class="res-grid">
+      <div class="res-item"><div class="res-item-title">NCRB Annual Crime Reports</div><div class="res-item-sub">National Crime Records Bureau — crimes against SC/ST, custodial deaths, atrocity cases.</div><a href="https://ncrb.gov.in/crime-in-india" target="_blank">Download reports ↗</a></div>
+      <div class="res-item"><div class="res-item-title">NHRC Annual Report</div><div class="res-item-sub">National Human Rights Commission — atrocity cases, police accountability, Dalit rights.</div><a href="https://nhrc.nic.in/publications/annual-reports" target="_blank">Read reports ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Oxfam India Inequality Report</div><div class="res-item-sub">Annual report tracking income, education, and access gaps across caste and gender.</div><a href="https://www.oxfamindia.org/inequality-report" target="_blank">Read report ↗</a></div>
+      <div class="res-item"><div class="res-item-title">Census 2011 — SC/ST Data</div><div class="res-item-sub">Government of India data on Scheduled Caste and Scheduled Tribe populations.</div><a href="https://censusindia.gov.in/census.website/data/census-tables" target="_blank">Access data ↗</a></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const volumes=[
+  {num:"Vol. 1",title:"Castes in India: Their Mechanism, Genesis and Development",tag:"Social",desc:"Ambedkar's 1916 paper presented at Columbia University — his first major work on caste as a social institution. Groundbreaking for its time.",pdf:"https://www.ambedkar.org/ambcd/01.Castes%20in%20India.htm",year:"1916"},
+  {num:"Vol. 2",title:"Who Were the Shudras?",tag:"History",desc:"Historical analysis tracing the origins of the fourth varna — arguing Shudras were originally Kshatriyas who were degraded by Brahminical dominance.",pdf:"https://www.ambedkar.org/ambcd/02.Who%20Were%20the%20Shudras.htm",year:"1946"},
+  {num:"Vol. 3",title:"Who Were the Untouchables?",tag:"History",desc:"Traces the historical origins of untouchability — arguing it was not eternal but created at a specific historical moment.",pdf:"https://www.ambedkar.org/ambcd/03.Who%20Were%20the%20Untouchables.htm",year:"1948"},
+  {num:"Vol. 4",title:"Riddles in Hinduism",tag:"Religion",desc:"A critical examination of Hindu texts, rituals, and contradictions. Long suppressed. One of his most controversial and important works.",pdf:"https://www.ambedkar.org/ambcd/04.Riddles%20in%20Hinduism.htm",year:"1987"},
+  {num:"Vol. 5",title:"The Buddha and His Dhamma",tag:"Religion",desc:"His final work — a reinterpretation of Buddhism as a philosophy of social liberation. The scripture of the Navayana Buddhist movement.",pdf:"https://www.ambedkar.org/ambcd/05.The%20Buddha%20and%20His%20Dhamma.htm",year:"1957"},
+  {num:"Vol. 6",title:"What Congress and Gandhi Have Done to the Untouchables",tag:"Politics",desc:"A sharp critique of Gandhi's paternalistic approach to Dalit rights and the Congress party's failure of Untouchables.",pdf:"https://www.ambedkar.org/ambcd/06A.What%20Congress%20and%20Gandhi%20Have%20Done%20to%20the%20Untouchables.htm",year:"1945"},
+  {num:"Vol. 7",title:"Pakistan or the Partition of India",tag:"Politics",desc:"A scholarly analysis of the partition question — considered one of the most rigorous treatments of the subject.",pdf:"https://www.ambedkar.org/ambcd/07.Pakistan%20or%20The%20Partition%20of%20India.htm",year:"1940"},
+  {num:"Vol. 8",title:"Annihilation of Caste",tag:"Social",desc:"The undelivered speech. The most widely read of all his works — a direct attack on the Hindu scriptural foundations of caste.",pdf:"https://www.ambedkar.org/ambcd/08.Annihilation%20of%20Caste.htm",year:"1936"},
+  {num:"Vol. 9",title:"Essays on Untouchables and Untouchability",tag:"Social",desc:"A collection of essays on the social, political, and legal dimensions of untouchability.",pdf:"https://www.ambedkar.org/ambcd/09.Essays%20on%20Untouchables%20and%20Untouchability.htm",year:"Various"},
+  {num:"Vol. 10",title:"Dr. Ambedkar as Member of the Governor General's Executive Council",tag:"Politics",desc:"Speeches and interventions as Labour Member — on workers' rights, wages, irrigation, and economic policy.",pdf:"https://www.ambedkar.org/ambcd/10.Dr.%20Ambedkar%20as%20Member%20of%20Governor%20General%20Executive%20Council.htm",year:"1942–46"},
+  {num:"Vol. 11",title:"The Evolution of Provincial Finance in British India",tag:"Economics",desc:"His Columbia University PhD thesis — a rigorous economic analysis of fiscal federalism in British India.",pdf:"https://www.ambedkar.org/ambcd/11.The%20Evolution%20of%20Provincial%20Finance.htm",year:"1917"},
+  {num:"Vol. 12",title:"The Problem of the Rupee",tag:"Economics",desc:"His LSE doctoral thesis — on Indian monetary policy. The intellectual foundation for the Reserve Bank of India.",pdf:"https://www.ambedkar.org/ambcd/12.The%20Problem%20of%20the%20Rupee.htm",year:"1923"},
+  {num:"Vol. 13",title:"Speeches in the Constituent Assembly",tag:"Politics",desc:"His complete speeches during the drafting of the Indian Constitution — including the historic final speech on constitutional morality.",pdf:"https://www.ambedkar.org/ambcd/13.Speeches%20in%20the%20Constituent%20Assembly.htm",year:"1946–49"},
+  {num:"Vol. 14",title:"Ambedkar as Member of the Legislative Assembly",tag:"Politics",desc:"Speeches and statements as a member of the Central Legislative Assembly.",pdf:"https://www.ambedkar.org/ambcd/14.Dr.%20Ambedkar%20as%20Member%20of%20Legislative%20Assembly.htm",year:"1926–39"},
+  {num:"Vol. 15",title:"Ambedkar as Free India's First Law Minister",tag:"Politics",desc:"Speeches and work as Law Minister — including the Hindu Code Bill and his letter of resignation to Nehru.",pdf:"https://www.ambedkar.org/ambcd/15.Dr.%20Ambedkar%20as%20Free%20India%27s%20First%20Law%20Minister.htm",year:"1947–51"},
+  {num:"Vol. 16",title:"Unpublished Writings: Ancient Indian Commerce; Notes on Laws of Manu",tag:"History",desc:"Previously unpublished manuscripts including a study of ancient trade and critical annotations of the Manusmriti.",pdf:"https://www.ambedkar.org/ambcd/16.Unpublished%20Writings.htm",year:"Various"},
+  {num:"Vol. 17",title:"Dr. Ambedkar and his Egalitarian Revolution — Struggle for Human Rights",tag:"Social",desc:"Documents from his campaigns for civil rights — Mahad Satyagraha, temple entry, and legal battles.",pdf:"https://www.ambedkar.org/ambcd/17.Dr.%20Ambedkar%20and%20his%20Egalitarian%20Revolution.htm",year:"Various"},
+  {num:"Vol. 18",title:"Dr. Ambedkar and the Hindu Code Bill",tag:"Politics",desc:"Complete documentation of the Hindu Code Bill debate — his arguments for women's rights within Hindu personal law.",pdf:"https://www.ambedkar.org/ambcd/18.Dr.%20Ambedkar%20and%20the%20Hindu%20Code%20Bill.htm",year:"1948–51"},
+  {num:"Vol. 19",title:"Lectures on the English Constitution",tag:"Politics",desc:"His lectures at the Government Law College, Bombay — on constitutional law and political philosophy.",pdf:"https://www.ambedkar.org/ambcd/19.Lectures%20on%20the%20English%20Constitution.htm",year:"Various"},
+  {num:"Vol. 20",title:"Writings and Speeches: A Ready Reference Manual",tag:"Social",desc:"A comprehensive reference volume — key writings, speeches, and statements organised thematically.",pdf:"https://www.ambedkar.org/ambcd/20.Ready%20Reference%20Manual.htm",year:"Various"},
+  {num:"Vol. 21",title:"Ambedkar's Correspondence",tag:"Politics",desc:"His letters — including the historic correspondence with the Jat-Pat-Todak Mandal that preceded Annihilation of Caste.",pdf:"https://www.ambedkar.org/ambcd/21.Ambedkar%27s%20Correspondence.htm",year:"Various"},
+  {num:"Vol. 22",title:"The Untouchables: Who Are They and Why They Have Become Untouchable",tag:"History",desc:"His comprehensive historical account of the creation of the category of 'Untouchable' in Indian society.",pdf:"https://www.ambedkar.org/ambcd/22.The%20Untouchables.htm",year:"1948"}
+];
+
+const paneContent={
+  "Vol. 1":{intro:"Written in 1916 as a paper for Professor A.A. Goldenweizer's anthropology seminar at Columbia University, this was Ambedkar's first major academic intervention on caste.",key:"Key argument: Caste is not a division of labour but a division of labourers — and it is maintained through endogamy (marriage within the group), not through any rational social function.",significance:"This paper established caste as a sociological phenomenon capable of being analysed, dismantled, and — crucially — chosen. It set the intellectual direction of his entire life's work."},
+  "Vol. 8":{intro:"Originally written as a presidential address for the Jat-Pat-Todak Mandal's 1936 annual conference in Lahore. When the Hindu reform group read the draft, they cancelled the event. Ambedkar published it himself.",key:"Key argument: Caste cannot be destroyed by inter-dining or inter-caste marriage alone. It requires the destruction of the religious sanction that sustains it — specifically the authority of the Hindu scriptures (Shastras) that designate caste hierarchy as divine.",significance:"This is the most widely read anti-caste text in history. Its directness — naming Hindu scripture as the problem, not merely 'bad Hindus' — is why it was suppressed and why it remains essential."}
+};
+
+function renderVolumes(filter){
+  const grid=document.getElementById('volumes-grid');
+  const filtered=filter==='all'?volumes:volumes.filter(v=>v.tag===filter);
+  grid.innerHTML=filtered.map(v=>`
+    <div class="vol-card" data-tag="${v.tag}">
+      <div class="vol-header">
+        <span class="vol-num">${v.num} · ${v.year}</span>
+        <span class="vol-tag">${v.tag}</span>
+      </div>
+      <div class="vol-title">${v.title}</div>
+      <div class="vol-desc">${v.desc}</div>
+      <div class="vol-actions">
+        <a href="${v.pdf}" target="_blank" rel="noopener" class="btn-pdf">Read online ↗</a>
+        <button class="btn-read" onclick="openPane('${v.num}','${v.title.replace(/'/g,"\\'")}','${v.pdf}')">Preview</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterVols(tag,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  renderVolumes(tag);
+}
+
+function openPane(num,title,pdf){
+  document.getElementById('pane-title').textContent=title;
+  const info=paneContent[num];
+  const body=document.getElementById('pane-body');
+  body.innerHTML=`
+    <a href="${pdf}" target="_blank" rel="noopener" class="pane-pdf-link">Open full text ↗</a>
+    ${info?`
+      <h3>About this volume</h3>
+      <p>${info.intro}</p>
+      <h3>Key argument</h3>
+      <p>${info.key}</p>
+      <h3>Why it matters</h3>
+      <p>${info.significance}</p>
+    `:`<p style="color:var(--muted);font-size:14px;line-height:1.8">This volume is part of the 22-volume collected works published by the Dr. Ambedkar Foundation, Government of India. Click the button above to read the full text online.</p>`}
+    <p style="font-size:12px;color:var(--muted);margin-top:24px;padding-top:16px;border-top:1px solid var(--border)">Source: Dr. Ambedkar Foundation, Ministry of Social Justice and Empowerment, Government of India. All works are in the public domain.</p>
+  `;
+  document.getElementById('reading-pane').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closePane(){
+  document.getElementById('reading-pane').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+renderVolumes('all');
+</script>
+</body>
+</html>

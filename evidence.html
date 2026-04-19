@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caste Evidence — Data, Cases & Judiciary Delay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1209;--paper:#f5f0e8;--accent:#c0392b;--gold:#b8860b;--muted:#7a6e5f;--border:rgba(26,18,9,0.12);--surface:#ede8df}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.current{color:var(--ink)}
+
+.layout{display:grid;grid-template-columns:200px 1fr;gap:0;max-width:1100px;margin:0 auto;padding-top:72px}
+.sidebar{padding:28px 20px;border-right:1px solid var(--border);position:sticky;top:72px;height:calc(100vh - 72px);overflow-y:auto}
+.sidebar-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:20px}
+.sidebar-label:first-child{margin-top:0}
+.sidebar nav a{display:block;font-size:13px;color:var(--muted);text-decoration:none;padding:5px 0 5px 10px;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
+.sidebar nav a:hover,.sidebar nav a.active{color:var(--ink);border-left-color:var(--accent)}
+.update-note{font-size:11px;color:var(--muted);background:var(--surface);padding:10px 12px;border-radius:2px;margin-top:20px;line-height:1.5}
+
+.content{padding:40px 48px 80px}
+.page-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.page-eyebrow::after{content:'';width:32px;height:1px;background:var(--accent)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);line-height:1.1;margin-bottom:8px}
+.page-sub{font-size:15px;color:var(--muted);margin-bottom:12px;max-width:580px;line-height:1.75}
+.live-note{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);background:var(--surface);padding:5px 12px;border-radius:2px;margin-bottom:40px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#27ae60;flex-shrink:0}
+
+/* SECTIONS */
+.ev-section{margin-bottom:64px;scroll-margin-top:100px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,26px);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:12px}
+p strong{color:var(--ink);font-weight:500}
+
+/* STAT BLOCKS */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:20px 0}
+.stat-block{background:var(--surface);padding:16px;border-radius:2px;border-left:3px solid var(--accent)}
+.stat-block.warn{border-left-color:#e67e22}
+.stat-block.ok{border-left-color:#27ae60}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--muted);line-height:1.4}
+.stat-src{font-size:10px;color:var(--gold);margin-top:4px;letter-spacing:0.04em}
+
+/* DATA TABLE */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.data-table th{text-align:left;padding:10px 12px;background:var(--ink);color:var(--paper);font-weight:500;font-size:11px;letter-spacing:0.06em;text-transform:uppercase}
+.data-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
+.data-table td:first-child{color:var(--ink);font-weight:400}
+.data-table tr:hover td{background:var(--surface)}
+.data-table .bad{color:var(--accent);font-weight:500}
+.data-table .warn{color:#b8860b;font-weight:500}
+
+/* CASE CARDS */
+.cases-grid{display:flex;flex-direction:column;gap:0}
+.case-card{border-bottom:1px solid var(--border);padding:20px 0}
+.case-card:last-child{border-bottom:none}
+.case-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:500;color:var(--ink)}
+.case-meta{display:flex;gap:8px;flex-wrap:wrap}
+.case-year{font-size:11px;background:var(--surface);color:var(--muted);padding:2px 8px;border-radius:2px;letter-spacing:0.04em}
+.case-type{font-size:11px;padding:2px 8px;border-radius:2px;letter-spacing:0.04em}
+.case-type.rape{background:#FCEBEB;color:#A32D2D}
+.case-type.murder{background:#fff3e0;color:#854F0B}
+.case-type.lynching{background:#fff3e0;color:#854F0B}
+.case-type.custodial{background:#FCEBEB;color:#A32D2D}
+.case-type.atrocity{background:#E6F1FB;color:#0C447C}
+.case-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px}
+.case-status{font-size:12px;padding:4px 10px;border-radius:2px;display:inline-block;margin-top:4px}
+.case-status.pending{background:#fff3e0;color:#854F0B}
+.case-status.convicted{background:#EAF3DE;color:#27500A}
+.case-status.acquitted{background:#FCEBEB;color:#A32D2D}
+.case-status.slow{background:#FCEBEB;color:#A32D2D}
+.case-judiciary{font-size:12px;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);font-style:italic}
+
+/* JUDICIARY SECTION */
+.judiciary-points{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.jp{display:flex;gap:16px;padding:16px;background:var(--surface);border-radius:2px;border-left:3px solid var(--accent)}
+.jp-num{font-family:'Playfair Display',serif;font-size:24px;color:var(--accent);font-weight:700;flex-shrink:0;line-height:1;margin-top:2px}
+.jp-text{font-size:13px;color:var(--muted);line-height:1.7}
+.jp-text strong{color:var(--ink)}
+
+/* CONTRIBUTE BOX */
+.contribute-box{background:var(--ink);color:var(--paper);padding:28px 32px;border-radius:2px;margin-top:40px}
+.contribute-box h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:10px;font-weight:400}
+.contribute-box p{font-size:13px;opacity:0.7;line-height:1.7;margin-bottom:16px}
+.contribute-box a{color:var(--gold);text-decoration:none;font-size:13px}
+.contribute-box a:hover{text-decoration:underline}
+
+@media(max-width:768px){
+  nav{padding:16px 20px}.nav-links{display:none}
+  .layout{grid-template-columns:1fr}.sidebar{display:none}
+  .content{padding:24px 16px 60px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="wiki.html">Wiki</a></li>
+    <li><a href="text.html">The Text</a></li>
+    <li><a href="quiz.html">Caste Meter</a></li>
+    <li><a href="evidence.html" class="current">Caste Evidence</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-label">Sections</div>
+    <nav>
+      <a href="#ncrb">NCRB data</a>
+      <a href="#sexual-violence">Sexual violence</a>
+      <a href="#custodial">Custodial deaths</a>
+      <a href="#cases">Landmark cases</a>
+      <a href="#judiciary">Judiciary delay</a>
+      <a href="#manual">Manual scavenging</a>
+      <a href="#housing">Housing & land</a>
+    </nav>
+    <div class="update-note">This page is maintained manually. Last updated: April 2025. If you have new data or cases to add, use the contribute link below.</div>
+  </aside>
+
+  <main class="content">
+
+    <div class="page-eyebrow">Documentation</div>
+    <h1>Caste Evidence</h1>
+    <p class="page-sub">For those who say caste oppression is "old fashioned" or "no longer exists" — this page exists. Government data. Documented cases. Judicial records. Updated regularly.</p>
+    <div class="live-note"><span class="live-dot"></span>Updated with NCRB 2022 data · More cases being added</div>
+
+    <!-- NCRB DATA -->
+    <div class="ev-section" id="ncrb">
+      <h2>NCRB data — crimes against Scheduled Castes</h2>
+      <p>The National Crime Records Bureau publishes annual data on crimes against SC/ST communities. The numbers below are from official government reports. They represent <strong>reported</strong> crimes — the actual figures are estimated to be significantly higher due to fear of retaliation and police non-registration.</p>
+
+      <div class="stat-row">
+        <div class="stat-block"><div class="stat-num">57,582</div><div class="stat-label">Crimes against SCs registered in 2022</div><div class="stat-src">NCRB Crime in India 2022</div></div>
+        <div class="stat-block"><div class="stat-num">+13%</div><div class="stat-label">Increase from 2021 (50,900 cases)</div><div class="stat-src">NCRB 2021 vs 2022</div></div>
+        <div class="stat-block warn"><div class="stat-num">27.4%</div><div class="stat-label">Conviction rate under SC/ST Act</div><div class="stat-src">NCRB 2022</div></div>
+        <div class="stat-block"><div class="stat-num">1.8 lac</div><div class="stat-label">Cases pending trial as of 2022</div><div class="stat-src">NCRB 2022</div></div>
+      </div>
+
+      <table class="data-table">
+        <thead><tr><th>Year</th><th>Cases Registered</th><th>Cases Chargesheeted</th><th>Conviction Rate</th><th>Pending Trial</th></tr></thead>
+        <tbody>
+          <tr><td>2022</td><td>57,582</td><td class="warn">88.4%</td><td class="bad">27.4%</td><td class="bad">1,84,303</td></tr>
+          <tr><td>2021</td><td>50,900</td><td class="warn">85.2%</td><td class="bad">26.3%</td><td class="bad">1,77,556</td></tr>
+          <tr><td>2020</td><td>50,291</td><td class="warn">84.6%</td><td class="bad">25.9%</td><td class="bad">1,73,200</td></tr>
+          <tr><td>2019</td><td>45,935</td><td class="warn">83.1%</td><td class="bad">27.1%</td><td class="bad">1,68,112</td></tr>
+          <tr><td>2018</td><td>42,793</td><td class="warn">82.4%</td><td class="bad">25.8%</td><td class="bad">1,58,441</td></tr>
+          <tr><td>2017</td><td>43,203</td><td class="warn">81.9%</td><td class="bad">26.5%</td><td class="bad">1,52,013</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--muted)">Source: NCRB Crime in India reports (2017–2022). <a href="https://ncrb.gov.in/crime-in-india" target="_blank" style="color:var(--accent)">Download directly from NCRB ↗</a></p>
+
+      <p style="margin-top:16px"><strong>What these numbers mean:</strong> A 27% conviction rate does not indicate false cases — it indicates systemic failure to prosecute. Police non-registration, witness intimidation, delayed investigation, and judicial pendency all contribute. The "misuse" narrative is contradicted by these numbers: if the Act were being weaponised, conviction rates would be higher, not lower.</p>
+    </div>
+
+    <!-- SEXUAL VIOLENCE -->
+    <div class="ev-section" id="sexual-violence">
+      <h2>Sexual violence against Dalit women</h2>
+      <p>Caste-based sexual violence operates differently from general sexual violence. It is often used as an instrument of caste assertion — to punish Dalit communities that challenge dominant-caste authority, to humiliate Dalit men through their women, and to reinforce hierarchies of purity and pollution.</p>
+
+      <div class="stat-row">
+        <div class="stat-block"><div class="stat-num">3,865</div><div class="stat-label">Rape cases against SC women in 2022</div><div class="stat-src">NCRB 2022</div></div>
+        <div class="stat-block"><div class="stat-num">10.6</div><div class="stat-label">Dalit women raped per day on average (2022)</div><div class="stat-src">NCRB derived</div></div>
+        <div class="stat-block warn"><div class="stat-num">16%</div><div class="stat-label">SC/ST rape conviction rate vs 27% national</div><div class="stat-src">NCRB 2022</div></div>
+      </div>
+
+      <p>Dalit women are underrepresented in police forces, lack access to legal aid, face hostile local administration, and are frequently pressured to reach out-of-court "settlements" with perpetrators. The caste identity of the perpetrator determines the response of the state.</p>
+      <p><strong>The Hathras case (2020):</strong> A 19-year-old Dalit woman was gang-raped and murdered in Hathras, UP. Police cremated her body at night without family consent — destroying forensic evidence. The UP government deployed 4,000 personnel to prevent protests. The accused were acquitted in 2021. The Special Investigation Team's report was sealed by the Allahabad High Court.</p>
+    </div>
+
+    <!-- CUSTODIAL DEATHS -->
+    <div class="ev-section" id="custodial">
+      <h2>Custodial deaths & police violence</h2>
+
+      <div class="stat-row">
+        <div class="stat-block"><div class="stat-num">2,544</div><div class="stat-label">Custodial deaths in India (2020–2022)</div><div class="stat-src">NCRB / NHRC</div></div>
+        <div class="stat-block warn"><div class="stat-num">6</div><div class="stat-label">Police convictions for custodial deaths in same period</div><div class="stat-src">NHRC Annual Report</div></div>
+        <div class="stat-block"><div class="stat-num">SC/ST</div><div class="stat-label">Disproportionate share of custodial death victims</div><div class="stat-src">NCRB data</div></div>
+      </div>
+
+      <p>The Indian police force is structurally upper-caste in its officer cadre. Studies by sociologist Vivek Kumar and others document how caste identity shapes police response — Dalit FIRs are routinely not registered, Dalit complainants are coerced to withdraw, and Dalit accused receive harsher treatment. The near-zero conviction rate for police officers in custodial death cases reflects judicial deference to state authority.</p>
+    </div>
+
+    <!-- LANDMARK CASES -->
+    <div class="ev-section" id="cases">
+      <h2>Documented cases</h2>
+      <p>These are cases that reached national attention. They represent a fraction of what happens daily. Each is followed by its judicial status — the most important part.</p>
+
+      <div class="cases-grid">
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">Hathras Gang Rape & Murder</div>
+            <div class="case-meta"><span class="case-year">2020</span><span class="case-type rape">Rape & Murder</span></div>
+          </div>
+          <div class="case-desc">A 19-year-old Dalit woman from Hathras, UP, was gang-raped and murdered by four upper-caste men. She died in Delhi's Safdarjung Hospital. Police cremated her body overnight without family consent, destroying forensic evidence. The state government initially denied rape.</div>
+          <span class="case-status acquitted">Accused acquitted (2021)</span>
+          <div class="case-judiciary">Judiciary: Allahabad HC sealed the SIT report. Trial court acquitted all four accused, citing lack of forensic evidence — the same evidence destroyed by police. No officer was held accountable for the illegal cremation.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">Rohith Vemula Institutional Killing</div>
+            <div class="case-meta"><span class="case-year">2016</span><span class="case-type atrocity">Institutional Caste</span></div>
+          </div>
+          <div class="case-desc">Rohith Vemula, a PhD scholar and Ambedkarite activist at Hyderabad Central University, died by suicide after being suspended along with four other Dalit students following pressure from the BJP student union and the Union Ministry of Education. His letter before death described the dehumanisation of Dalit students.</div>
+          <span class="case-status pending">No conviction · Inquiry ongoing</span>
+          <div class="case-judiciary">Judiciary: A magistrate inquiry in 2023 ruled it was not a suicide abetment case. The university administration and political figures who engineered his suspension faced no criminal charges. The SC/ST Act case filed by his mother remains pending.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">Unnao Rape Case</div>
+            <div class="case-meta"><span class="case-year">2017–2019</span><span class="case-type rape">Rape</span></div>
+          </div>
+          <div class="case-desc">A teenage Dalit girl alleged she was raped by BJP MLA Kuldeep Singh Sengar in Unnao, UP. Her father was jailed on false arms charges and died in custody. The victim and her lawyer were later hit by a truck in suspicious circumstances. The CBI took over after Supreme Court intervention.</div>
+          <span class="case-status convicted">Convicted — life imprisonment (2019)</span>
+          <div class="case-judiciary">Judiciary: The CBI court convicted Sengar. However, it took two years, Supreme Court intervention, and national outcry to reach trial. Multiple police officers who filed false cases against the victim's family were not prosecuted.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">Bhima Koregaon Violence</div>
+            <div class="case-meta"><span class="case-year">2018</span><span class="case-type atrocity">Atrocity & State Action</span></div>
+          </div>
+          <div class="case-desc">Violence broke out near the Bhima Koregaon war memorial — sacred to Dalits as a site where Mahar soldiers defeated the Peshwa army in 1818. Dalit pilgrims were attacked by Hindutva groups. The Maharashtra government and police, however, arrested 16 academics, lawyers, and activists (the Bhima Koregaon 16) under UAPA, calling them Maoist conspirators.</div>
+          <span class="case-status pending">Accused in jail for 5+ years · Trial ongoing</span>
+          <div class="case-judiciary">Judiciary: The accused remain in custody without trial completion. Father Stan Swamy, an 83-year-old Jesuit priest arrested in the case, died in custody in 2021 — denied bail despite severe illness. No one from the groups that attacked Dalit pilgrims has been convicted.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">Khairlanji Massacre</div>
+            <div class="case-meta"><span class="case-year">2006</span><span class="case-type murder">Murder</span></div>
+          </div>
+          <div class="case-desc">Four members of the Bhotmange family — a Dalit family in Khairlanji, Maharashtra — were killed by a mob of upper-caste villagers. The women were stripped and paraded naked before being murdered. The attack followed the family's refusal to leave their land and their support for a Dalit woman in a land dispute.</div>
+          <span class="case-status convicted">6 convicted — but SC/ST Act dropped</span>
+          <div class="case-judiciary">Judiciary: The sessions court convicted six people but under Indian Penal Code, not SC/ST Act — meaning the caste dimension was legally erased. The Bombay High Court upheld the conviction but reduced sentences. The Supreme Court restored some sentences. No one served the maximum sentence for what was clearly a caste atrocity.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">Lakhimpur Kheri — Dalit Girls Found Hanging</div>
+            <div class="case-meta"><span class="case-year">2021</span><span class="case-type murder">Suspected Murder</span></div>
+          </div>
+          <div class="case-desc">Two Dalit sisters, aged 15 and 17, were found hanging from a tree in Lakhimpur Kheri, UP. Their family alleged murder and sexual assault. Police initially claimed suicide.</div>
+          <span class="case-status pending">Chargesheet filed · Trial ongoing</span>
+          <div class="case-judiciary">Judiciary: The case proceeded only after sustained media pressure. Three accused were arrested. Trial is ongoing with significant delays. The pattern — police initially claiming suicide, slow investigation, prolonged trial — is consistent across Dalit cases.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- JUDICIARY DELAY -->
+    <div class="ev-section" id="judiciary">
+      <h2>Judiciary delay — the second injustice</h2>
+      <p>In caste atrocity cases, the judicial system functions as a second layer of violence. Even when cases reach trial, delay, acquittal, and procedural obstruction ensure that justice is routinely denied. This is not accidental — it reflects the caste composition of the judiciary.</p>
+
+      <div class="stat-row">
+        <div class="stat-block"><div class="stat-num">1.84 lac</div><div class="stat-label">SC/ST Act cases pending trial (2022)</div><div class="stat-src">NCRB 2022</div></div>
+        <div class="stat-block warn"><div class="stat-num">5–15 yrs</div><div class="stat-label">Average trial duration in atrocity cases</div><div class="stat-src">NHRC / Legal Aid reports</div></div>
+        <div class="stat-block"><div class="stat-num">3%</div><div class="stat-label">SC/ST representation in High Court judges</div><div class="stat-src">Law Ministry data 2023</div></div>
+      </div>
+
+      <div class="judiciary-points">
+        <div class="jp"><div class="jp-num">01</div><div class="jp-text"><strong>Dedicated courts not functional.</strong> The SC/ST Prevention of Atrocities Act mandates dedicated Special Courts for fast-track trials. As of 2022, only 194 of 406 mandated special courts were functional. Cases pile up in regular courts where they wait years for hearing dates.</div></div>
+        <div class="jp"><div class="jp-num">02</div><div class="jp-text"><strong>Police non-cooperation sabotages prosecution.</strong> The chargesheet quality in SC/ST cases is systematically poor — witnesses not examined, forensic evidence not collected, FIRs delayed. Since police are responsible for investigation and are overwhelmingly dominant-caste, this is structural, not accidental.</div></div>
+        <div class="jp"><div class="jp-num">03</div><div class="jp-text"><strong>Witnesses are coerced to turn hostile.</strong> In the period between registration and trial (often 5+ years), victims and witnesses face economic pressure, threats, and inducements to retract. In atrocity cases, the accused are often economically and politically dominant — their ability to intimidate witnesses over years is enormous.</div></div>
+        <div class="jp"><div class="jp-num">04</div><div class="jp-text"><strong>The 2018 Supreme Court judgment.</strong> In Subhash Kashinath Mahajan v. State of Maharashtra, the Supreme Court ruled that a preliminary inquiry was required before FIR registration under the SC/ST Act. This was widely condemned as gutting the law. Though the judgment was partly reversed by a Constitution Bench in 2019, the damage — in terms of police reluctance to register cases — persisted.</div></div>
+        <div class="jp"><div class="jp-num">05</div><div class="jp-text"><strong>Caste in the judiciary itself.</strong> A 2023 RTI analysis found that over 80% of High Court judges belong to upper castes. There are almost no Dalit judges in the Supreme Court or most High Courts. The judiciary that adjudicates caste atrocity cases is composed overwhelmingly of people from the communities that commit those atrocities.</div></div>
+        <div class="jp"><div class="jp-num">06</div><div class="jp-text"><strong>Acquittal used as "proof" of false cases.</strong> High acquittal rates in SC/ST Act cases are routinely cited by dominant-caste commentators as evidence of misuse. The causal chain is reversed: acquittals are produced by poor investigation, hostile witnesses, and judicial delay — they are the output of systemic failure, not the input of false complaints.</div></div>
+      </div>
+    </div>
+
+    <!-- MANUAL SCAVENGING -->
+    <div class="ev-section" id="manual">
+      <h2>Manual scavenging — the law that doesn't work</h2>
+      <div class="stat-row">
+        <div class="stat-block"><div class="stat-num">50,000+</div><div class="stat-label">Still engaged in manual scavenging (2021 est.)</div><div class="stat-src">Safai Karmachari Andolan</div></div>
+        <div class="stat-block"><div class="stat-num">330+</div><div class="stat-label">Sewer cleaning deaths (2016–2022)</div><div class="stat-src">Govt. figures — activists say far higher</div></div>
+        <div class="stat-block warn"><div class="stat-num">0</div><div class="stat-label">Employers convicted under the 2013 Act as of 2022</div><div class="stat-src">Ministry of Social Justice</div></div>
+      </div>
+      <p>Manual scavenging was abolished in 1993 and again by the Prohibition of Employment as Manual Scavengers and their Rehabilitation Act, 2013. Despite this, the practice continues — entirely within Dalit, Valmiki, and other lower-caste communities. The 2013 Act has resulted in zero employer convictions in a decade.</p>
+      <p>Deaths in sewers and septic tanks are classified as "accidents" rather than occupational murders — allowing municipalities and private employers to escape liability. The National Commission for Safai Karmacharis has repeatedly flagged this to government with no systematic response.</p>
+    </div>
+
+    <!-- HOUSING -->
+    <div class="ev-section" id="housing">
+      <h2>Housing discrimination & land rights</h2>
+      <div class="stat-row">
+        <div class="stat-block"><div class="stat-num">47%</div><div class="stat-label">Dalit households without pucca housing (Census 2011)</div><div class="stat-src">Census of India 2011</div></div>
+        <div class="stat-block warn"><div class="stat-num">3x</div><div class="stat-label">More likely to be denied rental housing with a Dalit-identified name</div><div class="stat-src">2022 Discrimination Study</div></div>
+      </div>
+      <p>Residential segregation by caste is near-total in rural India and significant in urban areas. "Dalit bastis" are physically separated from dominant-caste areas — with separate wells, roads, and often separate temples. This is spatial untouchability: the architecture of caste made concrete.</p>
+      <p>In cities, Dalit rental discrimination operates through surname identification — the same mechanism as job market discrimination. A 2022 study found landlords 3x more likely to reject enquiries from applicants with Dalit surnames even when income and employment were identical.</p>
+    </div>
+
+    <div class="contribute-box">
+      <h3>Help keep this page updated</h3>
+      <p>This page is maintained manually. If you have recent NCRB data, a documented case, or a judicial development to add — share it. The goal is to make denial impossible by making the evidence impossible to ignore.</p>
+      <a href="mailto:contribute@annihilationofcaste.com">Contribute data or a case → contribute@annihilationofcaste.com</a>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const sections=document.querySelectorAll('.ev-section');
+const links=document.querySelectorAll('.sidebar nav a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.sidebar nav a[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{threshold:0.2});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
