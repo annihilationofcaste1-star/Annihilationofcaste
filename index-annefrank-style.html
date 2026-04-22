@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annihilation of Caste — His story. His speech. His legacy.</title>
+<meta name="description" content="The official archive dedicated to Dr. B.R. Ambedkar's Annihilation of Caste — his life, his writings, and the movement he led for the dignity of every human being.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f5f0e6;
+  --paper:#faf6ed;
+  --ink:#1c1812;
+  --warm-brown:#6b5339;
+  --soft-brown:#8a7458;
+  --muted:#7d6d56;
+  --line:rgba(28,24,18,0.12);
+  --line-soft:rgba(28,24,18,0.06);
+  --accent:#8b2a1f;
+  --accent-deep:#5c1c15;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* LANGUAGE STRIP */
+.lang-strip{background:var(--ink);color:var(--cream);padding:9px 32px;display:flex;justify-content:flex-end;gap:20px;font-size:12px;letter-spacing:0.02em}
+.lang-strip a{color:var(--cream);text-decoration:none;opacity:0.65;transition:opacity 0.2s}
+.lang-strip a:hover,.lang-strip a.active{opacity:1}
+.lang-strip a.active{font-weight:500;border-bottom:1px solid var(--cream);padding-bottom:1px}
+
+/* NAV */
+nav{background:var(--paper);border-bottom:1px solid var(--line);padding:22px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:40;box-shadow:0 1px 0 rgba(0,0,0,0.02)}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;gap:2px}
+.nav-logo .primary{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:var(--ink);line-height:1;letter-spacing:-0.01em}
+.nav-logo .secondary{font-size:11px;letter-spacing:0.18em;color:var(--warm-brown);text-transform:uppercase}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{font-size:14px;color:var(--ink);text-decoration:none;letter-spacing:0.02em;transition:color 0.15s;position:relative;padding:4px 0}
+.nav-links a:hover,.nav-links a.current{color:var(--accent)}
+.nav-links a.current::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent)}
+.mob-menu-btn{display:none;width:40px;height:40px;background:none;border:1px solid var(--line);cursor:pointer;flex-direction:column;gap:4px;padding:11px;align-items:center;justify-content:center}
+.mob-menu-btn span{display:block;width:18px;height:1.5px;background:var(--ink)}
+.mob-nav{display:none;position:fixed;top:84px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:200;box-shadow:0 8px 24px rgba(28,24,18,0.08)}
+.mob-nav.open{display:block}
+.mob-nav a{display:block;padding:16px 24px;font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-soft)}
+.mob-nav a.accent{color:var(--accent);font-weight:500;background:rgba(139,42,31,0.04)}
+.mob-nav .mob-label{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);padding:14px 24px 6px;display:block;background:var(--cream)}
+
+/* HERO — Split layout with vintage book cover */
+.hero{position:relative;min-height:78vh;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;padding:100px 48px 0;overflow:hidden;background:var(--ink);color:var(--cream);align-items:center}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(139,42,31,0.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(107,83,57,0.06) 0%,transparent 50%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:680px;padding-bottom:100px}
+.hero-eyebrow{font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,240,230,0.6);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:rgba(245,240,230,0.35)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(48px,6.5vw,86px);line-height:1.0;letter-spacing:-0.02em;margin-bottom:24px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--cream)}
+.hero-intro{font-size:18px;line-height:1.65;max-width:560px;margin-bottom:36px;color:rgba(245,240,230,0.82);font-weight:300}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn-hero{padding:14px 28px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:all 0.2s;display:inline-flex;align-items:center;gap:10px;font-weight:500}
+.btn-hero.primary{background:var(--cream);color:var(--ink)}
+.btn-hero.primary:hover{background:var(--accent);color:var(--cream)}
+.btn-hero.ghost{background:transparent;color:var(--cream);border:1px solid rgba(245,240,230,0.5)}
+.btn-hero.ghost:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn-hero .arrow{transition:transform 0.2s}
+.btn-hero:hover .arrow{transform:translateX(4px)}
+
+/* === VINTAGE 1936 BOOK COVER === */
+.book-wrapper{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding-bottom:100px;perspective:1400px}
+.book{position:relative;width:min(360px,85%);aspect-ratio:3/4.2;transform:rotateY(-14deg) rotateX(3deg);transition:transform 0.8s cubic-bezier(0.23,1,0.32,1);transform-style:preserve-3d;filter:drop-shadow(25px 35px 45px rgba(0,0,0,0.5))}
+.book:hover{transform:rotateY(-6deg) rotateX(1deg) translateY(-8px)}
+
+/* Book spine (left edge) */
+.book::before{content:'';position:absolute;left:-22px;top:4px;bottom:4px;width:22px;background:linear-gradient(90deg,#3d1a12 0%,#5c2218 40%,#6b2820 80%,#5c2218 100%);transform:rotateY(90deg) translateX(-11px) translateZ(-11px);transform-origin:right center;box-shadow:inset -2px 0 4px rgba(0,0,0,0.4),inset 2px 0 3px rgba(0,0,0,0.25)}
+/* Book pages (right edge) */
+.book::after{content:'';position:absolute;right:-4px;top:0;bottom:0;width:8px;background:repeating-linear-gradient(0deg,#e8dcc3 0px,#e8dcc3 1px,#d4c3a3 1px,#d4c3a3 2px);transform:rotateY(-90deg) translateX(4px) translateZ(4px);transform-origin:left center;box-shadow:inset 1px 0 2px rgba(0,0,0,0.3)}
+
+.book-cover{position:absolute;inset:0;background:linear-gradient(135deg,#7a2519 0%,#5c1b12 50%,#4a140b 100%);box-shadow:inset 0 0 80px rgba(0,0,0,0.4),inset 0 0 0 1px rgba(212,175,140,0.15);padding:32px 26px;display:flex;flex-direction:column;justify-content:space-between;color:#e8d5b5;overflow:hidden;border-radius:2px 3px 3px 2px}
+
+/* Gold foil double border */
+.book-cover::before{content:'';position:absolute;inset:14px;border:1px solid rgba(212,175,140,0.55);pointer-events:none}
+.book-cover::after{content:'';position:absolute;inset:18px;border:0.5px solid rgba(212,175,140,0.3);pointer-events:none}
+
+/* Worn texture overlay */
+.book-texture{position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.03 0 0 0 0 0.02 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:0.6;pointer-events:none;mix-blend-mode:overlay}
+
+/* Darker corner shadows (wear) */
+.book-cover .corner{position:absolute;width:60px;height:60px;background:radial-gradient(circle at center,rgba(0,0,0,0.4) 0%,transparent 70%);pointer-events:none}
+.book-cover .corner.tl{top:0;left:0}
+.book-cover .corner.tr{top:0;right:0}
+.book-cover .corner.bl{bottom:0;left:0}
+.book-cover .corner.br{bottom:0;right:0}
+
+.book-top{text-align:center;position:relative;z-index:2}
+.book-publisher{font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(232,213,181,0.65);margin-bottom:6px}
+.book-publisher::before,.book-publisher::after{content:' · '}
+.book-ornament{font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(212,175,140,0.6);letter-spacing:0.1em;line-height:1;margin:4px 0 8px}
+
+.book-middle{text-align:center;position:relative;z-index:2;margin:auto 0}
+.book-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,3vw,38px);line-height:1.0;letter-spacing:0.01em;color:#f0dfc0;margin-bottom:4px;text-shadow:0 1px 2px rgba(0,0,0,0.6)}
+.book-title-2{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(28px,3vw,38px);line-height:1.0;letter-spacing:0.01em;color:#f0dfc0;margin-bottom:20px;text-shadow:0 1px 2px rgba(0,0,0,0.6)}
+.book-of{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:13px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(232,213,181,0.5);margin:6px 0}
+.book-divider{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0}
+.book-divider .line{width:40px;height:1px;background:rgba(212,175,140,0.5)}
+.book-divider .dot{width:5px;height:5px;background:rgba(212,175,140,0.7);border-radius:50%;transform:rotate(45deg);border-radius:1px}
+.book-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:0.05em;color:rgba(232,213,181,0.7);line-height:1.5;max-width:85%;margin:0 auto}
+
+.book-bottom{text-align:center;position:relative;z-index:2}
+.book-by{font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(232,213,181,0.55);margin-bottom:6px}
+.book-author{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;letter-spacing:0.08em;color:#f0dfc0;text-transform:uppercase;line-height:1.3}
+.book-author-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:rgba(232,213,181,0.5);margin-top:3px;letter-spacing:0.05em}
+.book-year{display:inline-block;margin-top:14px;padding-top:10px;border-top:0.5px solid rgba(212,175,140,0.3);font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:0.15em;color:rgba(212,175,140,0.7);min-width:80px}
+
+.book-caption{margin-top:20px;text-align:center;position:relative;z-index:2}
+.book-caption .badge{display:inline-block;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,240,230,0.5);padding:4px 10px;border:0.5px solid rgba(245,240,230,0.2);border-radius:1px}
+.book-caption .note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:rgba(245,240,230,0.5);margin-top:10px}
+
+/* Hero footer strip with key info */
+.hero-footer{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(12,10,8,0.85);backdrop-filter:blur(8px);color:var(--cream);padding:22px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;border-top:1px solid rgba(245,240,230,0.1)}
+.hero-fact{display:flex;flex-direction:column;gap:4px}
+.hero-fact-label{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,240,230,0.45)}
+.hero-fact-value{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;line-height:1.2}
+
+/* STORY SECTION — large image + text layout */
+.story-section{padding:100px 48px;max-width:1200px;margin:0 auto}
+.story-section h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,4.5vw,56px);line-height:1.1;letter-spacing:-0.015em;margin-bottom:40px;max-width:800px}
+.story-section h2 em{font-style:italic;color:var(--accent);font-weight:500}
+
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story-text p{font-size:17px;line-height:1.75;color:var(--ink);margin-bottom:20px;font-weight:400}
+.story-text p.lead{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--warm-brown);font-weight:400;line-height:1.5;margin-bottom:24px}
+.story-text .story-link{display:inline-flex;align-items:center;gap:10px;color:var(--accent);text-decoration:none;font-weight:500;font-size:15px;margin-top:16px;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.story-text .story-link:hover{border-bottom-color:var(--accent)}
+
+.story-image{position:relative;aspect-ratio:4/5}
+.story-image img{width:100%;height:100%;object-fit:cover;filter:sepia(20%) contrast(102%)}
+.story-image-caption{position:absolute;bottom:-32px;left:0;right:0;font-size:12px;color:var(--muted);font-style:italic;line-height:1.5}
+
+/* DIARY / TEXT CTA — featured block */
+.text-cta{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:100px 48px}
+.text-cta-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.text-visual{position:relative;aspect-ratio:3/4;background:var(--warm-brown);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:20px 20px 0 -4px var(--cream),20px 20px 0 -3px var(--line)}
+.text-visual::before{content:'';position:absolute;inset:40px;border:1px solid rgba(245,240,230,0.25)}
+.text-visual-inner{text-align:center;color:var(--cream);padding:40px;position:relative;z-index:1}
+.text-visual-inner .manuscript-mark{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:0.25em;opacity:0.65;margin-bottom:20px;text-transform:uppercase}
+.text-visual-inner h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;line-height:1.05;letter-spacing:-0.01em;margin-bottom:8px}
+.text-visual-inner h3 em{font-style:italic;display:block}
+.text-visual-inner .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;opacity:0.8;margin-bottom:32px}
+.text-visual-inner .author{font-size:12px;letter-spacing:0.2em;opacity:0.6;text-transform:uppercase}
+.text-visual-inner .author strong{display:block;font-size:16px;letter-spacing:0.1em;margin-top:4px;font-weight:500;opacity:1;font-family:'Cormorant Garamond',serif}
+
+.text-cta-content h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px}
+.text-cta-content h2 em{font-style:italic;color:var(--accent)}
+.text-cta-content p{font-size:16px;line-height:1.75;color:var(--ink);margin-bottom:18px}
+.text-cta-content p.intro{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--warm-brown);margin-bottom:20px;line-height:1.45}
+.text-cta-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn-light{background:var(--ink);color:var(--cream);padding:13px 26px;text-decoration:none;font-size:14px;letter-spacing:0.03em;font-weight:500;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-light:hover{background:var(--accent)}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--ink);padding:13px 26px;text-decoration:none;font-size:14px;letter-spacing:0.03em;font-weight:500;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{background:var(--ink);color:var(--cream)}
+
+/* DISCOVER GRID — story cards */
+.discover-section{padding:100px 48px;max-width:1300px;margin:0 auto}
+.discover-header{margin-bottom:60px;max-width:800px}
+.section-label{font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-brown);font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--line);max-width:80px}
+.discover-header h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4.5vw,54px);line-height:1.05;letter-spacing:-0.015em;margin-bottom:16px}
+.discover-header h2 em{font-style:italic;color:var(--accent)}
+.discover-header p{font-size:17px;line-height:1.7;color:var(--muted);max-width:600px}
+
+.discover-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.discover-card{text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);transition:all 0.3s;display:flex;flex-direction:column;overflow:hidden}
+.discover-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(28,24,18,0.08);border-color:var(--warm-brown)}
+.discover-card-image{aspect-ratio:3/2;background:var(--warm-brown);overflow:hidden;position:relative}
+.discover-card-image .bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(245,240,230,0.4);font-family:'Cormorant Garamond',serif;font-style:italic}
+.discover-card-image .pattern-1{background:linear-gradient(135deg,#6b5339 0%,#3d2e1f 100%)}
+.discover-card-image .pattern-2{background:linear-gradient(135deg,#8b2a1f 0%,#5c1c15 100%)}
+.discover-card-image .pattern-3{background:linear-gradient(135deg,#4a3925 0%,#1c1812 100%)}
+.discover-card-image .pattern-4{background:linear-gradient(135deg,#7d6d56 0%,#4a3925 100%)}
+.discover-card-image .pattern-5{background:linear-gradient(135deg,#6b5339 0%,#8b2a1f 100%)}
+.discover-card-image .pattern-6{background:linear-gradient(135deg,#3d2e1f 0%,#1c1812 100%)}
+.discover-card-image .big-text{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:72px;color:rgba(245,240,230,0.2);font-style:italic;letter-spacing:-0.03em;line-height:1}
+.discover-card-body{padding:24px 26px 28px;flex:1;display:flex;flex-direction:column}
+.discover-card-cat{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-brown);font-weight:500;margin-bottom:10px}
+.discover-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;line-height:1.2;letter-spacing:-0.01em;margin-bottom:10px;color:var(--ink)}
+.discover-card p{font-size:14px;line-height:1.65;color:var(--muted);flex:1}
+.discover-card-read{margin-top:16px;font-size:13px;color:var(--accent);font-weight:500;letter-spacing:0.02em;display:flex;align-items:center;gap:8px}
+
+/* QUOTE — large inset */
+.quote-section{background:var(--ink);color:var(--cream);padding:120px 48px;text-align:center;position:relative;overflow:hidden}
+.quote-section::before{content:'"';position:absolute;top:20px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:280px;color:var(--accent);opacity:0.2;line-height:1;font-weight:500}
+.quote-inner{max-width:900px;margin:0 auto;position:relative}
+.quote-inner blockquote{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(26px,4vw,44px);line-height:1.3;margin-bottom:36px;letter-spacing:-0.005em}
+.quote-inner blockquote em{color:var(--accent)}
+.quote-inner cite{font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,230,0.6);font-style:normal;display:flex;align-items:center;justify-content:center;gap:14px}
+.quote-inner cite::before,.quote-inner cite::after{content:'';width:40px;height:1px;background:rgba(245,240,230,0.3)}
+
+/* TIMELINE — vertical biography */
+.timeline-section{padding:100px 48px;max-width:900px;margin:0 auto}
+.timeline-header{margin-bottom:60px}
+.timeline-items{position:relative;padding-left:40px}
+.timeline-items::before{content:'';position:absolute;left:6px;top:12px;bottom:12px;width:1px;background:var(--line)}
+.tl-item{position:relative;padding-bottom:36px}
+.tl-item::before{content:'';position:absolute;left:-38px;top:8px;width:11px;height:11px;background:var(--paper);border:1.5px solid var(--warm-brown);border-radius:50%;transition:all 0.2s}
+.tl-item:hover::before{background:var(--accent);border-color:var(--accent);transform:scale(1.2)}
+.tl-item.milestone::before{background:var(--accent);border-color:var(--accent);width:13px;height:13px;left:-39px;top:7px}
+.tl-year{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--accent);line-height:1;margin-bottom:6px;font-style:italic}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:6px}
+.tl-desc{font-size:15px;line-height:1.7;color:var(--muted)}
+.tl-link{display:inline-block;margin-top:36px;color:var(--accent);text-decoration:none;font-size:15px;font-weight:500;border-bottom:1px solid var(--accent)}
+.tl-link:hover{color:var(--accent-deep)}
+
+/* MIRROR TEST CTA — signature feature */
+.mirror-cta{background:var(--accent);color:var(--cream);padding:100px 48px;position:relative;overflow:hidden}
+.mirror-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(245,240,230,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 50%,rgba(245,240,230,0.05) 0%,transparent 50%);pointer-events:none}
+.mirror-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.mirror-left .tag{display:inline-block;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,230,0.7);border:1px solid rgba(245,240,230,0.3);padding:4px 12px;margin-bottom:24px}
+.mirror-left h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1;letter-spacing:-0.02em;margin-bottom:24px}
+.mirror-left h2 em{font-style:italic}
+.mirror-left p{font-size:17px;line-height:1.7;color:rgba(245,240,230,0.92);margin-bottom:20px;font-weight:300}
+.mirror-btn{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:var(--ink);padding:16px 32px;text-decoration:none;font-size:15px;letter-spacing:0.02em;font-weight:500;margin-top:12px;transition:all 0.2s}
+.mirror-btn:hover{background:var(--ink);color:var(--cream);transform:translateX(4px)}
+
+.mirror-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(245,240,230,0.15);border:1px solid rgba(245,240,230,0.2)}
+.mirror-stat{background:var(--accent);padding:28px 24px;text-align:center}
+.mirror-stat .n{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:56px;line-height:1;margin-bottom:8px;color:var(--cream)}
+.mirror-stat .l{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,240,230,0.75)}
+
+/* VISIT (Education section) */
+.visit-section{padding:100px 48px;max-width:1200px;margin:0 auto}
+.visit-header{text-align:center;margin-bottom:64px;max-width:760px;margin-left:auto;margin-right:auto}
+.visit-header h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4.5vw,52px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px}
+.visit-header h2 em{font-style:italic;color:var(--accent)}
+.visit-header p{font-size:17px;color:var(--muted);line-height:1.7}
+
+.visit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.visit-card{padding:32px 28px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:14px;transition:all 0.25s;position:relative}
+.visit-card:hover{border-color:var(--warm-brown);background:var(--cream)}
+.visit-card .num{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--accent);letter-spacing:0.1em}
+.visit-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px;line-height:1.15;letter-spacing:-0.01em;color:var(--ink)}
+.visit-card p{font-size:15px;line-height:1.65;color:var(--muted);flex:1}
+.visit-card .link{font-size:13px;color:var(--accent);font-weight:500;letter-spacing:0.02em;display:flex;align-items:center;gap:8px;margin-top:4px}
+
+/* NEWSLETTER */
+.newsletter{background:var(--paper);border-top:1px solid var(--line);padding:80px 48px;text-align:center}
+.newsletter-inner{max-width:600px;margin:0 auto}
+.newsletter h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:36px;line-height:1.15;margin-bottom:12px;letter-spacing:-0.01em}
+.newsletter h3 em{font-style:italic;color:var(--accent)}
+.newsletter p{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:28px}
+.newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto}
+.newsletter-form input{flex:1;padding:14px 18px;border:1px solid var(--line);background:var(--cream);font-size:15px;font-family:inherit;color:var(--ink)}
+.newsletter-form input:focus{outline:none;border-color:var(--ink)}
+.newsletter-form button{background:var(--ink);color:var(--cream);border:none;padding:14px 24px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;letter-spacing:0.02em;transition:background 0.2s}
+.newsletter-form button:hover{background:var(--accent)}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(245,240,230,0.7);padding:72px 48px 32px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .logo{margin-bottom:20px}
+.footer-brand .logo .primary{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;color:var(--cream);display:block;line-height:1;letter-spacing:-0.01em;margin-bottom:4px}
+.footer-brand .logo .secondary{font-size:11px;letter-spacing:0.18em;color:rgba(245,240,230,0.5);text-transform:uppercase}
+.footer-brand p{font-size:14px;line-height:1.7;max-width:340px;margin-bottom:20px}
+.footer-col h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;color:var(--cream);margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{color:rgba(245,240,230,0.7);text-decoration:none;font-size:14px;transition:color 0.2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(245,240,230,0.1);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(245,240,230,0.4);flex-wrap:wrap;gap:16px}
+.footer-bottom .jai{color:var(--accent);font-weight:500;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic}
+
+/* FADE-UP */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:80px 32px 100px}
+  .hero-content{padding-bottom:0;max-width:100%}
+  .book-wrapper{padding-bottom:0}
+  .book{transform:rotateY(-10deg) rotateX(2deg);width:min(320px,80%)}
+  .story-grid,.text-cta-inner,.mirror-inner{grid-template-columns:1fr;gap:48px}
+  .text-visual{max-width:400px;margin:0 auto}
+  .discover-grid{grid-template-columns:repeat(2,1fr)}
+  .visit-grid{grid-template-columns:1fr}
+  .hero-footer{position:relative;grid-template-columns:repeat(2,1fr);gap:20px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:640px){
+  .lang-strip{padding:8px 16px;gap:14px;font-size:11px}
+  nav{padding:16px;flex-wrap:nowrap}
+  .nav-links{display:none}
+  .mob-menu-btn{display:flex}
+  .hero{padding:60px 20px 80px;gap:32px}
+  .hero h1{font-size:48px}
+  .book{transform:rotateY(-8deg) rotateX(1deg);width:min(280px,75%)}
+  .book-cover{padding:24px 20px}
+  .hero-footer{position:relative;padding:20px 24px;grid-template-columns:1fr 1fr;gap:16px}
+  .hero-fact-value{font-size:15px}
+  .story-section,.text-cta,.discover-section,.timeline-section,.mirror-cta,.visit-section,.newsletter{padding:64px 20px}
+  .discover-grid{grid-template-columns:1fr}
+  .quote-section{padding:72px 20px}
+  .quote-section::before{font-size:150px;top:10px}
+  .timeline-items{padding-left:30px}
+  .tl-item::before{left:-30px}
+  .tl-item.milestone::before{left:-31px}
+  .newsletter-form{flex-direction:column}
+  .newsletter-form button{padding:14px}
+  .mirror-stat .n{font-size:44px}
+  .footer-grid{grid-template-columns:1fr;gap:28px;padding:0}
+  footer{padding:56px 24px 28px}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .btn-hero{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="lang-strip">
+  <a href="index.html" class="active">English</a>
+  <a href="#" onclick="return false">हिन्दी</a>
+  <a href="#" onclick="return false">తెలుగు</a>
+  <a href="#" onclick="return false">मराठी</a>
+  <a href="#" onclick="return false">தமிழ்</a>
+</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <span class="primary">Annihilation of Caste</span>
+    <span class="secondary">The Archive · Est. 2026</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="current">His Story</a></li>
+    <li><a href="read.html">The Speech</a></li>
+    <li><a href="wiki.html">His Life</a></li>
+    <li><a href="quiz.html">Mirror Test</a></li>
+    <li><a href="unlearn.html">Unlearn</a></li>
+    <li><a href="evidence.html">Evidence</a></li>
+    <li><a href="resources.html">Library</a></li>
+  </ul>
+  <button class="mob-menu-btn" onclick="toggleMobNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-nav" id="mob-nav">
+  <span class="mob-label">Begin here</span>
+  <a href="quiz.html" class="accent">The Mirror Test</a>
+  <a href="unlearn.html" class="accent">Unlearn</a>
+  <span class="mob-label">His Story</span>
+  <a href="read.html">The Speech</a>
+  <a href="wiki.html">His Life</a>
+  <a href="evidence.html">Caste Today</a>
+  <a href="poetry.html">Dalit Poetry</a>
+  <a href="resources.html">Library</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Archive · Annihilation of Caste</div>
+    <h1>His story. His <em>speech.</em><br>His legacy.</h1>
+    <p class="hero-intro">The official archive dedicated to the life, writings, and enduring vision of Dr. Bhimrao Ramji Ambedkar — architect of the Indian Constitution, and the author of a speech so piercing that the organisers cancelled the event rather than let it be delivered.</p>
+    <div class="hero-ctas">
+      <a href="read.html" class="btn-hero primary">Read the speech <span class="arrow">→</span></a>
+      <a href="wiki.html" class="btn-hero ghost">His life, in detail <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="book-wrapper">
+    <div>
+      <div class="book">
+        <div class="book-cover">
+          <div class="book-texture"></div>
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+
+          <div class="book-top">
+            <div class="book-publisher">Bombay · Self-Published</div>
+            <div class="book-ornament">❦</div>
+          </div>
+
+          <div class="book-middle">
+            <div class="book-title">Annihilation</div>
+            <div class="book-of">of</div>
+            <div class="book-title-2">Caste</div>
+            <div class="book-divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+            <div class="book-subtitle">An undelivered address intended for the Jat-Pat-Todak Mandal · Lahore</div>
+          </div>
+
+          <div class="book-bottom">
+            <div class="book-by">By</div>
+            <div class="book-author">B. R. Ambedkar</div>
+            <div class="book-author-sub">M.A., Ph.D., D.Sc., Bar-at-Law</div>
+            <div class="book-year">MCMXXXVI</div>
+          </div>
+        </div>
+      </div>
+      <div class="book-caption">
+        <span class="badge">First edition · 1,500 copies</span>
+        <div class="note">Published at the author's own expense</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <div class="hero-fact">
+      <span class="hero-fact-label">Born</span>
+      <span class="hero-fact-value">14 April 1891 · Mhow</span>
+    </div>
+    <div class="hero-fact">
+      <span class="hero-fact-label">Written</span>
+      <span class="hero-fact-value">Annihilation of Caste, 1936</span>
+    </div>
+    <div class="hero-fact">
+      <span class="hero-fact-label">Passed</span>
+      <span class="hero-fact-value">6 December 1956 · Delhi</span>
+    </div>
+    <div class="hero-fact">
+      <span class="hero-fact-label">Legacy</span>
+      <span class="hero-fact-value">The Constitution of India</span>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <h2 class="fade-up">The speech they would not let him <em>deliver.</em></h2>
+  <div class="story-grid">
+    <div class="story-text fade-up">
+      <p class="lead">In 1936, a Hindu reform society invited Ambedkar to be the president of their annual conference in Lahore.</p>
+      <p>He prepared a speech. When the organisers read the draft, they were disturbed. Ambedkar was not merely asking Hindus to reform their behaviour — he was telling them their scriptures themselves were the source of caste. They asked him to soften the text.</p>
+      <p>He refused. The conference was cancelled. He published the speech himself at his own expense — including the full correspondence with the organisers — so the world would know not only what he had written, but why it was suppressed.</p>
+      <p>Nearly ninety years later, Annihilation of Caste remains one of the most important political texts ever written in India. Its argument — that caste cannot be reformed, only destroyed — continues to provoke and to clarify.</p>
+      <a href="read.html" class="story-link">Read the speech and its full history <span>→</span></a>
+    </div>
+    <div class="story-image fade-up">
+      <img src="assets/ambedkar-portrait.jpg" alt="Ambedkar at Columbia University">
+    </div>
+  </div>
+</section>
+
+<!-- THE TEXT CTA -->
+<section class="text-cta">
+  <div class="text-cta-inner">
+    <div class="text-visual fade-up">
+      <div class="text-visual-inner">
+        <div class="manuscript-mark">— Manuscript —</div>
+        <h3>Annihilation<em>of Caste</em></h3>
+        <div class="sub">The undelivered speech</div>
+        <div class="author">Written by<strong>B.R. Ambedkar</strong></div>
+      </div>
+    </div>
+    <div class="text-cta-content fade-up">
+      <h2>A speech that changed a <em>movement.</em></h2>
+      <p class="intro">Not a manifesto. Not a slogan. A thirty-thousand-word argument, written with the precision of a jurist and the fire of someone who had lived what he wrote about.</p>
+      <p>Read the full text with historical context, the Gandhi correspondence, and the story of why Hindu reformers suppressed the speech before a single word could be spoken aloud.</p>
+      <p>Ambedkar published it himself in May 1936, printing 1,500 copies. It was soon translated into six languages. It has never been out of print.</p>
+      <div class="text-cta-btns">
+        <a href="read.html" class="btn-light">Read the speech <span>→</span></a>
+        <a href="resources.html" class="btn-outline">All his writings <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOVER GRID -->
+<section class="discover-section">
+  <div class="discover-header fade-up">
+    <div class="section-label">Discover</div>
+    <h2>His life, his writings, his <em>enduring</em> vision.</h2>
+    <p>Ambedkar was a jurist, economist, social reformer, and the principal architect of the Indian Constitution. His writings across religion, law, economics, and history continue to define the terms of debate on caste, justice, and democracy.</p>
+  </div>
+  <div class="discover-grid">
+    <a href="wiki.html" class="discover-card fade-up">
+      <div class="discover-card-image pattern-1">
+        <div class="bg"><span class="big-text">Life</span></div>
+      </div>
+      <div class="discover-card-body">
+        <div class="discover-card-cat">Biography</div>
+        <h3>The most educated man of his generation</h3>
+        <p>Born the fourteenth child of a Dalit family, he earned three doctorates from Columbia and LSE. His life is the story of what dignity looks like when it will not be denied.</p>
+        <span class="discover-card-read">Explore his life <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="resources.html" class="discover-card fade-up">
+      <div class="discover-card-image pattern-2">
+        <div class="bg"><span class="big-text">Works</span></div>
+      </div>
+      <div class="discover-card-body">
+        <div class="discover-card-cat">Writings</div>
+        <h3>Twenty-two volumes of collected works</h3>
+        <p>From Annihilation of Caste to The Buddha and His Dhamma, his complete writings — freely available from the Government of India's archive.</p>
+        <span class="discover-card-read">Browse the library <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="evidence.html" class="discover-card fade-up">
+      <div class="discover-card-image pattern-3">
+        <div class="bg"><span class="big-text">Now</span></div>
+      </div>
+      <div class="discover-card-body">
+        <div class="discover-card-cat">Caste Today</div>
+        <h3>Why his warning still applies</h3>
+        <p>Official data, landmark cases, and the systemic delays in the judiciary. For anyone who claims caste no longer exists — the evidence speaks.</p>
+        <span class="discover-card-read">See the evidence <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="poetry.html" class="discover-card fade-up">
+      <div class="discover-card-image pattern-4">
+        <div class="bg"><span class="big-text">Voices</span></div>
+      </div>
+      <div class="discover-card-body">
+        <div class="discover-card-cat">Dalit Poetry</div>
+        <h3>What the law does not say, poetry does</h3>
+        <p>Poems from Dalit writers across eight Indian languages — Marathi, Tamil, Telugu, Hindi, Kannada, Punjabi, Bengali, English — with translations.</p>
+        <span class="discover-card-read">Read the poems <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="unlearn.html" class="discover-card fade-up">
+      <div class="discover-card-image pattern-5">
+        <div class="bg"><span class="big-text">Unlearn</span></div>
+      </div>
+      <div class="discover-card-body">
+        <div class="discover-card-cat">Practice</div>
+        <h3>A working guide to anti-caste consciousness</h3>
+        <p>Privilege audit. Stages of awareness. Understanding Dalit trauma. Concrete actions. This is not a comfort read.</p>
+        <span class="discover-card-read">Begin the work <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="quiz.html" class="discover-card fade-up">
+      <div class="discover-card-image pattern-6">
+        <div class="bg"><span class="big-text">Mirror</span></div>
+      </div>
+      <div class="discover-card-body">
+        <div class="discover-card-cat">Interactive</div>
+        <h3>The Mirror Test — how casteist are you?</h3>
+        <p>Fifteen questions across two axes: personal bias and systemic denial. Every answer reveals the research behind it. Most are surprised by their result.</p>
+        <span class="discover-card-read">Take the test <span>→</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner fade-up">
+    <blockquote>You cannot build anything on the foundation of caste. You cannot build a nation. You cannot build a morality. <em>Anything you will build on the foundation of caste will crack — and will never be a whole.</em></blockquote>
+    <cite>B.R. Ambedkar · Annihilation of Caste</cite>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-header fade-up">
+    <div class="section-label">His Life</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4.5vw,52px);line-height:1.05;letter-spacing:-0.015em;margin-bottom:16px">A life in <em style="font-style:italic;color:var(--accent)">six moments.</em></h2>
+    <p style="font-size:17px;color:var(--muted);line-height:1.7">Sixty-five years of struggle, scholarship, and refusal. A full biography awaits in the Wiki — these are the turning points.</p>
+  </div>
+  <div class="timeline-items">
+    <div class="tl-item milestone fade-up">
+      <div class="tl-year">1891</div>
+      <div class="tl-title">Born in Mhow</div>
+      <div class="tl-desc">Bhimrao Ramji Ambedkar is born on 14 April in the Central Provinces, the fourteenth child of a Mahar family. His early schooling is marked by the daily humiliations of untouchability — made to sit separately, denied water, denied dignity.</div>
+    </div>
+    <div class="tl-item milestone fade-up">
+      <div class="tl-year">1915 – 1923</div>
+      <div class="tl-title">Columbia and LSE</div>
+      <div class="tl-desc">Earns PhD from Columbia University (1917), MSc and DSc from the London School of Economics, and is called to the Bar at Gray's Inn — becoming one of the most educated Indians of his generation, and the first Dalit to achieve this level of international scholarship.</div>
+    </div>
+    <div class="tl-item milestone fade-up">
+      <div class="tl-year">1927</div>
+      <div class="tl-title">Mahad Satyagraha</div>
+      <div class="tl-desc">Leads thousands of Dalits in the Mahad Satyagraha, asserting their right to drink water from a public tank. Burns the Manusmriti — the Hindu text codifying caste hierarchy — in an act that becomes a symbol of the Dalit movement.</div>
+    </div>
+    <div class="tl-item milestone fade-up">
+      <div class="tl-year">1936</div>
+      <div class="tl-title">Annihilation of Caste</div>
+      <div class="tl-desc">Writes the speech that Hindu reformers will cancel before he can deliver it. Publishes it himself — along with the full suppression correspondence. The text becomes one of the most influential political works in South Asian history.</div>
+    </div>
+    <div class="tl-item milestone fade-up">
+      <div class="tl-year">1947 – 1951</div>
+      <div class="tl-title">Architect of the Constitution</div>
+      <div class="tl-desc">As Law Minister and chairman of the Drafting Committee, authors the Indian Constitution — enshrining Article 17's abolition of untouchability, fundamental rights, and affirmative action. Resigns in 1951 when the government stalls the Hindu Code Bill on women's rights.</div>
+    </div>
+    <div class="tl-item milestone fade-up">
+      <div class="tl-year">1956</div>
+      <div class="tl-title">The Great Conversion</div>
+      <div class="tl-desc">On 14 October, at Deekshabhoomi in Nagpur, embraces Buddhism along with 600,000 followers — the largest mass religious conversion in history. Dies 47 days later, on 6 December, while completing his final work, The Buddha and His Dhamma.</div>
+    </div>
+  </div>
+  <a href="wiki.html" class="tl-link">Read the full life story →</a>
+</section>
+
+<!-- MIRROR TEST CTA -->
+<section class="mirror-cta">
+  <div class="mirror-inner">
+    <div class="mirror-left fade-up">
+      <span class="tag">Signature · Most taken</span>
+      <h2>Am I a <em>casteist?</em></h2>
+      <p>Most people answer "no" without hesitation. The Mirror Test asks fifteen questions they've never been asked — about what they assume, what they feel, what they dismiss.</p>
+      <p>Two axes. Personal bias. Systemic denial. A compass that shows where you actually stand. Every answer reveals the research behind it.</p>
+      <a href="quiz.html" class="mirror-btn">Take the Mirror Test <span>→</span></a>
+    </div>
+    <div class="mirror-stats fade-up">
+      <div class="mirror-stat">
+        <div class="n">15</div>
+        <div class="l">Questions</div>
+      </div>
+      <div class="mirror-stat">
+        <div class="n">2</div>
+        <div class="l">Axes</div>
+      </div>
+      <div class="mirror-stat">
+        <div class="n">8</div>
+        <div class="l">Minutes</div>
+      </div>
+      <div class="mirror-stat">
+        <div class="n">0</div>
+        <div class="l">Judgment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION (Visit equivalent) -->
+<section class="visit-section">
+  <div class="visit-header fade-up">
+    <div class="section-label" style="justify-content:center">Continue</div>
+    <h2>Three paths for <em>deeper learning.</em></h2>
+    <p>This site is not meant to be read front to back. Choose your entry point, and follow the thread.</p>
+  </div>
+  <div class="visit-grid">
+    <a href="read.html" class="visit-card fade-up">
+      <span class="num">I.</span>
+      <h3>Read the original text</h3>
+      <p>The full 30,000-word speech, with historical context, the Gandhi correspondence, and the suppression story that preceded its publication. This is the source.</p>
+      <span class="link">Begin reading <span>→</span></span>
+    </a>
+    <a href="unlearn.html" class="visit-card fade-up">
+      <span class="num">II.</span>
+      <h3>Practice unlearning</h3>
+      <p>A working guide to anti-caste consciousness — with privilege audits, stages of awareness, self-reflection exercises, and concrete actions that do not stop at performative allyship.</p>
+      <span class="link">Begin the practice <span>→</span></span>
+    </a>
+    <a href="evidence.html" class="visit-card fade-up">
+      <span class="num">III.</span>
+      <h3>See the evidence</h3>
+      <p>NCRB data, landmark cases, the mechanics of judicial delay, and the ongoing practice of manual scavenging. For anyone who claims caste discrimination no longer exists.</p>
+      <span class="link">See the documentation <span>→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h3>Stay in the <em>conversation.</em></h3>
+    <p>New essays, translations, events, and updates to the archive — delivered monthly. No promotions. No noise. Just the work.</p>
+    <form class="newsletter-form" onsubmit="return false">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="primary">Annihilation of Caste</span>
+        <span class="secondary">The Archive · Est. 2026</span>
+      </div>
+      <p>An independent, non-commercial public resource dedicated to the life and thought of Dr. B.R. Ambedkar. Free to read. Free to share. Free to translate.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--accent)">Jai Bhim · जय भीम · జై భీమ్</p>
+    </div>
+    <div class="footer-col">
+      <h4>His Story</h4>
+      <ul>
+        <li><a href="wiki.html">Biography</a></li>
+        <li><a href="read.html">The Speech</a></li>
+        <li><a href="resources.html">22 Volumes</a></li>
+        <li><a href="poetry.html">Dalit Poetry</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Engage</h4>
+      <ul>
+        <li><a href="quiz.html">Mirror Test</a></li>
+        <li><a href="unlearn.html">Unlearn</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="resources.html">Library</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">Our mission</a></li>
+        <li><a href="#">Contribute</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Translations</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 annihilationofcaste.com · Public domain archive</span>
+    <span class="jai">— Educate, Agitate, Organise —</span>
+    <span>Built in solidarity</span>
+  </div>
+</footer>
+
+<script>
+function toggleMobNav(){document.getElementById('mob-nav').classList.toggle('open')}
+document.addEventListener('click',function(e){
+  var n=document.getElementById('mob-nav');
+  if(n&&n.classList.contains('open')&&!e.target.closest('nav')&&!e.target.closest('#mob-nav')){n.classList.remove('open')}
+});
+var obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

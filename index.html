@@ -3,166 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Annihilation of Caste — B.R. Ambedkar</title>
-<meta name="description" content="An undelivered speech that changed India. Read Ambedkar's Annihilation of Caste, take the Mirror Test quiz, and engage with the movement.">
+<title>Annihilation of Caste — The Text, The Evidence, The Mirror</title>
+<meta name="description" content="A living archive for understanding caste. Read Ambedkar's undelivered speech, take the Mirror Test, see the evidence, and begin unlearning.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #1a1209;
-    --paper: #f5f0e8;
-    --accent: #c0392b;
-    --gold: #b8860b;
-    --muted: #7a6e5f;
-    --border: rgba(26,18,9,0.12);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+:root{
+  --ink:#0f0a06;
+  --paper:#f4ece0;
+  --paper-deep:#ead9c2;
+  --accent:#b91c1c;
+  --gold:#a16207;
+  --muted:#78685a;
+  --line:rgba(15,10,6,0.15);
+  --line-soft:rgba(15,10,6,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-  .nav-logo{font-family:'Playfair Display',serif;font-size:15px;letter-spacing:0.02em;color:var(--ink);text-decoration:none}
-  .nav-links{display:flex;gap:28px;list-style:none}
-  .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
-  .nav-links a:hover{color:var(--ink)}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.4;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.04 0 0 0 0 0.02 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
 
-  /* HERO */
-  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 39px,var(--border) 39px,var(--border) 40px);opacity:0.4;pointer-events:none}
-  .hero-content{max-width:640px;position:relative;z-index:2}
-  .hero-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px}
-  .hero-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent)}
-  h1{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,88px);line-height:1.0;font-weight:700;margin-bottom:8px;letter-spacing:-0.02em}
-  h1 em{font-style:italic;color:var(--accent)}
-  .hero-year{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);color:var(--muted);font-weight:400;margin-bottom:28px}
-  .hero-desc{font-size:17px;color:var(--muted);max-width:460px;line-height:1.75;margin-bottom:40px}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-  .btn-primary{background:var(--ink);color:var(--paper);padding:13px 28px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:background 0.2s;font-family:'DM Sans',sans-serif;font-weight:500}
-  .btn-primary:hover{background:var(--accent)}
-  .btn-secondary{border:1px solid var(--ink);color:var(--ink);padding:13px 28px;border-radius:2px;text-decoration:none;font-size:14px;letter-spacing:0.04em;transition:all 0.2s;font-family:'DM Sans',sans-serif}
-  .btn-secondary:hover{background:var(--ink);color:var(--paper)}
-  .hero-aside{position:absolute;right:40px;top:50%;transform:translateY(-50%);max-width:280px;text-align:right;display:none}
-  @media(min-width:900px){.hero-aside{display:block}}
-  .hero-aside blockquote{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;line-height:1.6;color:var(--ink);margin-bottom:12px}
-  .hero-aside cite{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase}
+.top-strip{position:fixed;top:0;left:0;right:0;background:var(--ink);color:var(--paper);padding:6px 32px;z-index:50;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase}
+.top-strip .edition{opacity:0.6}
+.top-strip .live{display:flex;align-items:center;gap:6px}
+.top-strip .live::before{content:'';width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 
-  /* MARQUEE */
-  .marquee-wrap{background:var(--ink);color:var(--paper);padding:16px 0;overflow:hidden;white-space:nowrap}
-  .marquee-track{display:inline-flex;align-items:center;animation:marquee 80s linear infinite}
-  .marquee-track .q{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;padding:0 32px;opacity:0.85;color:var(--paper)}
-  .marquee-track .src{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0 8px;opacity:0.7;flex-shrink:0}
-  .marquee-track .src::before{content:'— '}
-  .marquee-track .src::after{content:' ·';margin-left:24px;opacity:0.3}
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+nav{position:fixed;top:22px;left:0;right:0;height:62px;z-index:49;background:rgba(244,236,224,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em}
+.nav-logo em{font-style:italic;color:var(--accent);font-weight:400}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a.accent{color:var(--accent);font-weight:500}
+.mob-menu-btn{display:none;width:36px;height:36px;background:none;border:1px solid var(--line);border-radius:2px;cursor:pointer;flex-direction:column;gap:4px;padding:10px;align-items:center;justify-content:center}
+.mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink)}
+.mob-nav{display:none;position:fixed;top:84px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:200;padding:4px 0;box-shadow:0 8px 24px rgba(15,10,6,0.08)}
+.mob-nav.open{display:block}
+.mob-nav a{display:block;padding:14px 24px;font-size:15px;color:var(--muted);text-decoration:none;border-bottom:0.5px solid var(--line-soft);font-family:'IBM Plex Sans',sans-serif}
+.mob-nav a.accent{color:var(--accent);font-weight:500;background:rgba(185,28,28,0.04)}
+.mob-nav .mob-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding:12px 24px 6px;display:block;background:var(--paper-deep);border-bottom:0.5px solid var(--line-soft)}
 
-  /* SECTIONS */
-  section{padding:80px 40px}
-  .section-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-  h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);line-height:1.2;margin-bottom:16px}
+.hero{min-height:calc(100vh - 84px);position:relative;padding:120px 32px 80px;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;z-index:2}
 
-  /* PULL QUOTE */
-  .pullquote-section{background:var(--ink);color:var(--paper);text-align:center}
-  .pullquote-section blockquote{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,32px);font-style:italic;line-height:1.5;max-width:760px;margin:0 auto 20px}
-  .pullquote-section cite{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;opacity:0.5}
+.hero-left{position:relative}
+.hero-meta{display:flex;align-items:center;gap:16px;margin-bottom:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase}
+.hero-meta .tag{background:var(--accent);color:var(--paper);padding:4px 12px;border-radius:1px;font-weight:500}
+.hero-meta .byline{color:var(--muted)}
 
-  /* CARDS */
-  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;margin-top:40px}
-  .card{background:var(--paper);border:1px solid var(--border);padding:32px 28px;transition:transform 0.2s,box-shadow 0.2s}
-  .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,18,9,0.1)}
-  .card-num{font-family:'Playfair Display',serif;font-size:48px;color:var(--border);line-height:1;margin-bottom:16px;font-weight:700}
-  .card h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:10px;font-weight:400}
-  .card p{font-size:14px;color:var(--muted);line-height:1.7}
-  .card-link{display:inline-block;margin-top:16px;font-size:13px;color:var(--accent);text-decoration:none;letter-spacing:0.04em}
-  .card-link:hover{text-decoration:underline}
+.hero-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(64px,11vw,168px);line-height:0.85;letter-spacing:-0.04em;margin-bottom:20px;position:relative}
+.hero-title .word-1{display:block}
+.hero-title .word-2{display:block;font-style:italic;font-weight:400;color:var(--accent);font-size:0.92em;padding-left:0.15em;position:relative}
+.hero-title .strike{position:absolute;left:-4%;right:-4%;top:44%;height:6px;background:var(--ink);transform:scaleX(0);transform-origin:left;animation:strike 1.4s 0.6s ease-out forwards;opacity:0.9}
+@keyframes strike{to{transform:scaleX(1)}}
 
-  /* QUIZ CTA */
-  .quiz-cta{background:linear-gradient(135deg,#2c1810 0%,#1a1209 100%);color:var(--paper);border-radius:4px;padding:60px 48px;display:flex;flex-direction:column;gap:20px;align-items:flex-start;position:relative;overflow:hidden;margin:0 40px 80px}
-  .quiz-cta::before{content:'CASTE METER';position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);font-size:80px;font-family:'Playfair Display',serif;opacity:0.04;white-space:nowrap;pointer-events:none}
-  .quiz-badge{background:var(--accent);color:#fff;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:2px;font-weight:500}
-  .quiz-cta h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);max-width:500px;line-height:1.2;margin-bottom:0}
-  .quiz-cta p{font-size:15px;opacity:0.65;max-width:460px;line-height:1.7}
-  .quiz-cta .btn-primary{background:var(--accent);color:#fff}
-  .quiz-cta .btn-primary:hover{background:#e74c3c}
+.hero-subtitle{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(20px,2.5vw,28px);color:var(--muted);margin-bottom:40px;max-width:560px;line-height:1.35}
 
-  /* SPECTRUM PREVIEW */
-  .spectrum-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#c0392b,#e67e22,#f1c40f,#27ae60,#1a5c3a);margin:16px 0 8px;max-width:400px}
-  .spectrum-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);max-width:400px;letter-spacing:0.04em}
+.hero-desc{font-size:16px;color:var(--ink);line-height:1.75;max-width:520px;margin-bottom:40px;font-weight:300}
+.hero-desc strong{font-weight:500}
 
-  /* NEWSLETTER */
-  .newsletter{border-top:1px solid var(--border);padding-top:60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-  .newsletter-form{display:flex;gap:8px}
-  .newsletter-form input{padding:11px 16px;border:1px solid var(--border);background:transparent;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);width:240px;border-radius:2px}
-  .newsletter-form input:focus{outline:none;border-color:var(--ink)}
-  .newsletter-form button{background:var(--ink);color:var(--paper);border:none;padding:11px 20px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;border-radius:2px;transition:background 0.2s}
-  .newsletter-form button:hover{background:var(--accent)}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{padding:14px 28px;text-decoration:none;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;font-weight:500;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;border-radius:1px}
+.btn-primary{background:var(--ink);color:var(--paper);border:1px solid var(--ink)}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--accent)}
+.btn .arrow{transition:transform 0.2s}
+.btn:hover .arrow{transform:translateX(3px)}
 
-  /* FOOTER */
-  footer{background:var(--ink);color:rgba(245,240,232,0.5);padding:40px;font-size:13px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  footer a{color:rgba(245,240,232,0.5);text-decoration:none}
-  footer a:hover{color:var(--paper)}
+.hero-right{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;gap:28px}
 
-  /* MOBILE */
-  @media(max-width:640px){
-    nav{padding:16px 20px}
-    .nav-links{display:none}
-    .hero{padding:100px 20px 60px}
-    section{padding:60px 20px}
-    .quiz-cta{margin:0 20px 60px;padding:40px 24px}
-  }
+/* ARCHIVAL FILE CARD */
+.file-card{position:relative;background:var(--paper-deep);border:1.5px solid var(--ink);padding:0;transform:rotate(1deg);box-shadow:7px 7px 0 var(--ink),7px 7px 0 1.5px var(--accent);transition:transform 0.4s ease}
+.file-card:hover{transform:rotate(0)}
+.file-card::before{content:'';position:absolute;top:-1.5px;left:-1.5px;right:-1.5px;height:10px;background:repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 14px,transparent 14px,transparent 22px)}
+.file-card-top{padding:20px 22px 14px;border-bottom:1.5px solid var(--ink);display:flex;justify-content:space-between;align-items:center;background:var(--paper);margin-top:10px}
+.file-card-top .file-no{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase}
+.file-card-top .file-class{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--accent);font-weight:500;text-transform:uppercase;padding:3px 8px;border:1px solid var(--accent);border-radius:1px}
+.file-card-body{padding:22px;position:relative}
 
-  /* ANIMATIONS */
-  .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
-  .fade-up.visible{opacity:1;transform:none}
+.file-portrait{position:relative;aspect-ratio:4/5;background:var(--paper);border:1px solid var(--line);overflow:hidden;margin-bottom:18px}
+.file-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 12%;filter:grayscale(100%) contrast(115%) sepia(25%) brightness(0.98)}
+.file-portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,10,6,0.25) 100%);pointer-events:none}
+.file-stamp{position:absolute;top:14px;right:14px;width:82px;height:82px;border:2px solid var(--accent);color:var(--accent);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.2em;line-height:1.3;text-transform:uppercase;transform:rotate(-10deg);opacity:0.9;background:rgba(244,236,224,0.25);text-align:center;padding:4px;backdrop-filter:blur(2px)}
+.file-stamp strong{font-size:13px;font-weight:700;letter-spacing:0.05em;display:block;margin:2px 0}
 
-/* ── RESPONSIVE BASE ───────────────────────────────────────────────── */
-@media(max-width:768px){
-  nav{padding:0 16px;height:52px}
-  .nav-logo{font-size:13px}
+.file-name{font-family:'Fraunces',serif;font-weight:700;font-size:26px;line-height:1.02;color:var(--ink);margin-bottom:4px;letter-spacing:-0.015em}
+.file-years{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.12em;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+
+.file-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.file-field{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:baseline}
+.file-field-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;font-weight:500}
+.file-field-value{font-size:13px;color:var(--ink);line-height:1.4;border-bottom:1px dotted var(--line);padding-bottom:3px}
+.file-field-value em{font-style:italic;color:var(--accent);font-weight:500}
+
+.file-footer{padding:14px 22px;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.file-footer .sign{color:var(--accent);font-weight:500}
+
+.side-pull{background:var(--ink);color:var(--paper);padding:22px 24px 20px;position:relative;transform:rotate(-1.5deg);box-shadow:-6px 6px 0 rgba(185,28,28,0.25);border:1px solid var(--accent);transition:transform 0.4s ease}
+.side-pull:hover{transform:rotate(0)}
+.side-pull::before{content:'"';position:absolute;top:-18px;left:18px;font-family:'Fraunces',serif;font-size:80px;color:var(--accent);line-height:1;font-weight:900;opacity:0.85}
+.side-pull p{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:16px;line-height:1.4;margin-bottom:12px;position:relative;z-index:1}
+.side-pull cite{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;font-style:normal}
+
+.ticker{background:var(--ink);color:var(--paper);padding:18px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:3;border-top:1px solid var(--accent);border-bottom:1px solid var(--accent)}
+.ticker-track{display:inline-flex;align-items:center;animation:scroll 90s linear infinite}
+.ticker-track .q{font-family:'Fraunces',serif;font-style:italic;font-size:17px;padding:0 36px;opacity:0.95}
+.ticker-track .src{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);padding:0 8px}
+.ticker-track .src::before{content:'— '}
+.ticker-track .dot{opacity:0.3;padding:0 14px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.stats-section{padding:100px 32px;position:relative;z-index:2;background:var(--paper-deep);border-bottom:1px solid var(--line)}
+.stats-header{max-width:800px;margin:0 auto 60px}
+.section-marker{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.marker-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;font-weight:500}
+.marker-line{flex:1;height:1px;background:var(--line)}
+.marker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase}
+.stats-header h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px}
+.stats-header h2 em{font-style:italic;color:var(--accent);font-weight:400}
+.stats-header p{font-size:16px;color:var(--muted);max-width:580px;line-height:1.75}
+
+.stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.stat-cell{padding:36px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);position:relative;transition:background 0.3s}
+.stat-cell:hover{background:var(--paper-deep)}
+.stat-cell .num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(44px,6vw,72px);line-height:1;color:var(--ink);margin-bottom:12px;letter-spacing:-0.03em}
+.stat-cell .num .unit{font-size:0.5em;color:var(--accent);font-weight:400;font-style:italic;margin-left:4px}
+.stat-cell .label{font-size:14px;color:var(--ink);line-height:1.5;margin-bottom:10px;font-weight:400}
+.stat-cell .source{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+
+.paths-section{padding:100px 32px;position:relative;z-index:2}
+.paths-header{max-width:800px;margin:0 auto 60px}
+.paths-header h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px}
+.paths-header h2 em{font-style:italic;color:var(--accent);font-weight:400}
+.paths-header p{font-size:16px;color:var(--muted);max-width:580px;line-height:1.75}
+
+.paths-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.path-card{background:var(--paper);padding:44px 36px;position:relative;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:14px;min-height:280px}
+.path-card:hover{background:var(--ink);color:var(--paper)}
+.path-card:hover .path-arrow{transform:translate(6px,-6px);color:var(--accent)}
+.path-card:hover .path-num{color:var(--accent)}
+.path-card:hover .path-desc{color:rgba(244,236,224,0.75)}
+.path-card:hover .path-meta{color:rgba(244,236,224,0.5);border-color:rgba(244,236,224,0.2)}
+.path-header{display:flex;justify-content:space-between;align-items:flex-start}
+.path-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.1em;transition:color 0.3s}
+.path-arrow{font-family:'Fraunces',serif;font-size:28px;line-height:1;color:var(--muted);transition:all 0.3s}
+.path-title{font-family:'Fraunces',serif;font-weight:700;font-size:32px;line-height:1.05;letter-spacing:-0.02em;margin-top:auto}
+.path-title em{font-style:italic;color:var(--accent);font-weight:400}
+.path-desc{font-size:14px;line-height:1.65;color:var(--muted);transition:color 0.3s}
+.path-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;padding-top:12px;border-top:1px solid var(--line);transition:all 0.3s}
+
+.path-card.featured{background:var(--accent);color:var(--paper)}
+.path-card.featured:hover{background:var(--ink)}
+.path-card.featured .path-num,.path-card.featured .path-arrow,.path-card.featured .path-desc,.path-card.featured .path-meta{color:rgba(244,236,224,0.75)}
+.path-card.featured .path-title em{color:var(--paper);font-weight:400}
+.path-card.featured .path-meta{border-color:rgba(244,236,224,0.25)}
+.path-card.featured:hover .path-num,.path-card.featured:hover .path-arrow{color:var(--accent)}
+
+.quote-section{background:var(--ink);color:var(--paper);padding:140px 32px;position:relative;z-index:2;overflow:hidden}
+.quote-section::before{content:'"';position:absolute;top:-40px;left:32px;font-family:'Fraunces',serif;font-size:400px;color:var(--accent);opacity:0.1;line-height:1;font-weight:900}
+.quote-wrap{max-width:1100px;margin:0 auto;position:relative}
+.quote-wrap blockquote{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:clamp(26px,4.5vw,52px);line-height:1.2;letter-spacing:-0.01em;margin-bottom:32px;max-width:900px}
+.quote-wrap blockquote em{color:var(--accent);font-style:italic}
+.quote-wrap cite{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(244,236,224,0.5);display:flex;align-items:center;gap:12px}
+.quote-wrap cite::before{content:'';width:40px;height:1px;background:var(--accent)}
+
+.featured-section{padding:120px 32px;position:relative;z-index:2;background:var(--paper-deep);border-top:3px solid var(--accent)}
+.featured-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.featured-left .alert{display:inline-block;background:var(--accent);color:var(--paper);padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;border-radius:1px}
+.featured-left h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(36px,5.5vw,64px);line-height:1;letter-spacing:-0.03em;margin-bottom:24px}
+.featured-left h2 em{font-style:italic;color:var(--accent);font-weight:400}
+.featured-left p{font-size:17px;color:var(--ink);line-height:1.7;margin-bottom:16px}
+.featured-left p.intro{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--muted);margin-bottom:24px;font-weight:400;line-height:1.4}
+.featured-cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:16px 32px;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin-top:16px;font-weight:500;transition:all 0.2s}
+.featured-cta:hover{background:var(--accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+.featured-right{position:relative}
+.meter-preview{background:var(--paper);border:1px solid var(--line);padding:36px;position:relative}
+.meter-preview::before{content:'PREVIEW';position:absolute;top:-10px;left:20px;background:var(--paper-deep);padding:0 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--muted)}
+.meter-q{font-family:'Fraunces',serif;font-size:18px;line-height:1.4;margin-bottom:24px;font-weight:400}
+.meter-options{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.meter-opt{padding:11px 16px;border:1px solid var(--line);font-size:13px;color:var(--muted);border-radius:1px}
+.meter-opt.demo-picked{background:#fce8e8;border-color:var(--accent);color:#7a1818}
+.meter-demo-result{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;padding-top:16px;border-top:1px dashed var(--line)}
+.meter-demo-result strong{color:var(--accent);font-weight:500}
+
+footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;position:relative;z-index:2}
+.footer-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-brand h3{font-family:'Fraunces',serif;font-weight:900;font-size:32px;color:var(--paper);margin-bottom:16px;letter-spacing:-0.02em}
+.footer-brand h3 em{font-style:italic;color:var(--accent);font-weight:400}
+.footer-brand p{font-size:14px;line-height:1.65;max-width:360px;margin-bottom:20px}
+.footer-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(244,236,224,0.4);margin-bottom:18px;font-weight:500}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{color:rgba(244,236,224,0.7);text-decoration:none;font-size:14px;transition:color 0.2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:32px;border-top:1px solid rgba(244,236,224,0.1);display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(244,236,224,0.4);flex-wrap:wrap;gap:16px}
+.footer-bottom .jai-bhim{color:var(--accent);font-weight:500}
+
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity 0.8s ease,transform 0.8s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:110px 20px 60px}
+  .hero-right{order:-1;gap:20px}
+  .file-card{transform:rotate(0.5deg);max-width:480px;margin:0 auto}
+  .side-pull{transform:rotate(-0.8deg);max-width:480px;margin:0 auto}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .paths-grid{grid-template-columns:1fr}
+  .featured-wrap{grid-template-columns:1fr;gap:40px}
+  .footer-wrap{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:640px){
+  .top-strip{padding:6px 16px;font-size:9px}
+  .top-strip .edition{display:none}
+  nav{padding:0 16px}
   .nav-links{display:none}
-  /* Mobile hamburger menu */
-  .mob-menu-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:none;border:0.5px solid var(--border);border-radius:2px;cursor:pointer;flex-direction:column;gap:4px;padding:8px}
-  .mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink);transition:all 0.2s}
-  .mob-nav{display:none;position:fixed;top:52px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--border);z-index:99;padding:8px 0}
-  .mob-nav.open{display:block}
-  .mob-nav a{display:block;padding:12px 20px;font-size:14px;color:var(--muted);text-decoration:none;border-bottom:0.5px solid var(--border);letter-spacing:0.03em}
-  .mob-nav a:last-child{border-bottom:none}
-  .mob-nav a:hover,.mob-nav a.current{color:var(--ink);background:var(--surface)}
-  .mob-nav a.featured{color:var(--accent);font-weight:500}
-  .mob-nav .mob-section-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:12px 20px 4px;display:block;background:var(--surface)}
-}
-@media(min-width:769px){
-  .mob-menu-btn{display:none}
-  .mob-nav{display:none!important}
-}
-
-@media(max-width:768px){
-  .hero{padding:80px 20px 48px;min-height:auto}
-  .hero-aside{display:none}
-  h1{font-size:48px}
-  .hero-year{font-size:20px}
-  .hero-desc{font-size:15px}
-  .hero-ctas{flex-direction:column;gap:10px}
-  .btn-primary,.btn-secondary{text-align:center;width:100%;padding:14px 20px;font-size:15px}
-  .marquee-track .q{font-size:13px;padding:0 20px}
-  section{padding:48px 20px}
-  .cards-grid{grid-template-columns:1fr;gap:12px}
-  .quiz-cta{margin:0 0 48px;padding:32px 20px;border-radius:0}
-  .newsletter{flex-direction:column;gap:16px}
-  .newsletter-form{flex-direction:column;width:100%}
-  .newsletter-form input{width:100%}
-  .newsletter-form button{width:100%;padding:12px}
-  footer{flex-direction:column;gap:12px;text-align:center}
+  .mob-menu-btn{display:flex}
+  .hero{padding:110px 20px 48px}
+  .hero-right{gap:16px}
+  .file-card{transform:rotate(0);box-shadow:5px 5px 0 var(--ink),5px 5px 0 1.5px var(--accent)}
+  .file-card-body{padding:18px}
+  .file-name{font-size:22px}
+  .file-stamp{width:64px;height:64px;font-size:7px}
+  .file-stamp strong{font-size:11px}
+  .side-pull{transform:rotate(0);padding:18px 20px 16px}
+  .hero-subtitle{font-size:20px}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center;padding:16px 20px}
+  .stats-section,.paths-section,.featured-section{padding:72px 20px}
+  .stats-grid{grid-template-columns:1fr;border-left:none;border-top:none}
+  .stat-cell{border-left:1px solid var(--line);border-top:1px solid var(--line)}
+  .quote-section{padding:80px 20px}
+  .quote-section::before{font-size:200px;top:-20px}
+  .featured-wrap{gap:32px}
+  .meter-preview{padding:24px}
+  .footer-wrap{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+  .ticker-track .q{font-size:15px;padding:0 20px}
 }
 </style>
 </head>
 <body>
 
+<div class="top-strip">
+  <span class="edition">Edition 01 · A living archive</span>
+  <span>Annihilation of Caste</span>
+  <span class="live">Updated regularly</span>
+</div>
+
 <nav>
-  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="current">Home</a></li>
-    <li><a href="text.html">The Text</a></li>
+  <a class="nav-logo" href="index.html">Annihilation of <em>Caste</em></a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="read.html">Read</a></li>
     <li><a href="quiz.html">Mirror Test</a></li>
     <li><a href="evidence.html">Evidence</a></li>
     <li><a href="wiki.html">Wiki</a></li>
@@ -170,171 +270,260 @@
     <li><a href="unlearn.html">Unlearn</a></li>
     <li><a href="resources.html">Resources</a></li>
   </ul>
-  <button class="mob-menu-btn" onclick="toggleMobNav()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="mob-menu-btn" onclick="toggleMobNav()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-nav" id="mob-nav">
-    <span class="mob-section-label">Start here</span>
-    <a href="quiz.html" class="featured">Mirror Test</a>
-    <a href="unlearn.html" class="featured">Unlearn</a>
-
-    <span class="mob-section-label">More pages</span>
-    <a href="index.html" class="current">Home</a>
-    <a href="text.html">The Text</a>
-    <a href="evidence.html">Evidence</a>
-    <a href="wiki.html">Wiki</a>
-    <a href="poetry.html">Poetry</a>
-    <a href="resources.html">Resources</a>
+  <span class="mob-label">Start here</span>
+  <a href="quiz.html" class="accent">Mirror Test — Am I casteist?</a>
+  <a href="unlearn.html" class="accent">Unlearn — The path forward</a>
+  <span class="mob-label">Read & research</span>
+  <a href="read.html" class="accent">Read the Speech</a>
+  <a href="evidence.html">Caste Evidence</a>
+  <a href="wiki.html">Ambedkar Wiki</a>
+  <a href="poetry.html">Dalit Poetry</a>
+  <a href="resources.html">Library</a>
 </div>
 
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">B.R. Ambedkar</div>
-    <h1>Annihilation<br>of <em>Caste</em></h1>
-    <div class="hero-year">The undelivered speech.</div>
-    <p class="hero-desc">A text that was never spoken aloud — yet became one of the most radical challenges to social hierarchy in modern history. Read it. Understand it. Act on it.</p>
+  <div class="hero-left">
+    <div class="hero-meta">
+      <span class="tag">Undelivered · 1936</span>
+      <span class="byline">Dr. B.R. Ambedkar</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="word-1">Annihilation</span>
+      <span class="word-2">of Caste<span class="strike"></span></span>
+    </h1>
+    <p class="hero-subtitle">The speech they tried to silence — now a living archive for those who refuse to look away.</p>
+    <p class="hero-desc">Ambedkar wrote this speech to be delivered at a Hindu reform conference. The organisers cancelled the event when they read it. He published it himself. <strong>This site exists so that what they tried to suppress reaches everyone.</strong> Read the text. Take the Mirror Test. See the evidence. Begin unlearning.</p>
     <div class="hero-ctas">
-      <a href="text.html" class="btn-primary">Read the text</a>
-      <a href="quiz.html" class="btn-secondary">Take the Mirror Test →</a>
+      <a href="quiz.html" class="btn btn-primary">Take the Mirror Test <span class="arrow">→</span></a>
+      <a href="read.html" class="btn btn-ghost">Read the speech <span class="arrow">→</span></a>
     </div>
   </div>
-  <div class="hero-aside">
-    <blockquote>"Turn in any direction you like, caste is the monster that crosses your path."</blockquote>
-    <cite>— B.R. Ambedkar</cite>
+
+  <div class="hero-right">
+    <div class="file-card">
+      <div class="file-card-top">
+        <span class="file-no">FILE № AOC/1936/01</span>
+        <span class="file-class">Restricted</span>
+      </div>
+      <div class="file-card-body">
+        <div class="file-portrait">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Dr._Bhimrao_Ambedkar.jpg/600px-Dr._Bhimrao_Ambedkar.jpg" alt="Dr. B.R. Ambedkar" loading="eager">
+          <div class="file-stamp">Suppressed<strong>1936</strong>Published</div>
+        </div>
+        <div class="file-name">Bhimrao Ramji<br>Ambedkar</div>
+        <div class="file-years">1891 — 1956 · Jurist · Economist · Architect</div>
+        <div class="file-fields">
+          <div class="file-field">
+            <span class="file-field-label">Subject</span>
+            <span class="file-field-value">Annihilation of <em>caste</em></span>
+          </div>
+          <div class="file-field">
+            <span class="file-field-label">Event</span>
+            <span class="file-field-value">Jat-Pat-Todak Mandal, Lahore</span>
+          </div>
+          <div class="file-field">
+            <span class="file-field-label">Status</span>
+            <span class="file-field-value"><em>Cancelled</em> before delivery</span>
+          </div>
+          <div class="file-field">
+            <span class="file-field-label">Action</span>
+            <span class="file-field-value">Self-published · 1,500 copies</span>
+          </div>
+        </div>
+      </div>
+      <div class="file-footer">
+        <span>Public domain</span>
+        <span class="sign">↗ Read now</span>
+      </div>
+    </div>
+    <div class="side-pull">
+      <p>"Turn in any direction you like — caste is the monster that crosses your path."</p>
+      <cite>Annihilation of Caste · Part 1</cite>
+    </div>
   </div>
 </section>
 
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="q">"Caste is the monster that crosses your path."</span><span class="src">Annihilation of Caste</span>
-    <span class="q">"I measure the progress of a community by the degree of progress women have achieved."</span><span class="src">Speeches</span>
-    <span class="q">"Life should be great rather than long."</span><span class="src">Writings</span>
-    <span class="q">"Political tyranny is nothing compared to social tyranny."</span><span class="src">Annihilation of Caste</span>
-    <span class="q">"Lost rights are never regained by appeals to the conscience of the usurpers."</span><span class="src">What Congress and Gandhi Have Done to the Untouchables</span>
-    <span class="q">"Religion and slavery are incompatible."</span><span class="src">The Buddha and His Dhamma</span>
-    <span class="q">"Men are mortal. So are ideas. An idea needs propagation as much as a plant needs watering."</span><span class="src">Writings</span>
-    <span class="q">"Cultivation of mind should be the ultimate aim of human existence."</span><span class="src">Writings</span>
-    <span class="q">"A great man is different from an eminent one in that he is ready to be the servant of society."</span><span class="src">Writings</span>
-    <span class="q">"Caste is a monster that crosses your path."</span><span class="src">Annihilation of Caste</span>
-    <span class="q">"I measure the progress of a community by the degree of progress women have achieved."</span><span class="src">Speeches</span>
-    <span class="q">"Life should be great rather than long."</span><span class="src">Writings</span>
-    <span class="q">"Political tyranny is nothing compared to social tyranny."</span><span class="src">Annihilation of Caste</span>
-    <span class="q">"Lost rights are never regained by appeals to the conscience of the usurpers."</span><span class="src">What Congress and Gandhi Have Done to the Untouchables</span>
-    <span class="q">"Religion and slavery are incompatible."</span><span class="src">The Buddha and His Dhamma</span>
-    <span class="q">"Men are mortal. So are ideas. An idea needs propagation as much as a plant needs watering."</span><span class="src">Writings</span>
-    <span class="q">"Cultivation of mind should be the ultimate aim of human existence."</span><span class="src">Writings</span>
-    <span class="q">"A great man is different from an eminent one in that he is ready to be the servant of society."</span><span class="src">Writings</span>
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="q">"I measure the progress of a community by the degree of progress women have achieved."</span><span class="src">Speeches</span><span class="dot">◆</span>
+    <span class="q">"Caste is not a division of labour, it is a division of labourers."</span><span class="src">Castes in India</span><span class="dot">◆</span>
+    <span class="q">"I was born a Hindu. I will not die a Hindu."</span><span class="src">Yeola, 1935</span><span class="dot">◆</span>
+    <span class="q">"Political tyranny is nothing compared to social tyranny."</span><span class="src">Annihilation of Caste</span><span class="dot">◆</span>
+    <span class="q">"Lost rights are never regained by appeals to the conscience of the usurpers."</span><span class="src">What Congress Did</span><span class="dot">◆</span>
+    <span class="q">"I measure the progress of a community by the degree of progress women have achieved."</span><span class="src">Speeches</span><span class="dot">◆</span>
+    <span class="q">"Caste is not a division of labour, it is a division of labourers."</span><span class="src">Castes in India</span><span class="dot">◆</span>
+    <span class="q">"I was born a Hindu. I will not die a Hindu."</span><span class="src">Yeola, 1935</span><span class="dot">◆</span>
+    <span class="q">"Political tyranny is nothing compared to social tyranny."</span><span class="src">Annihilation of Caste</span><span class="dot">◆</span>
+    <span class="q">"Lost rights are never regained by appeals to the conscience of the usurpers."</span><span class="src">What Congress Did</span><span class="dot">◆</span>
   </div>
 </div>
 
-<section id="about" style="max-width:1100px;margin:0 auto">
-  <div class="section-label fade-up">About the text</div>
-  <h2 class="fade-up">A speech that was never delivered — <em style="font-family:'Playfair Display',serif;font-style:italic">and changed everything.</em></h2>
-  <p style="max-width:580px;color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:48px" class="fade-up">Ambedkar was invited to address the Jat-Pat-Todak Mandal — a Hindu reformist group in Lahore. When the organizers read his speech in advance, they cancelled the event. Ambedkar published it himself. It became one of the most important political texts of the 20th century.</p>
-
-  <div class="cards-grid">
-    <div class="card fade-up">
-      <div class="card-num">01</div>
-      <h3>The Original Text</h3>
-      <p>Read Ambedkar's complete speech with historical footnotes and context — exactly as he wrote it to be delivered.</p>
-      <a href="text.html" class="card-link">Read now →</a>
+<section class="stats-section">
+  <div class="stats-header fade-up">
+    <div class="section-marker">
+      <span class="marker-num">01</span>
+      <span class="marker-line"></span>
+      <span class="marker-label">The numbers they'd rather you not see</span>
     </div>
-    <div class="card fade-up">
-      <div class="card-num">02</div>
-      <h3>Why It Was Banned</h3>
-      <p>The Jat-Pat-Todak Mandal cancelled the event after reading the draft. The story of that suppression is as important as the text itself.</p>
-      <a href="text.html#context" class="card-link">Read the context →</a>
+    <h2>Caste is not <em>old-fashioned.</em><br>It is the present tense.</h2>
+    <p>For those who claim caste discrimination is "a thing of the past," here are the numbers — from the Government of India's own reporting. Every figure below is from official sources.</p>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-cell fade-up">
+      <div class="num">57,582</div>
+      <div class="label">Crimes against Scheduled Castes registered in 2022 alone</div>
+      <div class="source">Source · NCRB 2022</div>
     </div>
-    <div class="card fade-up">
-      <div class="card-num">03</div>
-      <h3>Caste Today</h3>
-      <p>Caste didn't end with the Constitution. It operates through marriage, surnames, housing, police, and silence. Documented evidence.</p>
-      <a href="#resources" class="card-link">See the evidence →</a>
+    <div class="stat-cell fade-up">
+      <div class="num">27.4<span class="unit">%</span></div>
+      <div class="label">Conviction rate under the SC/ST Atrocities Act — proving under-enforcement, not misuse</div>
+      <div class="source">Source · NCRB 2022</div>
     </div>
-    <div class="card fade-up">
-      <div class="card-num">04</div>
-      <h3>Resources Library</h3>
-      <p>Books, films, podcasts, and essays curated for anyone beginning — or deepening — their understanding of caste.</p>
-      <a href="#resources" class="card-link">Explore →</a>
+    <div class="stat-cell fade-up">
+      <div class="num">50k<span class="unit">+</span></div>
+      <div class="label">People still engaged in manual scavenging — banned by law since 1993</div>
+      <div class="source">Source · Safai Karmachari Andolan</div>
+    </div>
+    <div class="stat-cell fade-up">
+      <div class="num">1.8<span class="unit">lac</span></div>
+      <div class="label">SC/ST atrocity cases pending trial — the second injustice of judicial delay</div>
+      <div class="source">Source · NCRB 2022</div>
     </div>
   </div>
 </section>
 
-<section class="pullquote-section">
-  <div class="section-label" style="color:rgba(245,240,232,0.4)">B.R. Ambedkar</div>
-  <blockquote>"You cannot build anything on the foundation of caste. You cannot build up a nation, you cannot build up a morality. Anything you will build on the foundation of caste will crack and will never be a whole."</blockquote>
-  <cite>— B.R. Ambedkar, Annihilation of Caste</cite>
+<section class="paths-section">
+  <div class="paths-header fade-up">
+    <div class="section-marker">
+      <span class="marker-num">02</span>
+      <span class="marker-line"></span>
+      <span class="marker-label">Four ways to enter</span>
+    </div>
+    <h2>Where will you <em>begin?</em></h2>
+    <p>This site is not meant to be read front to back. Start where you are — then follow the thread.</p>
+  </div>
+  <div class="paths-grid">
+    <a href="quiz.html" class="path-card featured fade-up">
+      <div class="path-header">
+        <span class="path-num">01 · Signature</span>
+        <span class="path-arrow">↗</span>
+      </div>
+      <div class="path-title">Mirror <em>Test</em></div>
+      <p class="path-desc">Fifteen questions. Two axes. No judgment — just honest reflection. Discover whether you hold caste attitudes you didn't know you had.</p>
+      <div class="path-meta">Interactive · 8 minutes</div>
+    </a>
+    <a href="unlearn.html" class="path-card fade-up">
+      <div class="path-header">
+        <span class="path-num">02 · Practice</span>
+        <span class="path-arrow">↗</span>
+      </div>
+      <div class="path-title">Unlearn the <em>Conditioning</em></div>
+      <p class="path-desc">A working guide for dominant-caste readers. Privilege audit, stages of awareness, exercises, and concrete actions that don't stop at performative allyship.</p>
+      <div class="path-meta">Deep-dive · 20 minutes</div>
+    </a>
+    <a href="evidence.html" class="path-card fade-up">
+      <div class="path-header">
+        <span class="path-num">03 · Documentation</span>
+        <span class="path-arrow">↗</span>
+      </div>
+      <div class="path-title">Caste <em>Evidence</em></div>
+      <p class="path-desc">NCRB data, landmark cases, judicial delay mechanisms, manual scavenging figures. For anyone told caste no longer exists — bring receipts.</p>
+      <div class="path-meta">Research · Updated regularly</div>
+    </a>
+    <a href="read.html" class="path-card fade-up">
+      <div class="path-header">
+        <span class="path-num">04 · Source</span>
+        <span class="path-arrow">↗</span>
+      </div>
+      <div class="path-title">The <em>Speech</em> Itself</div>
+      <p class="path-desc">The full text with historical context, the Gandhi correspondence, and why Hindu reformers cancelled the event before Ambedkar could speak.</p>
+      <div class="path-meta">Primary source · 30,000 words</div>
+    </a>
+  </div>
 </section>
 
-<div class="quiz-cta fade-up">
-  <span class="quiz-badge">New · Interactive</span>
-  <h2>Mirror Test — How Casteist Are You?</h2>
-  <p>The Mirror Test is a 15-question quiz across two axes — personal bias and systemic denial. Every answer includes the factual research behind it. Most people are surprised by where they land.</p>
-  <div class="spectrum-bar"></div>
-  <div class="spectrum-labels"><span>Deeply embedded</span><span>Actively anti-caste</span></div>
-  <a href="quiz.html" class="btn-primary" style="margin-top:8px">Take the quiz — it's free</a>
-</div>
-
-<section id="resources" style="max-width:1100px;margin:0 auto">
-  <div class="section-label fade-up">Go deeper</div>
-  <h2 class="fade-up">Essential reading & watching</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:32px">
-    <div class="fade-up">
-      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Books</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Annihilation of Caste</strong> — B.R. Ambedkar</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Caste Matters</strong> — Suraj Yengde</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Why I Am Not a Hindu</strong> — Kancha Ilaiah</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>The Doctor and the Saint</strong> — Arundhati Roy</li>
-        <li style="font-size:14px"><strong>Becoming Babasaheb</strong> — Dhananjay Keer</li>
-      </ul>
-    </div>
-    <div class="fade-up">
-      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Films & Docs</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Jai Bhim</strong> (2021) — Tamil film</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>Dr. Babasaheb Ambedkar</strong> (2000)</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px"><strong>India Untouched</strong> (2007) — Documentary</li>
-        <li style="font-size:14px"><strong>Sairat</strong> (2016) — Marathi film</li>
-      </ul>
-    </div>
-    <div class="fade-up">
-      <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Data & Reports</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px">NCRB Crimes Against SC/ST — Annual</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px">Oxfam India Inequality Report 2022</li>
-        <li style="font-size:14px;border-bottom:1px solid var(--border);padding-bottom:10px">NHRC Atrocity Cases Report 2019</li>
-        <li style="font-size:14px">Rohith Vemula Institutional Inquiry</li>
-      </ul>
-    </div>
+<section class="quote-section">
+  <div class="quote-wrap fade-up">
+    <blockquote>You cannot build anything on the foundation of caste. You cannot build a nation. You cannot build a morality. <em>Anything you will build on the foundation of caste will crack — and will never be a whole.</em></blockquote>
+    <cite>B.R. Ambedkar · Annihilation of Caste · Section III</cite>
   </div>
+</section>
 
-  <div class="newsletter fade-up" style="margin-top:80px">
-    <div>
-      <p style="font-size:16px;font-weight:500;margin-bottom:4px">Stay in the conversation</p>
-      <p style="font-size:13px;color:var(--muted)">New essays, events, and resources — straight to your inbox.</p>
+<section class="featured-section">
+  <div class="featured-wrap">
+    <div class="featured-left fade-up">
+      <span class="alert">New · Most taken tool on this site</span>
+      <h2>How <em>casteist</em> are you really?</h2>
+      <p class="intro">Most people think the answer is "not at all."</p>
+      <p>The Mirror Test covers fifteen scenarios across two dimensions — personal bias and systemic denial. It includes questions most people have never been asked to sit with: what do you think when you see a sanitation worker's child on your sofa? How do you respond when someone cites a friendship as proof caste is over?</p>
+      <p>Every answer reveals the research behind it. Your result plots on a two-axis compass, showing where you actually stand — not where you think you do.</p>
+      <a href="quiz.html" class="featured-cta">Start the test — it's free <span>→</span></a>
     </div>
-    <div class="newsletter-form">
-      <input type="email" placeholder="your@email.com">
-      <button>Subscribe</button>
+    <div class="featured-right fade-up">
+      <div class="meter-preview">
+        <div class="meter-q">Your domestic worker's child wants to sit on your sofa. You feel:</div>
+        <div class="meter-options">
+          <div class="meter-opt">Completely fine — invite them warmly</div>
+          <div class="meter-opt demo-picked">A slight discomfort I'm not proud of</div>
+          <div class="meter-opt">Wouldn't occur to me to allow it</div>
+          <div class="meter-opt">Inappropriate — they should know their place</div>
+        </div>
+        <div class="meter-demo-result">You scored: <strong>Partial awareness</strong> · Untouchability extended to furniture. That discomfort is inherited.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2025 annihilationofcaste.com — A non-commercial public resource</span>
-  <div style="display:flex;gap:20px">
-    <a href="index.html">Home</a>
-    <a href="text.html">The Text</a>
-    <a href="quiz.html">Mirror Test</a>
+  <div class="footer-wrap">
+    <div class="footer-brand">
+      <h3>Annihilation of <em>Caste</em></h3>
+      <p>A non-commercial public archive. Free to read, free to share, free to translate. Built in the spirit of Ambedkar's own self-publication when the powerful tried to silence him.</p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(244,236,224,0.4)">Jai Bhim · जय भीम · జై భీమ్</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="read.html" class="accent">Read the Speech</a></li>
+        <li><a href="quiz.html">Mirror Test</a></li>
+        <li><a href="unlearn.html">Unlearn</a></li>
+        <li><a href="evidence.html">Evidence</a></li>
+        <li><a href="poetry.html">Dalit Poetry</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Library</h4>
+      <ul>
+        <li><a href="wiki.html">Ambedkar Wiki</a></li>
+        <li><a href="resources.html">All 22 Volumes</a></li>
+        <li><a href="resources.html">Films & Data</a></li>
+        <li><a href="resources.html">Other Authors</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 · annihilationofcaste.com · Public resource</span>
+    <span class="jai-bhim">— Jai Bhim —</span>
+    <span>Built in solidarity</span>
   </div>
 </footer>
 
 <script>
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
-},{threshold:0.1});
+function toggleMobNav(){
+  document.getElementById('mob-nav').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var n=document.getElementById('mob-nav');
+  if(n&&n.classList.contains('open')&&!e.target.closest('nav')&&!e.target.closest('#mob-nav')){
+    n.classList.remove('open');
+  }
+});
+var obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 </script>
 </body>
