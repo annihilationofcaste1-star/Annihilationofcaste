@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* === NAV === */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;padding:0 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border,rgba(26,18,9,0.12))}
+nav{position:fixed;top:28px;left:0;right:0;z-index:100;height:58px;padding:0 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border,rgba(26,18,9,0.12))}
 .nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink,#1a1209);text-decoration:none;white-space:nowrap;flex-shrink:0}
 ul.nav-links{display:flex!important;flex-direction:row!important;gap:22px;list-style:none!important;align-items:center;margin:0;padding:0}
 ul.nav-links li{list-style:none!important;display:list-item}
@@ -19,7 +19,7 @@ ul.nav-links a:hover,ul.nav-links a.current{color:var(--accent,#c0392b)}
 ul.nav-links a.current{font-weight:500;border-bottom:2px solid var(--accent,#c0392b);padding-bottom:2px}
 .mob-menu-btn{display:none;width:38px;height:38px;background:none;border:1px solid var(--border,rgba(26,18,9,0.12));border-radius:2px;cursor:pointer;flex-direction:column;gap:5px;padding:10px;align-items:center;justify-content:center;flex-shrink:0}
 .mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink,#1a1209)}
-.mob-nav{display:none;position:fixed;top:58px;left:0;right:0;background:var(--paper,#f5f0e8);border-bottom:1px solid var(--border,rgba(26,18,9,0.12));z-index:199;box-shadow:0 6px 24px rgba(26,18,9,0.08)}
+.mob-nav{display:none;position:fixed;top:86px;left:0;right:0;background:var(--paper,#f5f0e8);border-bottom:1px solid var(--border,rgba(26,18,9,0.12));z-index:199;box-shadow:0 6px 24px rgba(26,18,9,0.08)}
 .mob-nav.open{display:block}
 .mob-nav a{display:block;padding:14px 24px;font-size:15px;color:var(--muted,#7a6e5f);text-decoration:none;border-bottom:1px solid var(--border,rgba(26,18,9,0.12))}
 .mob-nav a:hover{color:var(--ink,#1a1209);background:rgba(26,18,9,0.04)}
@@ -223,7 +223,8 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .paths-grid{grid-template-columns:1fr}
   .featured-wrap{grid-template-columns:1fr;gap:40px}
-  .footer-wrap{grid-template-columns:1fr 1fr;gap:40px
+  .footer-wrap{grid-template-columns:1fr 1fr;gap:40px}
+}
 @media(max-width:640px){
   .top-strip{padding:6px 16px;font-size:9px}
   .top-strip .edition{display:none}
@@ -248,18 +249,7 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
   .footer-wrap{grid-template-columns:1fr;gap:32px}
   .footer-bottom{flex-direction:column;gap:10px;text-align:center}
   .ticker-track .q{font-size:15px;padding:0 20px}
-}
-
-  /* Mobile hamburger — hidden on desktop */
-
-  /* Mobile dropdown — hidden by default */
-
-  /* Responsive breakpoints */
-  @media(max-width:900px){
-  }
-
-
-}}</style>
+}</style>
 </head>
 <body>
 
@@ -322,7 +312,7 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
       </div>
       <div class="file-card-body">
         <div class="file-portrait">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Dr._Bhimrao_Ambedkar.jpg/600px-Dr._Bhimrao_Ambedkar.jpg" alt="Dr. B.R. Ambedkar" loading="eager">
+          <img src="assets/ambedkar-portrait.jpg" alt="Dr. B.R. Ambedkar" loading="eager">
           <div class="file-stamp">Suppressed<strong>1936</strong>Published</div>
         </div>
         <div class="file-name">Bhimrao Ramji<br>Ambedkar</div>
