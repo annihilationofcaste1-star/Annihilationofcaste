@@ -9,6 +9,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* === NAV === */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;padding:0 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(245,240,232,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border,rgba(26,18,9,0.12))}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink,#1a1209);text-decoration:none;white-space:nowrap;flex-shrink:0}
+ul.nav-links{display:flex!important;flex-direction:row!important;gap:22px;list-style:none!important;align-items:center;margin:0;padding:0}
+ul.nav-links li{list-style:none!important;display:list-item}
+ul.nav-links a{font-size:13px;color:var(--muted,#7a6e5f);text-decoration:none;white-space:nowrap;transition:color 0.2s}
+ul.nav-links a:hover,ul.nav-links a.current{color:var(--accent,#c0392b)}
+ul.nav-links a.current{font-weight:500;border-bottom:2px solid var(--accent,#c0392b);padding-bottom:2px}
+.mob-menu-btn{display:none;width:38px;height:38px;background:none;border:1px solid var(--border,rgba(26,18,9,0.12));border-radius:2px;cursor:pointer;flex-direction:column;gap:5px;padding:10px;align-items:center;justify-content:center;flex-shrink:0}
+.mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink,#1a1209)}
+.mob-nav{display:none;position:fixed;top:58px;left:0;right:0;background:var(--paper,#f5f0e8);border-bottom:1px solid var(--border,rgba(26,18,9,0.12));z-index:199;box-shadow:0 6px 24px rgba(26,18,9,0.08)}
+.mob-nav.open{display:block}
+.mob-nav a{display:block;padding:14px 24px;font-size:15px;color:var(--muted,#7a6e5f);text-decoration:none;border-bottom:1px solid var(--border,rgba(26,18,9,0.12))}
+.mob-nav a:hover{color:var(--ink,#1a1209);background:rgba(26,18,9,0.04)}
+.mob-nav a.featured{color:var(--accent,#c0392b);font-weight:500;background:rgba(192,57,43,0.04)}
+.mob-nav .mob-label{display:block;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted,#7a6e5f);padding:12px 24px 5px;background:rgba(26,18,9,0.03);border-bottom:1px solid var(--border,rgba(26,18,9,0.12))}
+@media(max-width:900px){nav{padding:0 24px}ul.nav-links{gap:14px}ul.nav-links a{font-size:12px}}
+@media(max-width:768px){nav{padding:0 16px}ul.nav-links{display:none!important}.mob-menu-btn{display:flex}}
+/* === END NAV === */
+
+
 :root{
   --ink:#0f0a06;
   --paper:#f4ece0;
@@ -33,23 +54,7 @@ body::before{
 .top-strip .live{display:flex;align-items:center;gap:6px}
 .top-strip .live::before{content:'';width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
-nav{position:fixed;top:22px;left:0;right:0;height:62px;z-index:49;background:rgba(244,236,224,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 32px;display:flex;justify-content:space-between;align-items:center}
-.nav-logo{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;letter-spacing:-0.01em}
 .nav-logo em{font-style:italic;color:var(--accent);font-weight:400}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;position:relative}
-.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.2s;transform-origin:left}
-.nav-links a:hover{color:var(--ink)}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav-links a.accent{color:var(--accent);font-weight:500}
-.mob-menu-btn{display:none;width:36px;height:36px;background:none;border:1px solid var(--line);border-radius:2px;cursor:pointer;flex-direction:column;gap:4px;padding:10px;align-items:center;justify-content:center}
-.mob-menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink)}
-.mob-nav{display:none;position:fixed;top:84px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:200;padding:4px 0;box-shadow:0 8px 24px rgba(15,10,6,0.08)}
-.mob-nav.open{display:block}
-.mob-nav a{display:block;padding:14px 24px;font-size:15px;color:var(--muted);text-decoration:none;border-bottom:0.5px solid var(--line-soft);font-family:'IBM Plex Sans',sans-serif}
-.mob-nav a.accent{color:var(--accent);font-weight:500;background:rgba(185,28,28,0.04)}
-.mob-nav .mob-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding:12px 24px 6px;display:block;background:var(--paper-deep);border-bottom:0.5px solid var(--line-soft)}
 
 .hero{min-height:calc(100vh - 84px);position:relative;padding:120px 32px 80px;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;z-index:2}
 
@@ -218,14 +223,10 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .paths-grid{grid-template-columns:1fr}
   .featured-wrap{grid-template-columns:1fr;gap:40px}
-  .footer-wrap{grid-template-columns:1fr 1fr;gap:40px}
-}
+  .footer-wrap{grid-template-columns:1fr 1fr;gap:40px
 @media(max-width:640px){
   .top-strip{padding:6px 16px;font-size:9px}
   .top-strip .edition{display:none}
-  nav{padding:0 16px}
-  .nav-links{display:none}
-  .mob-menu-btn{display:flex}
   .hero{padding:110px 20px 48px}
   .hero-right{gap:16px}
   .file-card{transform:rotate(0);box-shadow:5px 5px 0 var(--ink),5px 5px 0 1.5px var(--accent)}
@@ -248,7 +249,17 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
   .footer-bottom{flex-direction:column;gap:10px;text-align:center}
   .ticker-track .q{font-size:15px;padding:0 20px}
 }
-</style>
+
+  /* Mobile hamburger — hidden on desktop */
+
+  /* Mobile dropdown — hidden by default */
+
+  /* Responsive breakpoints */
+  @media(max-width:900px){
+  }
+
+
+}}</style>
 </head>
 <body>
 
@@ -259,9 +270,9 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
 </div>
 
 <nav>
-  <a class="nav-logo" href="index.html">Annihilation of <em>Caste</em></a>
-    <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
+  <a class="nav-logo" href="index.html">Annihilation of Caste</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="current">Home</a></li>
     <li><a href="read.html">Read</a></li>
     <li><a href="quiz.html">Mirror Test</a></li>
     <li><a href="evidence.html">Evidence</a></li>
@@ -274,14 +285,15 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
 </nav>
 <div class="mob-nav" id="mob-nav">
   <span class="mob-label">Start here</span>
-  <a href="quiz.html" class="accent">Mirror Test — Am I casteist?</a>
-  <a href="unlearn.html" class="accent">Unlearn — The path forward</a>
-  <span class="mob-label">Read & research</span>
-  <a href="read.html" class="accent">Read the Speech</a>
-  <a href="evidence.html">Caste Evidence</a>
-  <a href="wiki.html">Ambedkar Wiki</a>
-  <a href="poetry.html">Dalit Poetry</a>
-  <a href="resources.html">Library</a>
+  <a href="quiz.html" class="featured">Mirror Test</a>
+  <a href="unlearn.html" class="featured">Unlearn</a>
+  <span class="mob-label">All pages</span>
+  <a href="index.html" class="current">Home</a>
+  <a href="read.html">Read</a>
+  <a href="evidence.html">Evidence</a>
+  <a href="wiki.html">Wiki</a>
+  <a href="poetry.html">Poetry</a>
+  <a href="resources.html">Resources</a>
 </div>
 
 <section class="hero">
@@ -511,20 +523,21 @@ footer{background:var(--ink);color:rgba(244,236,224,0.6);padding:80px 32px 40px;
   </div>
 </footer>
 
+
+
 <script>
-function toggleMobNav(){
-  document.getElementById('mob-nav').classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var n=document.getElementById('mob-nav');
-  if(n&&n.classList.contains('open')&&!e.target.closest('nav')&&!e.target.closest('#mob-nav')){
-    n.classList.remove('open');
+(function(){
+  function toggleMobNav(){
+    var n=document.getElementById('mob-nav');
+    if(n) n.classList.toggle('open');
   }
-});
-var obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
-},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  window.toggleMobNav = toggleMobNav;
+  document.addEventListener('click',function(e){
+    var n=document.getElementById('mob-nav');
+    if(n&&n.classList.contains('open')&&!e.target.closest('nav')&&!e.target.closest('#mob-nav'))
+      n.classList.remove('open');
+  });
+})();
 </script>
 </body>
 </html>
